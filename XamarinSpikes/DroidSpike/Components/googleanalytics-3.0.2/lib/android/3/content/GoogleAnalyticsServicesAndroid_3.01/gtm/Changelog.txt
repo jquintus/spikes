@@ -1,0 +1,113 @@
+Google Tag Manager SDK for Android Changelog
+
+--------------------------------------------
+Version: 3.01 (September 13, 2013)
+--------------------------------------------
+* No changes.
+
+--------------------------------------------
+Version: 3.0 (August 16, 2013)
+--------------------------------------------
+* Added support for AdWords Conversion Tracking Tag, AdWords Remarketing Tag,
+  and Custom Image Tag.
+
+* Added InstallReferrerReceiver for receiving the install referrer. If the
+  GTM InstallReferrerReceiver is added to AndroidManifest.xml, then the
+  GA CampaignTrackingReceiver should be removed from the manifest.
+  The GTM InstallReferrerReceiver will automatically relay the referrer
+  information to GA.
+
+* Added Advertising Enabled Macro, Application ID Macro, and Device ID Macro.
+
+* Updated cuteAnimals sample app to demonstrate how to use Function Call Macro
+  and Function Call Tag.
+
+* No longer need special entries when using ProGuard.
+
+* Size of the SDK has been reduced.
+
+--------------------------------------------
+Version: 3.0b1 (July 26, 2013)
+--------------------------------------------
+* libGoogleAnalyticsServices.jar replaces libGoogleTagmanager.jar in the
+  downloaded SDK. libGoogleAnalyticsServices.jar includes all functions
+  in libGoogleTagmanager.jar plus version 3 of the Google Analytics SDK.
+  Note that an application can't include both libGoogleAnalyticsServices.jar
+  and the old libGoogleAnalytics.jar or libGoogleTagmanager.jar file.
+  An application that wants to use GTM and also do analytics tracking should
+  either update their GA calls to use version 3 of the SDK, or replace GA
+  calls with data layer push calls and add appropriate rules to their
+  container to fire Universal Analytics hits.
+
+* Added Tag support in SDK. There are 2 types of tags currently supported:
+  Universal Analytics (beta) tag and Custom Function Tag.
+
+* Added DataLayer support to hold generic information about the application.
+  An app can obtain the DataLayer object by calling TagManager.getDataLayer().
+
+* Added 2 new macros: data layer variable macro and custom event macro.
+
+* com.google.tagmanager.Logger replaces TagManager.Logger.
+  TagManager.Logger is deprecated.
+
+* Added LogLevel support into Logger. This allows adjusting the threshold of
+  what gets logged without having to write a new logger.
+
+* Added preview exit link support to allow exiting preview mode of a container
+  without killing the app.
+
+* Fixed a bug that prevented developers from using both GTM and open-sourced
+  proto buffer library.
+
+* Modified the cuteAnimals example to show how to instrument an application
+  by pushing events to the data layer. A sample container is provided that
+  uses the pushed events to fire Google Universal Analytics tag.
+
+--------------------------------------------
+Version: 1.0b4 (July 3, 2013)
+--------------------------------------------
+* Fixed a bug that prevented developers from using both GTM and Analytics
+  SDKs together by removing the Google Analytics classes from
+  libGoogleTagManager.jar.
+
+--------------------------------------------
+Version: 1.0b3 (June 25, 2013)
+--------------------------------------------
+* TagManager.openContainer no longer allows opening multiple containers with
+  the same container ID.
+
+* ContainerOpener no longer has the two methods openFreshContainer and
+  openNonDefaultContainer.  Instead, there are now two openContainer methods:
+  one returns a ContainerFuture, while the other takes a notifier.  Both of
+  these methods take a parameter specifying how the container should be opened
+  (PREFER_NON_DEFAULT or PREFER_FRESH).  This should reduce confusion as to how
+  ContainerFutures and notifiers interact.
+
+  These two new methods can be called more than once with the same
+  container ID; if the container is already open, it'll be returned (via the
+  future or notifier).
+
+* In container preview mode, containers that are already open will be
+  auto-updated (was just updating the container on the next open).
+
+* Added new cuteanimals example (which uses a splash screen while loading
+  the container and stores more complex configuration values) and simplified
+  the helloworld example to no longer use a splash screen).
+
+--------------------------------------------
+Version: 1.0b2 (June 3, 2013)
+--------------------------------------------
+* Fixed NullPointerException that could be thrown under certain circumsances
+  when opening a container using ContainerOpener.
+* Renamed ContainerOpener.openSaved and ContainerOpener.openFresh to
+  ContainerOpener.openNonDefaultContainer and
+  ContainerOpener.openFreshContainer.  The former now no longer returns a
+  default container if there's no saved container (unless the timeout fires).
+* Added a Container parameter to Container.Callback since
+  TagManager.openContainer may call the callback before openContainer returns.
+* TagManager.RefreshMode is now public.
+
+--------------------------------------------
+Version: 1.0b1 (May 23, 2013)
+--------------------------------------------
+* Initial beta release.

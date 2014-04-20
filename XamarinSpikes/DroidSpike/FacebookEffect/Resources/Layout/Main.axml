@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <LinearLayout
+        android:background="#783445"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <Button
+            android:id="@+id/selectPhotosButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Photo" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Cancel" />
+    </LinearLayout>
+    <View
+        android:id="@+id/slider_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#344578"
+        android:layout_marginTop="50dp" />
+</FrameLayout>

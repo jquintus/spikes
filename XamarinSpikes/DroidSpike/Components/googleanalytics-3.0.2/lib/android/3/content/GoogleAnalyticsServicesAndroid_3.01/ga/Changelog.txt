@@ -1,0 +1,112 @@
+Google Analytics SDK for Android Changelog
+
+--------------------------------------------
+Version: 3.01 (September 2013)
+--------------------------------------------
+* Second release of version 3.0.
+* Made change required to avoid a runtime exception when an app targeting
+  KitKat uses the SDK.
+
+
+--------------------------------------------
+Version: 3.00 (August 2013)
+--------------------------------------------
+* First release of version 3.0
+* SDK API rewritten to more closely align with analytics.js.  See javadoc and
+  https://developers.google.com/analytics/devguides/collection/android/v3/
+  for details.
+* All track<hittype> and send<hittype> methods removed.  Instead, you can use
+  the send method and the corresponding construct methods in the MapBuilder
+  class to send hits. See the class Fields for a list of constants you can use
+  to build hits using set and send.
+* Many of the various properties have also been removed, including useHttps,
+  anonymizeIp, etc.  You can set/reset those properties using the set command.
+* EasyTracker now extends Tracker.  There is no need to call
+  EasyTracker.getTracker to make tracking calls directly.
+* The SDK no longer sets the session control flag to start on startup.
+  Developers are now responsible for determining if a new session is needed.
+  Note that EasyTracker still handles session management as before.
+* The SDK now supports a custom logging class.  See Logger in the javadoc for
+  details.
+* Dryrun mode has been added.
+* Clientid can now be read.  Simply call tracker.get(Fields.CLIENT_ID).  This
+  call will block until the clientid has been loaded from the persistent store.
+* The SDK will no longer retry hits based on the HTTP response code.
+* The log tag was updated from "GAV2" to "GAV3".
+
+--------------------------------------------
+Version: 2.0beta5 (April 2013)
+--------------------------------------------
+* Fifth beta release.
+* EasyTracker exception parsing bug fix. When ga_reportUncaughtExceptions
+  flag is set, we were not initializing the exception parser, and as a result
+  not parsing the location of an uncaught exception. With this fix, the
+  crash and exception reports will report the location of uncaught exceptions
+  when ga_reportUncaughtExceptions is set to true.
+
+--------------------------------------------
+Version: 2.0beta4 (January 2013)
+--------------------------------------------
+* Fourth beta release.
+* The SDK will now respect the sample rate setting. If you previously set the
+  sample rate to other than 100% you will now see a corresponding decrease in
+  some of your Analytics metrics compared with beta 3.
+* Changed track methods to send (e.g. trackView now called sendView).
+* Use HTTPS by default instead of HTTP.
+* SDK will not attempt to dispatch hits if there is no network connectivity.
+* Avoid ANRs while attempting to handle install campaign data.
+* Removed TrackedActivity classes from the SDK.
+* Move SDK initialization off the main UI Thread.
+* Improve the SDK's ability to recover from a corrupted SQLite database.
+* AnalyticsReceiver renamed CampaignTrackingReceiver (also added
+  CampaignTrackingService class, see javadoc for details).
+* Several other crashes and bugs fixed.
+
+--------------------------------------------
+Version: 2.0beta3 (August 2012)
+--------------------------------------------
+* Third beta release.
+* Implemented custom dimensions and metrics.
+* Fixed occasional crashes during initialization of the SDK.
+* Fixed INSTALL_REFERRER broadcasts being ignored on some devices.
+* Fixed ConcurrentModificationExceptions in GoogleTracker class.
+* Made StandardExceptionParser class public.
+* Implemented social tracking.
+* Other bugfixes and enhancements.
+
+--------------------------------------------
+Version: 2.0beta2 (June 2012)
+--------------------------------------------
+* Second beta release.
+* Simplified EasyTracker interface.
+* Control of dispatching moved to a new class, GAServiceManager.
+* Updated to latest wire format.
+* sampleRate changed to double.
+* Excessive tracking is throttled.
+* Undispatched tracking information is deleted when opt-out is enabled.
+* Undispatched tracking information older than 30 days will be deleted.
+* Other bugfixes and enhancements.
+
+--------------------------------------------
+Version: 2.0beta1 (May 2012)
+--------------------------------------------
+* Initial internal beta release.
+* startSession method has been removed.  Use setStartSession instead.
+* Added ga_sessionTimeout parameter to EasyTracker.  See javadoc for details.
+* Uncaught exceptions on the Analytics Thread should no longer cause app
+  crashes.
+* Implemented power save mode.  Automatic dispatch calls will now be turned off
+  if no hits are queued for dispatch.
+* Exposed several new Tracker methods in EasyTracker.  See javadoc for details.
+* Added trackView method to GAITracker which takes no argument.
+* Fixed a bug that prevented exception parameters from being sent on hits.
+* Hits that can't be read from the database are discarded instead of
+  permanently blocking all hits from being dispatched.
+* Updated to latest wire format.
+* Implemented timing hit type.
+* Implemented Ecommerce hit types (transaction and item).
+
+--------------------------------------------
+Version: 2.0alpha1 (April 2012)
+--------------------------------------------
+* Initial internal alpha release.

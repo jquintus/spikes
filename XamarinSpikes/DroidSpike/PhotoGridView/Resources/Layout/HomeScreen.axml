@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <TextView
+        android:id="@+id/Heading"
+        android:text="Vegetable Groups"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#00f762"
+        android:textSize="30dp"
+        android:textColor="#FF267F00"
+        android:textStyle="bold"
+        android:padding="5dp" />
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:text="Button 1"
+                android:id="@+id/button1" />
+            <Button
+                android:layout_width="125dp"
+                android:layout_height="50dp"
+                android:text="Button 2"
+                android:id="@+id/button2" />
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:text="Button 3"
+                android:id="@+id/button3" />
+            <Button
+                android:layout_width="175dp"
+                android:layout_height="50dp"
+                android:text="Button 4"
+                android:id="@+id/button4" />
+        </LinearLayout>
+        <ListView
+            android:id="@+id/List"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:cacheColorHint="#FFDAFF7F"
+            android:choiceMode="multipleChoice" />
+    </FrameLayout>
+</LinearLayout>

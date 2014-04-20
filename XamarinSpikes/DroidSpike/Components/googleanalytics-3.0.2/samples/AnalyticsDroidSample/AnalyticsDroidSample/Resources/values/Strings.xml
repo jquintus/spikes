@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="hello">Create and Send Event</string>
+	<string name="app_name">Analytics Sample</string>
+	<string name="second_event">Create and Send 2nd Event</string>
+</resources>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<component format="1" id="XamarinActionBarSherlock">
+  <name>ActionBarSherlock for Xamarin</name>
+  <publisher>Xamarin, Inc.</publisher>
+  <publisher-url>http://actionbarsherlock.com</publisher-url>
+  <version>4.4.0</version>
+  <summary>Xamarin binding for ActionBarSherlock.</summary>
+  <screenshots>
+    <img src="screenshots/sshot_CollapsibleActionItems1.png" title="sshot_CollapsibleActionItems1" />
+    <img src="screenshots/sshot_CollapsibleActionItems2.png" title="sshot_CollapsibleActionItems2" />
+    <img src="screenshots/sshot_FeatureToggles.png" title="sshot_FeatureToggles" />
+    <img src="screenshots/sshot_ListNavigation.png" title="sshot_ListNavigation" />
+    <img src="screenshots/sshot_SimpleTheme.png" title="sshot_SimpleTheme" />
+    <img src="screenshots/sshot_TabNavigation.png" title="sshot_TabNavigation" />
+  </screenshots>
+  <samples>
+    <sample id="ActionBarSherlock">
+      <name>Android Sample</name>
+      <summary>Android Sample</summary>
+    </sample>
+  </samples>
+</component>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/ArrayButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Array"
+            android:layout_weight="1" />
+        <Button
+            android:id="@+id/CursorButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cursor"
+            android:layout_weight="1" />
+    </LinearLayout>
+    <Gallery
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/gallery1" />
+    <GridView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:numColumns="4"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="10dp"
+        android:stretchMode="columnWidth"
+        android:gravity="center"
+        android:id="@+id/gridView1"
+        android:fastScrollEnabled="true" />
+</LinearLayout>

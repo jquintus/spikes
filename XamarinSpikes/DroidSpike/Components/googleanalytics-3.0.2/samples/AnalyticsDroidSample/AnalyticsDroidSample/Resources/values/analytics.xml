@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- For more Info about options in this file please visit -->
+<!-- https://developers.google.com/analytics/devguides/collection/android/parameters -->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="TypographyDashes">
+
+	<!--Replace placeholder ID with your tracking ID-->
+	<string name="ga_trackingId">UA-XXXX-Y</string>
+
+	<!--Enable automatic activity tracking-->
+	<bool name="ga_autoActivityTracking">true</bool>
+
+	<!--Enable automatic exception tracking-->
+	<bool name="ga_reportUncaughtExceptions">true</bool>
+
+	<!-- You can personalize the screen names that will appear in reports -->
+	<!-- https://developers.google.com/analytics/devguides/collection/android/v3/screens#automatic-->
+	<string name="analyticsdroidsample.MainActivity">Home</string>
+	<string name="analyticsdroidsample.SecondActivity">2nd Activity</string>
+</resources>
