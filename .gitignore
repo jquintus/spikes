@@ -1,0 +1,19 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/XamarinSpikes/DroidSpike/ConsoleApplication1/bin/Debug
+/XamarinSpikes/DroidSpike/ConsoleApplication1/obj/Debug
+/XamarinSpikes/DroidSpike/DroidSpike/bin/Debug
+/XamarinSpikes/DroidSpike/DroidSpike/obj/Debug
+/XamarinSpikes/DroidSpike/FacebookEffect/bin/Debug
+/XamarinSpikes/DroidSpike/FacebookEffect/obj/Debug
+/XamarinSpikes/DroidSpike/FrgmentWalkthrough/bin/Debug
+/XamarinSpikes/DroidSpike/FrgmentWalkthrough/obj/Debug
+/XamarinSpikes/DroidSpike/GalleryShareTo/bin/Debug
+/XamarinSpikes/DroidSpike/GalleryShareTo/obj/Debug
+/XamarinSpikes/DroidSpike/ListViewSpike/obj/Debug
+/XamarinSpikes/DroidSpike/MultiSelectImageGallery/bin/Debug
+/XamarinSpikes/DroidSpike/MultiSelectImageGallery/obj/Debug
+/XamarinSpikes/DroidSpike/PhotoGridView/bin/Debug
+/XamarinSpikes/DroidSpike/PhotoGridView/obj/Debug
