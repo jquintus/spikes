@@ -21,3 +21,4 @@
 /XamarinSpikes/HeaderedGridView/HeaderedGridView.Core/obj/Debug
 /XamarinSpikes/HeaderedGridView/HeaderedGridView.Droid/obj/Debug
 /XamarinSpikes/HeaderedGridView/HeaderedGridView.Droid/bin/Debug
+*.suo
