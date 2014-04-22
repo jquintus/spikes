@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DroidSpike", "DroidSpike\DroidSpike.csproj", "{26738525-2D7E-409E-B74B-640931DD6727}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoGridView", "PhotoGridView\PhotoGridView.csproj", "{6CF1BEBB-1585-44AC-BC64-F4D21D6D4E03}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacebookEffect", "FacebookEffect\FacebookEffect.csproj", "{D46DB8D0-F8B4-4535-98DC-CF4CA9D86B58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaBroadcastReceiver", "MediaBroadcastReceiver\MediaBroadcastReceiver.csproj", "{65FE8ADD-A494-43C1-BED9-9E5147F8EB8F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,12 @@ Global
 		{D46DB8D0-F8B4-4535-98DC-CF4CA9D86B58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D46DB8D0-F8B4-4535-98DC-CF4CA9D86B58}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D46DB8D0-F8B4-4535-98DC-CF4CA9D86B58}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{65FE8ADD-A494-43C1-BED9-9E5147F8EB8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65FE8ADD-A494-43C1-BED9-9E5147F8EB8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65FE8ADD-A494-43C1-BED9-9E5147F8EB8F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{65FE8ADD-A494-43C1-BED9-9E5147F8EB8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65FE8ADD-A494-43C1-BED9-9E5147F8EB8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65FE8ADD-A494-43C1-BED9-9E5147F8EB8F}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
