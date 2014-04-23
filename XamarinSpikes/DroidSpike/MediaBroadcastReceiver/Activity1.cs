@@ -1,7 +1,10 @@
 ﻿using Android.App;
+using Android.Content;
+using Android.Database;
 using Android.Graphics;
 using Android.Media;
 using Android.OS;
+using Android.Provider;
 using Android.Util;
 using Android.Widget;
 using Java.IO;
@@ -14,6 +17,7 @@ namespace MediaBroadcastReceiver
     public class Activity1 : Activity
     {
         private const string DIRECTORY_PATH = @"/sdcard/test/";
+        private GridView _gridView;
         private List<PhotosObserver> _observers;
         private Random rnd = new Random();
 
@@ -21,40 +25,31 @@ namespace MediaBroadcastReceiver
         {
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Main);
-            Button imageButton = FindViewById<Button>(Resource.Id.MyButton);
-            Button scanButton = FindViewById<Button>(Resource.Id.scanButton);
-            Button newlineButton = FindViewById<Button>(Resource.Id.newlineButton);
-
-            imageButton.Click += delegate
-            {
-                try
-                {
-                    var f = CreateImage();
-                    MediaScannerConnection.ScanFile(this, new String[] { f.AbsolutePath }, null, null);
-
-                    Log.Info(A.B, "Created image:  " + f.Path);
-                }
-                catch (Exception e)
-                {
-                    Log.Error(A.B, "Error creting image:  " + e.Message);
-                }
-            };
-
-            scanButton.Click += delegate
-            {
-                try
-                {
-                    ScanForMedia();
-                }
-                catch (Exception e)
-                {
-                    Log.Error(A.B, "Error scanning for images:  " + e.Message);
-                }
-            };
-
-            newlineButton.Click += delegate { Log.Debug(A.B, "_"); };
 
             RegisterObserver();
+
+            ConfigureGrid();
+
+            WireButtons();
+        }
+
+        private void ConfigureGrid()
+        {
+            _gridView = FindViewById<GridView>(Resource.Id.gridView1);
+            GridManager gm = new GridManager(this, _gridView, _observers);
+            gm.Init();
+        }
+
+        private ICursor CreateCursor()
+        {
+            string[] columns = { MediaStore.Images.Media.InterfaceConsts.Data, MediaStore.Images.Media.InterfaceConsts.Id };
+
+            string orderBy = MediaStore.Images.Media.InterfaceConsts.Id;
+
+            var loader = new CursorLoader(this, MediaStore.Images.Media.ExternalContentUri, columns, null, null, orderBy + " DESC");
+            var cursor = (ICursor)loader.LoadInBackground();
+
+            return cursor;
         }
 
         private File CreateImage()
@@ -97,6 +92,42 @@ namespace MediaBroadcastReceiver
             var mediaScanIntent = new Android.Content.Intent(Android.Content.Intent.ActionMediaScannerScanFile);
             mediaScanIntent.SetData(contentUri);
             this.SendBroadcast(mediaScanIntent);
+        }
+
+        private void WireButtons()
+        {
+            Button imageButton = FindViewById<Button>(Resource.Id.MyButton);
+            Button scanButton = FindViewById<Button>(Resource.Id.scanButton);
+            Button newlineButton = FindViewById<Button>(Resource.Id.newlineButton);
+
+            imageButton.Click += delegate
+            {
+                try
+                {
+                    var f = CreateImage();
+                    MediaScannerConnection.ScanFile(this, new String[] { f.AbsolutePath }, null, null);
+
+                    Log.Info(A.B, "Created image:  " + f.Path);
+                }
+                catch (Exception e)
+                {
+                    Log.Error(A.B, "Error creting image:  " + e.Message);
+                }
+            };
+
+            scanButton.Click += delegate
+            {
+                try
+                {
+                    ScanForMedia();
+                }
+                catch (Exception e)
+                {
+                    Log.Error(A.B, "Error scanning for images:  " + e.Message);
+                }
+            };
+
+            newlineButton.Click += delegate { Log.Debug(A.B, "_"); };
         }
     }
 }

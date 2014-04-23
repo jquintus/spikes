@@ -3,19 +3,40 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-    <Button
-        android:id="@+id/MyButton"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Generate Image" />
-    <Button
-        android:id="@+id/scanButton"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/MyButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Generate" />
+        <Button
+            android:id="@+id/scanButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Scan" />
+        <Button
+            android:id="@+id/newlineButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="NL" />
+    </LinearLayout>
+    <GridView
+        android:minWidth="25px"
+        android:minHeight="25px"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Start Scanning" />
-    <Button
-        android:id="@+id/newlineButton"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="NewLine" />
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:numColumns="4"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="10dp"
+        android:stretchMode="columnWidth"
+        android:gravity="center"
+        android:id="@+id/gridView1"
+        android:fastScrollEnabled="true" />
 </LinearLayout>

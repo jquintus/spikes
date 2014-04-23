@@ -42,6 +42,8 @@ namespace MediaBroadcastReceiver
             _name = name;
         }
 
+        public event System.EventHandler DataUpdated = delegate { };
+
         public static PhotosObserver CreateExternalObserver(Context context)
         {
             return new PhotosObserver(context, "External", MediaStore.Images.Media.ExternalContentUri);
@@ -61,6 +63,8 @@ namespace MediaBroadcastReceiver
                 string saved = string.Format("{0} detected {1}", _name, media);
                 Log.Info(A.B, saved);
             }
+
+            DataUpdated(this, System.EventArgs.Empty);
         }
 
         public PhotosObserver Register()

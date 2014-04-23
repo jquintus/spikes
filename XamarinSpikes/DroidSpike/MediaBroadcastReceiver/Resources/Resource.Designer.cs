@@ -63,6 +63,9 @@ namespace MediaBroadcastReceiver
 			// aapt resource value: 0x7f050000
 			public const int MyButton = 2131034112;
 			
+			// aapt resource value: 0x7f050003
+			public const int gridView1 = 2131034115;
+			
 			// aapt resource value: 0x7f050002
 			public const int newlineButton = 2131034114;
 			
