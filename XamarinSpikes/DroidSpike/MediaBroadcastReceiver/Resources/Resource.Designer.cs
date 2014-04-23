@@ -63,6 +63,12 @@ namespace MediaBroadcastReceiver
 			// aapt resource value: 0x7f050000
 			public const int MyButton = 2131034112;
 			
+			// aapt resource value: 0x7f050002
+			public const int newlineButton = 2131034114;
+			
+			// aapt resource value: 0x7f050001
+			public const int scanButton = 2131034113;
+			
 			static Id()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();

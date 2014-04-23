@@ -1,19 +1,63 @@
 ﻿using Android.App;
 using Android.Graphics;
+using Android.Media;
 using Android.OS;
 using Android.Util;
 using Android.Widget;
 using Java.IO;
 using System;
+using System.Collections.Generic;
 
 namespace MediaBroadcastReceiver
 {
     [Activity(Label = "MediaBroadcastReceiver", MainLauncher = true, Icon = "@drawable/icon")]
     public class Activity1 : Activity
     {
+        private const string DIRECTORY_PATH = @"/sdcard/test/";
+        private List<PhotosObserver> _observers;
         private Random rnd = new Random();
 
-        public Android.Net.Uri CreateImage()
+        protected override void OnCreate(Bundle bundle)
+        {
+            base.OnCreate(bundle);
+            SetContentView(Resource.Layout.Main);
+            Button imageButton = FindViewById<Button>(Resource.Id.MyButton);
+            Button scanButton = FindViewById<Button>(Resource.Id.scanButton);
+            Button newlineButton = FindViewById<Button>(Resource.Id.newlineButton);
+
+            imageButton.Click += delegate
+            {
+                try
+                {
+                    var f = CreateImage();
+                    MediaScannerConnection.ScanFile(this, new String[] { f.AbsolutePath }, null, null);
+
+                    Log.Info(A.B, "Created image:  " + f.Path);
+                }
+                catch (Exception e)
+                {
+                    Log.Error(A.B, "Error creting image:  " + e.Message);
+                }
+            };
+
+            scanButton.Click += delegate
+            {
+                try
+                {
+                    ScanForMedia();
+                }
+                catch (Exception e)
+                {
+                    Log.Error(A.B, "Error scanning for images:  " + e.Message);
+                }
+            };
+
+            newlineButton.Click += delegate { Log.Debug(A.B, "_"); };
+
+            RegisterObserver();
+        }
+
+        private File CreateImage()
         {
             using (var b = Bitmap.CreateBitmap(100, 100, Bitmap.Config.Argb8888))
             using (Canvas c = new Canvas(b))
@@ -25,36 +69,34 @@ namespace MediaBroadcastReceiver
             }
         }
 
-        protected override void OnCreate(Bundle bundle)
+        private void RegisterObserver()
         {
-            base.OnCreate(bundle);
-            SetContentView(Resource.Layout.Main);
-            Button button = FindViewById<Button>(Resource.Id.MyButton);
-
-            button.Click += delegate
-            {
-                try
-                {
-                    CreateImage();
-                }
-                catch (Exception e)
-                {
-                    Log.Error(A.B, "Error creting image:  " + e.Message);
-                }
+            _observers = new List<PhotosObserver>(){
+                PhotosObserver.CreateExternalObserver(this).Register(),
+                PhotosObserver.CreateInternalObserver(this).Register(),
             };
         }
 
-        private Android.Net.Uri SaveBitmap(Bitmap b)
+        private File SaveBitmap(Bitmap b)
         {
-            string filename = string.Format(@"/sdcard/test/MyFile_{0:HH_mm_s}.jpg", DateTime.Now);
+            string filename = string.Format("{0}MyFile{1:HH_mm_s}.jpg", DIRECTORY_PATH, DateTime.Now);
             File f = new File(filename);
             using (System.IO.FileStream fs = new System.IO.FileStream(f.AbsolutePath, System.IO.FileMode.OpenOrCreate))
             {
                 b.Compress(Bitmap.CompressFormat.Jpeg, 9, fs);
 
-                var uri = Android.Net.Uri.FromFile(f);
-                return uri;
+                return f;
             }
+        }
+
+        private void ScanForMedia()
+        {
+            File f = new File(DIRECTORY_PATH);
+            var contentUri = Android.Net.Uri.FromFile(f);
+
+            var mediaScanIntent = new Android.Content.Intent(Android.Content.Intent.ActionMediaScannerScanFile);
+            mediaScanIntent.SetData(contentUri);
+            this.SendBroadcast(mediaScanIntent);
         }
     }
 }

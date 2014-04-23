@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Activity1.cs" />
     <Compile Include="HeadphoneBroadcastReceiver.cs" />
+    <Compile Include="PhotosObserver.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
