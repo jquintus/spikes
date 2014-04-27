@@ -84,7 +84,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapters\HeaderMvxAdapter.cs" />
+    <Compile Include="ContextExtensions.cs" />
+    <Compile Include="Controls\MvxListViewWithHeader.cs" />
     <Compile Include="DebugTrace.cs" />
+    <Compile Include="DisposableTypedArray.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,6 +105,12 @@
     <AndroidResource Include="Resources\Layout\simple_list_item.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\Layout\header.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\footer.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Values\Strings.xml" />
@@ -114,6 +124,9 @@
     <AndroidResource Include="Resources\Values\MvxBindingAttributes.xml" />
     <AndroidResource Include="Resources\Drawable\splash.png" />
     <AndroidResource Include="Resources\Drawable\back.xml" />
+    <AndroidResource Include="Resources\Values\attrs.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MvxListWithHeader.Core\MvxListWithHeader.Core.csproj">

@@ -124,5 +124,8 @@ namespace MvxListWithHeader.Core.ViewModels
             get { return _quotes; }
             set { _quotes = value; RaisePropertyChanged(() => Quotes); }
         }
+
+        public string HeaderText { get { return "AFI's Top 100 Movie Quotes"; } }
+        public string FooterText { get { return "That's All Folks"; } }
     }
 }
