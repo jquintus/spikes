@@ -9,3 +9,6 @@ In the screen shots below the header is the purple bar and the footer is the bot
 
 ![](https://raw.githubusercontent.com/jquintus/spikes/master/XamarinSpikes/MvxListWithHeader/screenshots/bottom.png)
 
+
+
+For a detailed discussion of this code please go to http://blog.masterdevs.com/headers-and-footers-on-an-mvxlistview/
