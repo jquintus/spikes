@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace PhotoGridView
 {
-    [Activity(Label = "Home Screen", MainLauncher = true, Icon = "@drawable/icon")]
+    //[Activity(Label = "Home Screen", MainLauncher = true, Icon = "@drawable/icon")]
     public class HomeScreen : Activity
     {
         private ListView _listView;

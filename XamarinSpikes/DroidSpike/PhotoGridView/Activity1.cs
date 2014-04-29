@@ -10,7 +10,7 @@ using System;
 
 namespace PhotoGridView
 {
-    //[Activity(Label = "PhotoGridView", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "PhotoGridView", MainLauncher = true, Icon = "@drawable/icon")]
     public class Activity1 : Activity
     {
         private Button _cursorButton;
