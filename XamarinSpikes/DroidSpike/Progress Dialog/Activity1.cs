@@ -40,7 +40,6 @@ namespace Progress_Dialog
         {
             try
             {
-
                 pd.Show();
             }
             catch (System.Exception ex)
