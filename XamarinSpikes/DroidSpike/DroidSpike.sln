@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaBroadcastReceiver", "M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Progress Dialog", "Progress Dialog\Progress Dialog.csproj", "{DC1EB968-EBC8-4608-BCB8-F85F3B880CCC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwipeyView", "SwipeyView\SwipeyView.csproj", "{DEFE014E-471B-4C32-94BC-ABB760C8998D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,12 @@ Global
 		{DC1EB968-EBC8-4608-BCB8-F85F3B880CCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC1EB968-EBC8-4608-BCB8-F85F3B880CCC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DC1EB968-EBC8-4608-BCB8-F85F3B880CCC}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{DEFE014E-471B-4C32-94BC-ABB760C8998D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEFE014E-471B-4C32-94BC-ABB760C8998D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEFE014E-471B-4C32-94BC-ABB760C8998D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{DEFE014E-471B-4C32-94BC-ABB760C8998D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEFE014E-471B-4C32-94BC-ABB760C8998D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEFE014E-471B-4C32-94BC-ABB760C8998D}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
