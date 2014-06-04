@@ -1,8 +1,6 @@
 ﻿using Android.OS;
 using Android.Support.V4.App;
 using Android.Views;
-using Android.Widget;
-using System;
 
 namespace SwipeyView
 {
@@ -17,79 +15,36 @@ namespace SwipeyView
 
         public override Fragment GetItem(int i)
         {
+            Fragment fragment = new SimpleFragment()
+            {
+                Arguments = new Bundle()
+            };
+            fragment.Arguments.PutInt(SimpleFragment.LAYOUT_ID_KEY, GetLayoutId(i));
+            return fragment;
+        }
+
+        private int GetLayoutId(int i)
+        {
             switch (i)
             {
-                case 0: return new TabOne();
-                case 1: return new TabTwo();
-                case 2: return new TabThree();
-                case 3: return new TabFour();
-                default: throw new ArgumentOutOfRangeException();
+                case 0: return Resource.Layout.layout1;
+                case 1: return Resource.Layout.layout2;
+                case 2: return Resource.Layout.layout3;
+                case 3: return Resource.Layout.layout4;
+                default: return Resource.Layout.default_fragment_view;
             }
         }
     }
 
-    public class DemoObjectFragment : Fragment
+    public class SimpleFragment : Fragment
     {
-        public const string ARG_OBJECT = "object";
+        public const string LAYOUT_ID_KEY = "LAYOUT ID KEY";
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            // The last two arguments ensure LayoutParams are inflated properly
-            View rootView = inflater.Inflate(Resource.Layout.fragment_collection_object, container, false);
-
-            Bundle args = Arguments;
-            var view = rootView.FindViewById<TextView>(Android.Resource.Id.Text1);
-
-            view.Text = args.GetInt(ARG_OBJECT).ToString();
+            int id = Arguments.GetInt(LAYOUT_ID_KEY);
+            View rootView = inflater.Inflate(id, container, false);
             return rootView;
-        }
-    }
-
-    public abstract class JoshFragment : Fragment
-    {
-        private int _id;
-
-        public JoshFragment(int id)
-        {
-            _id = id;
-        }
-
-        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-        {
-            View rootView = inflater.Inflate(_id, container, false);
-            return rootView;
-        }
-    }
-
-    public class TabFour : JoshFragment
-    {
-        public TabFour()
-            : base(Resource.Layout.layout4)
-        {
-        }
-    }
-
-    public class TabOne : JoshFragment
-    {
-        public TabOne()
-            : base(Resource.Layout.layout1)
-        {
-        }
-    }
-
-    public class TabThree : JoshFragment
-    {
-        public TabThree()
-            : base(Resource.Layout.layout3)
-        {
-        }
-    }
-
-    public class TabTwo : JoshFragment
-    {
-        public TabTwo()
-            : base(Resource.Layout.layout2)
-        {
         }
     }
 }

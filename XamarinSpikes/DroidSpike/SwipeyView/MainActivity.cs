@@ -5,6 +5,10 @@ using Android.Support.V4.View;
 
 namespace SwipeyView
 {
+    /// <summary>
+    /// http://developer.android.com/training/implementing-navigation/lateral.html#horizontal-paging
+    /// http://android-developers.blogspot.com/2011/08/horizontal-view-swiping-with-viewpager.html
+    /// </summary>
     [Activity(Label = "SwipeyView", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : FragmentActivity
     {
@@ -16,71 +20,28 @@ namespace SwipeyView
             base.OnCreate(bundle);
 
             SetContentView(Resource.Layout.Main);
-            var actionBar = ActionBar;
 
             mDemoCollectionPagerAdapter = new DemoCollectionPagerAdapter(SupportFragmentManager);
             mViewPager = FindViewById<ViewPager>(Resource.Id.pager);
             mViewPager.Adapter = mDemoCollectionPagerAdapter;
+            mViewPager.OffscreenPageLimit = mDemoCollectionPagerAdapter.Count; // Keep them all in memory.  These are small views, who cares.
 
-            mViewPager.SetOnPageChangeListener(new OnPageChangeListener(actionBar));
 
-            actionBar.NavigationMode = ActionBarNavigationMode.Tabs;
+            ////If we want to use tab, uncomment this
+            //var actionBar = ActionBar;
+            //mViewPager.SetOnPageChangeListener(new OnPageChangeListener(actionBar));
 
-            ActionBar.ITabListener tabListener = new TabListener(mViewPager);
+            //actionBar.NavigationMode = ActionBarNavigationMode.Tabs;
 
-            for (int i = 0; i < mDemoCollectionPagerAdapter.Count; i++)
-            {
-                actionBar.AddTab(
-                        actionBar.NewTab()
-                                .SetText("Tab " + (i + 1))
-                                .SetTabListener(tabListener));
-            }
-        }
-    }
+            //ActionBar.ITabListener tabListener = new TabListener(mViewPager);
 
-    public class OnPageChangeListener : Java.Lang.Object, Android.Support.V4.View.ViewPager.IOnPageChangeListener
-    {
-        private ActionBar mActionBar;
-
-        public OnPageChangeListener(ActionBar ab)
-        {
-            mActionBar = ab;
-        }
-
-        public void OnPageScrolled(int position, float positionOffset, int positionOffsetPixels)
-        {
-        }
-
-        public void OnPageScrollStateChanged(int state)
-        {
-        }
-
-        public void OnPageSelected(int position)
-        {
-            mActionBar.SetSelectedNavigationItem(position);
-        }
-    }
-
-    public class TabListener : Java.Lang.Object, ActionBar.ITabListener
-    {
-        private ViewPager mViewPager;
-
-        public TabListener(ViewPager vp)
-        {
-            mViewPager = vp;
-        }
-
-        public void OnTabReselected(ActionBar.Tab tab, Android.App.FragmentTransaction ft)
-        {
-        }
-
-        public void OnTabSelected(ActionBar.Tab tab, Android.App.FragmentTransaction ft)
-        {
-            mViewPager.SetCurrentItem(tab.Position, true);
-        }
-
-        public void OnTabUnselected(ActionBar.Tab tab, Android.App.FragmentTransaction ft)
-        {
+            //for (int i = 0; i < mDemoCollectionPagerAdapter.Count; i++)
+            //{
+            //    actionBar.AddTab(
+            //            actionBar.NewTab()
+            //                    .SetText("Tab " + (i + 1))
+            //                    .SetTabListener(tabListener));
+            //}
         }
     }
 }
