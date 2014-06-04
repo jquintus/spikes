@@ -1,17 +1,20 @@
 ﻿using Android.OS;
 using Android.Support.V4.App;
 using Android.Views;
+using System.Collections.Generic;
 
 namespace SwipeyView
 {
     public class DemoCollectionPagerAdapter : FragmentPagerAdapter
     {
-        public DemoCollectionPagerAdapter(FragmentManager fm)
+        public DemoCollectionPagerAdapter(FragmentManager fm, Dictionary<int, int> pageNumberToLayoutId)
             : base(fm)
         {
+            _pageNumberToLayoutId = pageNumberToLayoutId;
         }
 
-        public override int Count { get { return 4; } }
+        public Dictionary<int, int> _pageNumberToLayoutId { get; set; }
+        public override int Count { get { return _pageNumberToLayoutId.Count; } }
 
         public override Fragment GetItem(int i)
         {
@@ -19,20 +22,8 @@ namespace SwipeyView
             {
                 Arguments = new Bundle()
             };
-            fragment.Arguments.PutInt(SimpleFragment.LAYOUT_ID_KEY, GetLayoutId(i));
+            fragment.Arguments.PutInt(SimpleFragment.LAYOUT_ID_KEY, _pageNumberToLayoutId[i]);
             return fragment;
-        }
-
-        private int GetLayoutId(int i)
-        {
-            switch (i)
-            {
-                case 0: return Resource.Layout.layout1;
-                case 1: return Resource.Layout.layout2;
-                case 2: return Resource.Layout.layout3;
-                case 3: return Resource.Layout.layout4;
-                default: return Resource.Layout.default_fragment_view;
-            }
         }
     }
 

@@ -2,6 +2,7 @@
 using Android.OS;
 using Android.Support.V4.App;
 using Android.Support.V4.View;
+using System.Collections.Generic;
 
 namespace SwipeyView
 {
@@ -21,7 +22,12 @@ namespace SwipeyView
 
             SetContentView(Resource.Layout.Main);
 
-            mDemoCollectionPagerAdapter = new DemoCollectionPagerAdapter(SupportFragmentManager);
+            mDemoCollectionPagerAdapter = new DemoCollectionPagerAdapter(SupportFragmentManager, new Dictionary<int, int>{
+                { 0, Resource.Layout.layout1},
+                {  1, Resource.Layout.layout2},
+                {  2, Resource.Layout.layout3},
+                {  3, Resource.Layout.layout4},
+            });
             mViewPager = FindViewById<ViewPager>(Resource.Id.pager);
             mViewPager.Adapter = mDemoCollectionPagerAdapter;
             mViewPager.OffscreenPageLimit = mDemoCollectionPagerAdapter.Count; // Keep them all in memory.  These are small views, who cares.
