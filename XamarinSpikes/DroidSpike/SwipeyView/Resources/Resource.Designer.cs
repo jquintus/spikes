@@ -69,6 +69,12 @@ namespace SwipeyView
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f050001
+			public const int buttony = 2131034113;
+			
+			// aapt resource value: 0x7f050002
+			public const int flippy = 2131034114;
+			
 			// aapt resource value: 0x7f050000
 			public const int pager = 2131034112;
 			
@@ -105,6 +111,9 @@ namespace SwipeyView
 			
 			// aapt resource value: 0x7f030006
 			public const int Main = 2130903046;
+			
+			// aapt resource value: 0x7f030007
+			public const int simple_flipper = 2130903047;
 			
 			static Layout()
 			{

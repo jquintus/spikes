@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DemoCollectionPagerAdapter.cs" />
+    <Compile Include="Flipper.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="OnPageChangeListener.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -82,6 +83,9 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\default_fragment_view.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\simple_flipper.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>

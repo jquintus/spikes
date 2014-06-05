@@ -16,6 +16,18 @@ namespace SwipeyView
         private DemoCollectionPagerAdapter mDemoCollectionPagerAdapter;
         private ViewPager mViewPager;
 
+        public override void OnBackPressed()
+        {
+            if (mViewPager.CurrentItem == 0)
+            {
+                base.OnBackPressed();
+            }
+            else
+            {
+                mViewPager.SetCurrentItem(mViewPager.CurrentItem - 1, true);
+            }
+        }
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -31,7 +43,6 @@ namespace SwipeyView
             mViewPager = FindViewById<ViewPager>(Resource.Id.pager);
             mViewPager.Adapter = mDemoCollectionPagerAdapter;
             mViewPager.OffscreenPageLimit = mDemoCollectionPagerAdapter.Count; // Keep them all in memory.  These are small views, who cares.
-
 
             ////If we want to use tab, uncomment this
             //var actionBar = ActionBar;
