@@ -44,21 +44,27 @@ namespace SwipeyView
             mViewPager.Adapter = mDemoCollectionPagerAdapter;
             mViewPager.OffscreenPageLimit = mDemoCollectionPagerAdapter.Count; // Keep them all in memory.  These are small views, who cares.
 
-            ////If we want to use tab, uncomment this
-            //var actionBar = ActionBar;
-            //mViewPager.SetOnPageChangeListener(new OnPageChangeListener(actionBar));
+            //If we want to use tab, uncomment this
+            var actionBar = ActionBar;
+            mViewPager.SetOnPageChangeListener(new OnPageChangeListener(actionBar));
 
-            //actionBar.NavigationMode = ActionBarNavigationMode.Tabs;
+            actionBar.NavigationMode = ActionBarNavigationMode.Tabs;
 
-            //ActionBar.ITabListener tabListener = new TabListener(mViewPager);
+            ActionBar.ITabListener tabListener = new TabListener(mViewPager);
 
-            //for (int i = 0; i < mDemoCollectionPagerAdapter.Count; i++)
-            //{
-            //    actionBar.AddTab(
-            //            actionBar.NewTab()
-            //                    .SetText("Tab " + (i + 1))
-            //                    .SetTabListener(tabListener));
-            //}
+            var tabStrip = FindViewById<PagerTabStrip>(Resource.Id.tabStrip);
+            bool drawFullUnderline = tabStrip.DrawFullUnderline;
+            tabStrip.DrawFullUnderline = !drawFullUnderline;
+            tabStrip.TabIndicatorColor = Android.Graphics.Color.Red;
+
+            for (int i = 0; i < mDemoCollectionPagerAdapter.Count; i++)
+            {
+                actionBar.AddTab(
+                        actionBar.NewTab()
+                    //.SetText("Tab " + (i + 1))
+                                .SetText(mDemoCollectionPagerAdapter.GetPageTitle(i))
+                                .SetTabListener(tabListener));
+            }
         }
     }
 }

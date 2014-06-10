@@ -1,5 +1,6 @@
 ﻿using Android.OS;
 using Android.Support.V4.App;
+using Android.Text;
 using Android.Views;
 using System.Collections.Generic;
 
@@ -25,6 +26,13 @@ namespace SwipeyView
             fragment.Arguments.PutInt(SimpleFragment.LAYOUT_ID_KEY, _pageNumberToLayoutId[i]);
             return fragment;
         }
+
+        public override Java.Lang.ICharSequence GetPageTitleFormatted(int position)
+        {
+            SpannedString txt = new SpannedString(new string('x', 1 + position));
+            return txt;
+        }
+
     }
 
     public class SimpleFragment : Fragment
