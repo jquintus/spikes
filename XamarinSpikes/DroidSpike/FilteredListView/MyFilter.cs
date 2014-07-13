@@ -7,10 +7,10 @@ namespace FilteredListView
 {
     public class MyFilter : Filter
     {
-        private MyAdapter _adapter;
+        private IMyAdapter _adapter;
         private List<string> _items;
 
-        public MyFilter(List<string> items, MyAdapter adapter)
+        public MyFilter(List<string> items, IMyAdapter adapter)
         {
             _items = items;
             _adapter = adapter;

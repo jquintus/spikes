@@ -1,16 +1,23 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
 using Android.App;
+using Android.Content;
+using Android.OS;
+using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using System.Linq;
 
 namespace FilteredListView
 {
-    public class MyAdapter : BaseAdapter<string>, IFilterable, IMyAdapter
+    public class MyGroupedAdapter : BaseAdapter<string>, IFilterable, IMyAdapter
     {
         private Activity _context;
         private string[] _items;
 
-        public MyAdapter(Activity context, string[] items)
+        public MyGroupedAdapter(Activity context, string[] items)
             : base()
         {
             _context = context;
@@ -47,4 +54,5 @@ namespace FilteredListView
             return view;
         }
     }
+
 }

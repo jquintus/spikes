@@ -51,9 +51,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IMyAdapter.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MyAdapter.cs" />
     <Compile Include="MyFilter.cs" />
+    <Compile Include="MyGroupedAdapter.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
