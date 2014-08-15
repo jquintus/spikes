@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <RadioGroup
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RadioButton
+            android:id="@+id/radio_light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="light"
+            android:onClick="onRadioButtonClicked" />
+        <RadioButton
+            android:id="@+id/radio_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="dark"
+            android:onClick="onRadioButtonClicked" />
+    </RadioGroup>
+    <Button
+        android:id="@+id/MyButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Apply" />
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Apply" />
+    <TextView
+        android:text="Styled text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="Dark text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/plain_text_color_dark" />
+    <TextView
+        android:text="Light text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/plain_text_color_light" />
+</LinearLayout>

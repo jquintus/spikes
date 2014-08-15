@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+
+  <style name="Theme.Dark" parent="android:Theme">
+
+
+    <item name="android:windowBackground">@color/page_background_color_dark</item>
+    <item name="android:textColorPrimary">@color/plain_text_color_dark</item>
+    <item name="android:textColorSecondary">@color/plain_text_color_dark</item>
+    <item name="android:textColorTertiary">@color/plain_text_color_dark</item>
+    <item name="android:textColorPrimaryInverse">@color/plain_text_color_dark</item>
+    <item name="android:textColorSecondaryInverse">@color/plain_text_color_dark</item>
+    <item name="android:textColorTertiaryInverse">@color/plain_text_color_dark</item>
+    <item name="android:textColorPrimaryDisableOnly">@color/plain_text_color_dark</item>
+    <item name="android:textColorPrimaryInverseDisableOnly">@color/plain_text_color_dark</item>
+    <item name="android:textColorPrimaryNoDisable">@color/plain_text_color_dark</item>
+    <item name="android:textColorSecondaryNoDisable">@color/plain_text_color_dark</item>
+    <item name="android:textColorPrimaryInverseNoDisable">@color/plain_text_color_dark</item>
+    <item name="android:textColorSecondaryInverseNoDisable">@color/plain_text_color_dark</item>
+    <item name="android:textColorHint">@color/plain_text_color_dark</item>
+    <item name="android:textColorHintInverse">@color/plain_text_color_dark</item>
+    <item name="android:textColorHighlight">@color/plain_text_color_dark</item>
+    <item name="android:textColorHighlightInverse">@color/plain_text_color_dark</item>
+    <item name="android:textColorLink">@color/plain_text_color_dark</item>
+    <item name="android:textColorLinkInverse">@color/plain_text_color_dark</item>
+    <item name="android:textColorAlertDialogListItem">@color/plain_text_color_dark</item>
+  </style>
+  
+  <style name="Theme.Light" parent="android:Theme.Light">
+    <item name="controlBackgroundColor">@color/control_background_color_light</item>
+    <item name="pageBackgroundColor">@color/page_background_color_light</item>
+    <item name="plainTextColor">@color/plain_text_color_light</item>
+
+    <item name="android:windowBackground">@color/page_background_color_light</item>
+    <item name="android:textColorPrimary">@color/plain_text_color_light</item>
+
+    <item name="android:textColorSecondary">@color/plain_text_color_light</item>
+    <item name="android:textColorTertiary">@color/plain_text_color_light</item>
+    <item name="android:textColorPrimaryInverse">@color/plain_text_color_light</item>
+    <item name="android:textColorSecondaryInverse">@color/plain_text_color_light</item>
+    <item name="android:textColorTertiaryInverse">@color/plain_text_color_light</item>
+    <item name="android:textColorPrimaryDisableOnly">@color/plain_text_color_light</item>
+    <item name="android:textColorPrimaryInverseDisableOnly">@color/plain_text_color_light</item>
+    <item name="android:textColorPrimaryNoDisable">@color/plain_text_color_light</item>
+    <item name="android:textColorSecondaryNoDisable">@color/plain_text_color_light</item>
+    <item name="android:textColorPrimaryInverseNoDisable">@color/plain_text_color_light</item>
+    <item name="android:textColorSecondaryInverseNoDisable">@color/plain_text_color_light</item>
+    <item name="android:textColorHint">@color/plain_text_color_light</item>
+    <item name="android:textColorHintInverse">@color/plain_text_color_light</item>
+    <item name="android:textColorHighlight">@color/plain_text_color_light</item>
+    <item name="android:textColorHighlightInverse">@color/plain_text_color_light</item>
+    <item name="android:textColorLink">@color/plain_text_color_light</item>
+    <item name="android:textColorLinkInverse">@color/plain_text_color_light</item>
+    <item name="android:textColorAlertDialogListItem">@color/plain_text_color_light</item>
+    
+    
+
+    
+  </style>
+
+
+
+
+
+</resources>

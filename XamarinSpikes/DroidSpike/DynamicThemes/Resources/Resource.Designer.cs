@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("GalleryShareTo.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("DynamicThemes.Resource", IsApplication=true)]
 
-namespace GalleryShareTo
+namespace DynamicThemes
 {
 	
 	
@@ -31,12 +31,52 @@ namespace GalleryShareTo
 		public partial class Attribute
 		{
 			
+			// aapt resource value: 0x7f010000
+			public const int controlBackgroundColor = 2130771968;
+			
+			// aapt resource value: 0x7f010002
+			public const int pageBackgroundColor = 2130771970;
+			
+			// aapt resource value: 0x7f010001
+			public const int plainTextColor = 2130771969;
+			
 			static Attribute()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
 			}
 			
 			private Attribute()
+			{
+			}
+		}
+		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f060000
+			public const int control_background_color_dark = 2131099648;
+			
+			// aapt resource value: 0x7f060001
+			public const int control_background_color_light = 2131099649;
+			
+			// aapt resource value: 0x7f060002
+			public const int page_background_color_dark = 2131099650;
+			
+			// aapt resource value: 0x7f060003
+			public const int page_background_color_light = 2131099651;
+			
+			// aapt resource value: 0x7f060004
+			public const int plain_text_color_dark = 2131099652;
+			
+			// aapt resource value: 0x7f060005
+			public const int plain_text_color_light = 2131099653;
+			
+			static Color()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Color()
 			{
 			}
 		}
@@ -60,8 +100,14 @@ namespace GalleryShareTo
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050000
-			public const int MyButton = 2131034112;
+			// aapt resource value: 0x7f070002
+			public const int MyButton = 2131165186;
+			
+			// aapt resource value: 0x7f070001
+			public const int radio_dark = 2131165185;
+			
+			// aapt resource value: 0x7f070000
+			public const int radio_light = 2131165184;
 			
 			static Id()
 			{
@@ -104,6 +150,28 @@ namespace GalleryShareTo
 			}
 			
 			private String()
+			{
+			}
+		}
+		
+		public partial class Style
+		{
+			
+			// aapt resource value: 0x7f050000
+			public const int Theme_Dark = 2131034112;
+			
+			// aapt resource value: 0x7f050001
+			public const int Theme_Light = 2131034113;
+			
+			// aapt resource value: 0x7f050002
+			public const int Theme_Light_Josh = 2131034114;
+			
+			static Style()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Style()
 			{
 			}
 		}
