@@ -181,3 +181,4 @@ UpgradeLog*.htm
 # Microsoft Fakes
 FakesAssemblies/
 /XamarinSpikes/ShoppingCart/packages
+/XamarinSpikes/MvvmCrossSpikes/packages
