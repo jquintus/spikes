@@ -4,16 +4,26 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-  <EditText
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:textSize="40dp"
-    local:MvxBind="Text Hello"
-    />
-  <TextView
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:textSize="40dp"
-    local:MvxBind="Text Hello"
-    />
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="40dp"
+        local:MvxBind="Text Hello" />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="40dp"
+        local:MvxBind="Text Hello" />
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="40dp"
+        android:text="Push Me?"
+        local:MvxBind="Click MyCommand" />
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="40dp"
+        android:text="Push Me!"
+        local:MvxBind="Command MyCommand" />
 </LinearLayout>

@@ -8,8 +8,10 @@ namespace MvvmCrossSpikes.Core.ViewModels
     {
         public FirstViewModel()
         {
-
+            MyCommand = new MvxCommand(() => Hello = "Command run", () => Hello.Length == 0);
         }
+
+        public MvxCommand MyCommand { get; set; }
 
 
 
@@ -17,7 +19,12 @@ namespace MvvmCrossSpikes.Core.ViewModels
         public string Hello
         {
             get { return _hello; }
-            set { _hello = value; RaisePropertyChanged(() => Hello); }
+            set
+            {
+                _hello = value;
+                RaisePropertyChanged(() => Hello);
+                MyCommand.RaiseCanExecuteChanged();
+            }
         }
 
 

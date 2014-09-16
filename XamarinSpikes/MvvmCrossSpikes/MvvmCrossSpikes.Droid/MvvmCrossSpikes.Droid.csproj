@@ -91,6 +91,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bindings\ButtonCommandBinding.cs" />
     <Compile Include="DebugTrace.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
