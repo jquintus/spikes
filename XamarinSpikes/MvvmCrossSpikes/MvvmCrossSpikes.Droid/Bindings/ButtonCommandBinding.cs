@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace MvvmCrossSpikes.Droid.Bindings
 {
-    public class ButtonCommandBinding : MvxTargetBinding<Button, MvxCommand>
+    public class ButtonCommandBinding : MvxTargetBinding<Button, ICommand>
     {
         private ICommand _command;
 
@@ -18,7 +18,7 @@ namespace MvvmCrossSpikes.Droid.Bindings
 
         public static string Name { get { return "Command"; } }
 
-        public override void SetTypedValue(MvxCommand cmd)
+        public override void SetTypedValue(ICommand cmd)
         {
             if (_command != null)
                 _command.CanExecuteChanged -= command_CanExecuteChanged;
