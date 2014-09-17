@@ -182,3 +182,4 @@ UpgradeLog*.htm
 FakesAssemblies/
 /XamarinSpikes/ShoppingCart/packages
 /XamarinSpikes/MvvmCrossSpikes/packages
+/XamarinSpikes/DroidSpike/Components
