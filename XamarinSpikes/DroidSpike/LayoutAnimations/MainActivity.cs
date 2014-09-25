@@ -13,14 +13,54 @@ namespace LayoutAnimations
     {
         private LinearLayout _ll;
         private Tag _tag;
-        private int count = 1;
+        private View _view;
 
         public TextView _tv { get; set; }
 
-        [Export("myOnClick")]
-        public void myOnClick(View v)
+        [Export("myOnClick1")]
+        public void myOnClick1(View v)
         {
-            DoStuff();
+            string msg;
+
+            if (_view.Visibility == ViewStates.Visible)
+            {
+                msg = "Goning progress";
+                _view.Visibility = ViewStates.Gone;
+            }
+            //else if (_view.Visibility == ViewStates.Gone)
+            //{
+            //    msg = "Hiding progress";
+            //    _view.Visibility = ViewStates.Invisible;
+            //}
+            else
+            {
+                msg = "Showing progress";
+                _view.Visibility = ViewStates.Visible;
+            }
+
+            Toast toast = Toast.MakeText(this, msg, ToastLength.Long);
+            toast.Show();
+        }
+
+        [Export("myOnClick2")]
+        public void myOnClick2(View v)
+        {
+            string msg;
+
+            var existingView = _ll.FindViewWithTag(_tag);
+            if (existingView == null)
+            {
+                msg = "Adding text box";
+                _ll.AddView(_tv, 2);
+            }
+            else
+            {
+                msg = "Removing Text Box";
+                _ll.RemoveView(_tv);
+            }
+
+            Toast toast = Toast.MakeText(this, msg, ToastLength.Long);
+            toast.Show();
         }
 
         protected override void OnCreate(Bundle bundle)
@@ -31,10 +71,10 @@ namespace LayoutAnimations
 
             _ll = FindViewById<LinearLayout>(Resource.Id.myview);
 
+            _view = FindViewById(Resource.Id.progressBar1);
 
             var tx = new LayoutTransition();
             _ll.LayoutTransition = tx; // This is the magic.  So easy.
-
 
             _tag = new Tag("tag");
             _tv = new TextView(this)
@@ -42,22 +82,6 @@ namespace LayoutAnimations
                 Text = "Now I'm here",
                 Tag = _tag,
             };
-        }
-
-        private void DoStuff()
-        {
-            Toast toast = Toast.MakeText(this, string.Format("You clicked {0} times", ++count), ToastLength.Long);
-            toast.Show();
-
-            var existingView = _ll.FindViewWithTag(_tag);
-            if (existingView == null)
-            {
-                _ll.AddView(_tv, 2);
-            }
-            else
-            {
-                _ll.RemoveView(_tv);
-            }
         }
 
         public class Tag : Java.Lang.Object

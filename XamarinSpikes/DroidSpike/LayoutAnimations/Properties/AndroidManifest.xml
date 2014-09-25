@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="LayoutAnimations.LayoutAnimations" android:versionCode="1" android:versionName="1.0">
 	<uses-sdk />
-	<application android:label="LayoutAnimations"  android:theme="@android:style/Theme.Holo.Light" android:icon="@drawable/Icon"></application>
+	<application android:label="LayoutAnimations" android:theme="@android:style/Theme.Holo.Light" android:icon="@drawable/Icon"></application>
 </manifest>

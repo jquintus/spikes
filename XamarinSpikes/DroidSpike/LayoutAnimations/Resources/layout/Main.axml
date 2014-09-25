@@ -8,20 +8,52 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/Hello"
-        android:onClick="myOnClick" />
+        android:onClick="myOnClick1" />
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/Hello"
-        android:onClick="myOnClick" />
+        android:onClick="myOnClick1" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar1">
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@android:drawable/ic_menu_gallery"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/imageView2" />
+            <ImageView
+                android:src="@android:drawable/ic_menu_gallery"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/imageView1" />
+        </LinearLayout>
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar2" />
+    </LinearLayout>
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/Hello"
-        android:onClick="myOnClick" />
+        android:onClick="myOnClick2" />
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/Hello"
-        android:onClick="myOnClick" />
+        android:onClick="myOnClick2" />
 </LinearLayout>
