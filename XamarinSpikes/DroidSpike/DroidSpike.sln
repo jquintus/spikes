@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicThemes", "DynamicThe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppCompatActionBar", "AppCompatActionBar\AppCompatActionBar.csproj", "{C8BCFAD0-15D9-46C2-B99C-06F13B08A633}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LayoutAnimations", "LayoutAnimations\LayoutAnimations.csproj", "{BAABAD60-F351-4926-9E08-DA4218315BD1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +113,12 @@ Global
 		{C8BCFAD0-15D9-46C2-B99C-06F13B08A633}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8BCFAD0-15D9-46C2-B99C-06F13B08A633}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C8BCFAD0-15D9-46C2-B99C-06F13B08A633}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{BAABAD60-F351-4926-9E08-DA4218315BD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAABAD60-F351-4926-9E08-DA4218315BD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAABAD60-F351-4926-9E08-DA4218315BD1}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{BAABAD60-F351-4926-9E08-DA4218315BD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAABAD60-F351-4926-9E08-DA4218315BD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAABAD60-F351-4926-9E08-DA4218315BD1}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
