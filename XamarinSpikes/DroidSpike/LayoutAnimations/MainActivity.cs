@@ -11,9 +11,10 @@ namespace LayoutAnimations
     [Activity(Label = "LayoutAnimations", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
-        private LinearLayout _ll;
+        private ViewGroup _layout;
         private Tag _tag;
-        private View _view;
+        private View _viewBottom;
+        private View _viewTop;
 
         public TextView _tv { get; set; }
 
@@ -22,20 +23,18 @@ namespace LayoutAnimations
         {
             string msg;
 
-            if (_view.Visibility == ViewStates.Visible)
+            if (_viewTop.Visibility == ViewStates.Visible)
             {
                 msg = "Goning progress";
-                _view.Visibility = ViewStates.Gone;
+                _viewTop.Visibility = ViewStates.Gone;
+                _viewBottom.Visibility = ViewStates.Gone;
+                _viewBottom.Visibility = ViewStates.Gone;
             }
-            //else if (_view.Visibility == ViewStates.Gone)
-            //{
-            //    msg = "Hiding progress";
-            //    _view.Visibility = ViewStates.Invisible;
-            //}
             else
             {
                 msg = "Showing progress";
-                _view.Visibility = ViewStates.Visible;
+                _viewTop.Visibility = ViewStates.Visible;
+                _viewBottom.Visibility = ViewStates.Visible;
             }
 
             Toast toast = Toast.MakeText(this, msg, ToastLength.Long);
@@ -47,20 +46,27 @@ namespace LayoutAnimations
         {
             string msg;
 
-            var existingView = _ll.FindViewWithTag(_tag);
+            var existingView = _layout.FindViewWithTag(_tag);
             if (existingView == null)
             {
                 msg = "Adding text box";
-                _ll.AddView(_tv, 2);
+                _layout.AddView(_tv, 2);
             }
             else
             {
                 msg = "Removing Text Box";
-                _ll.RemoveView(_tv);
+                _layout.RemoveView(_tv);
             }
 
             Toast toast = Toast.MakeText(this, msg, ToastLength.Long);
             toast.Show();
+        }
+
+        [Export("myOnClick3")]
+        public void myOnClick3(View v)
+        {
+            myOnClick1(v);
+            myOnClick2(v);
         }
 
         protected override void OnCreate(Bundle bundle)
@@ -69,12 +75,13 @@ namespace LayoutAnimations
 
             SetContentView(Resource.Layout.Main);
 
-            _ll = FindViewById<LinearLayout>(Resource.Id.myview);
+            _layout = FindViewById<ViewGroup>(Resource.Id.myview);
 
-            _view = FindViewById(Resource.Id.progressBar1);
+            _viewTop = FindViewById(Resource.Id.header);
+            _viewBottom = FindViewById(Resource.Id.footer);
 
             var tx = new LayoutTransition();
-            _ll.LayoutTransition = tx; // This is the magic.  So easy.
+            _layout.LayoutTransition = tx; // This is the magic.  So easy.
 
             _tag = new Tag("tag");
             _tv = new TextView(this)
