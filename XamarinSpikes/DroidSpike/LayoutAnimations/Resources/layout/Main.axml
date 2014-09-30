@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/myview"
     android:orientation="vertical"
     android:layout_width="fill_parent"
@@ -8,50 +8,26 @@
         android:id="@+id/header"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:orientation="vertical">
         <Button
-            android:id="@+id/b1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/Hello"
-            android:onClick="myOnClick1"
-            android:layout_alignParentTop="true" />
+            android:onClick="myOnClick1" />
         <Button
-            android:id="@+id/b2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/Hello"
-            android:onClick="myOnClick1"
-            android:layout_below="@id/b1" />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/footer"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="vertical">
-        <Button
-            android:id="@+id/b3"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/Hello"
-            android:onClick="myOnClick2" />
-        <Button
-            android:id="@+id/b4"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/Hello"
-            android:onClick="myOnClick2" />
+            android:onClick="myOnClick1" />
     </LinearLayout>
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/progressBar1"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/content"
         android:background="#453278"
-        android:layout_below="@id/header"
-        android:layout_above="@id/footer">
+        android:onClick="myOnClick3">
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -81,4 +57,22 @@
             android:layout_height="wrap_content"
             android:id="@+id/progressBar2" />
     </LinearLayout>
-</RelativeLayout>
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/b3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Hello"
+            android:onClick="myOnClick2" />
+        <Button
+            android:id="@+id/b4"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Hello"
+            android:onClick="myOnClick2" />
+    </LinearLayout>
+</LinearLayout>
