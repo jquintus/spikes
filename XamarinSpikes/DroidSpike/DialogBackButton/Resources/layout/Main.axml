@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/downToggleButton"
+        android:textOff="False"
+        android:textOn="True"
+        android:text="On Back Down"
+        android:hapticFeedbackEnabled="true"
+        android:layout_margin="6dp" />
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/upToggleButton"
+        android:textOff="False"
+        android:textOn="True"
+        android:text="On Back Up"
+        android:hapticFeedbackEnabled="true"
+        android:layout_margin="6dp" />
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/multipleToggleButton"
+        android:textOff="False"
+        android:textOn="True"
+        android:text="On Back Multiple"
+        android:hapticFeedbackEnabled="true"
+        android:layout_margin="6dp" />
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+    <Button
+        android:id="@+id/MyButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Show Dialog"
+        android:layout_margin="6dp" />
+</LinearLayout>
