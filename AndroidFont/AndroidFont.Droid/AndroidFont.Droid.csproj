@@ -81,6 +81,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\FontTextView.cs" />
+    <Compile Include="Converters\StringToFontConverter.cs" />
     <Compile Include="DebugTrace.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -113,6 +115,12 @@
       <Project>{9a2f1561-bd1c-438c-b89d-fe2e4bc6764a}</Project>
       <Name>AndroidFont.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\font\Fontin-Bold.ttf" />
+    <AndroidAsset Include="Assets\font\Fontin-Italic.ttf" />
+    <AndroidAsset Include="Assets\font\Fontin-Regular.ttf" />
+    <AndroidAsset Include="Assets\font\Fontin-SmallCaps.ttf" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

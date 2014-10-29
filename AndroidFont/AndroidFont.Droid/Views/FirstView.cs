@@ -4,7 +4,7 @@ using Cirrious.MvvmCross.Droid.Views;
 
 namespace AndroidFont.Droid.Views
 {
-    [Activity(Label = "View for FirstViewModel")]
+    [Activity(Label = "Fonts")]
     public class FirstView : MvxActivity
     {
         protected override void OnCreate(Bundle bundle)
