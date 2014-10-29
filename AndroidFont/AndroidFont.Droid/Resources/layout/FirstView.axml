@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:textSize="40dp"
-        local:MvxBind="Text Hello" />
+        local:MvxBind="Text Hello;" />
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -19,21 +19,14 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="24dp"
-        android:layout_marginBottom="24dp"
         android:textSize="24dp"
-        local:MvxBind="Text Hello; Typeface StringToFont(FontName)" />
-    <TextView
+        local:MvxBind="Text Hello; Typeface StringToFont(SelectedFont)" />
+    <MvxSpinner
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:text="Bind to Italic Typeface:  " />
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
         android:layout_marginBottom="24dp"
         android:textSize="24dp"
-        local:MvxBind="Text Hello; Typeface StringToFont(FontNameItalic)" />
+        local:MvxBind="SelectedItem SelectedFont; ItemsSource FontNames; Typeface StringToFont(SelectedFont)" />
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
