@@ -14,18 +14,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="16dp"
-        android:text="Custom TextView:  " />
-    <FontTextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
-        android:layout_marginBottom="24dp"
-        android:textSize="24dp"
-        local:MvxBind="Text Hello" />
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16dp"
         android:text="Bind to Typeface:  " />
     <TextView
         android:layout_width="fill_parent"
@@ -34,4 +22,40 @@
         android:layout_marginBottom="24dp"
         android:textSize="24dp"
         local:MvxBind="Text Hello; Typeface StringToFont(FontName)" />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="Bind to Italic Typeface:  " />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginBottom="24dp"
+        android:textSize="24dp"
+        local:MvxBind="Text Hello; Typeface StringToFont(FontNameItalic)" />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="Constant Typeface:  " />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginBottom="24dp"
+        android:textSize="24dp"
+        local:MvxBind="Text Hello; Typeface StringToFont('Fontin-Bold')" />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="Error Handling:  " />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginBottom="24dp"
+        android:textSize="24dp"
+        local:MvxBind="Text Hello; Typeface StringToFont('Not a font name')" />
 </LinearLayout>
