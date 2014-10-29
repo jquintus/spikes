@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:textSize="40dp"
-        local:MvxBind="Text Hello;" />
+        local:MvxBind="Text Hello; Typeface StringToFont(SelectedFont)" />
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:textSize="24dp"
-        local:MvxBind="SelectedItem SelectedFont; ItemsSource FontNames; Typeface StringToFont(SelectedFont)" />
+        local:MvxBind="SelectedItem SelectedFont; ItemsSource FontNames" />
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
