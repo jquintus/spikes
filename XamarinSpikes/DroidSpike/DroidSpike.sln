@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LayoutAnimations", "LayoutA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DialogBackButton", "DialogBackButton\DialogBackButton.csproj", "{BB25E0A4-368A-4728-8FDE-7C80C238B19F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquareImageView", "SquareImageView\SquareImageView.csproj", "{B2A1A80C-30A0-4ED8-9F37-DD81DE6A887B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -127,6 +129,12 @@ Global
 		{BB25E0A4-368A-4728-8FDE-7C80C238B19F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB25E0A4-368A-4728-8FDE-7C80C238B19F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BB25E0A4-368A-4728-8FDE-7C80C238B19F}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{B2A1A80C-30A0-4ED8-9F37-DD81DE6A887B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2A1A80C-30A0-4ED8-9F37-DD81DE6A887B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2A1A80C-30A0-4ED8-9F37-DD81DE6A887B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B2A1A80C-30A0-4ED8-9F37-DD81DE6A887B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2A1A80C-30A0-4ED8-9F37-DD81DE6A887B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2A1A80C-30A0-4ED8-9F37-DD81DE6A887B}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
