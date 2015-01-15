@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DroidSpike", "DroidSpike\DroidSpike.csproj", "{26738525-2D7E-409E-B74B-640931DD6727}"
 EndProject
@@ -34,6 +34,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DialogBackButton", "DialogBackButton\DialogBackButton.csproj", "{BB25E0A4-368A-4728-8FDE-7C80C238B19F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquareImageView", "SquareImageView\SquareImageView.csproj", "{B2A1A80C-30A0-4ED8-9F37-DD81DE6A887B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Animator", "Animator\Animator.csproj", "{3AF05E73-2569-474B-959F-BC0F8ED9FEA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -135,6 +137,12 @@ Global
 		{B2A1A80C-30A0-4ED8-9F37-DD81DE6A887B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2A1A80C-30A0-4ED8-9F37-DD81DE6A887B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B2A1A80C-30A0-4ED8-9F37-DD81DE6A887B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{3AF05E73-2569-474B-959F-BC0F8ED9FEA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AF05E73-2569-474B-959F-BC0F8ED9FEA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AF05E73-2569-474B-959F-BC0F8ED9FEA7}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{3AF05E73-2569-474B-959F-BC0F8ED9FEA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AF05E73-2569-474B-959F-BC0F8ED9FEA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AF05E73-2569-474B-959F-BC0F8ED9FEA7}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
