@@ -21,18 +21,15 @@ namespace Repack
 
         private static TimeSpan GetSpan(DateTime birthDay)
         {
-            if (birthDay < DateTime.Now)
-            {
-                if (birthDay.Year < DateTime.Now.Year)
-                {
-                    return GetSpan(new DateTime(DateTime.Now.Year, birthDay.Month, birthDay.Day));
-                }
-                else
-                {
-                    return GetSpan(new DateTime(DateTime.Now.Year + 1, birthDay.Month, birthDay.Day));
-                }
-            }
             var span = birthDay - DateTime.Now;
+
+            if (span.Days < 0)
+            {
+                // If the supplied birthday has already happened, then find the next one that will occur.
+                int years = span.Days / -365;
+                span = span.Add(TimeSpan.FromDays((years + 1) * 365));
+            }
+
             return span;
         }
 
