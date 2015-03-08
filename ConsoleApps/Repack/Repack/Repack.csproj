@@ -69,7 +69,7 @@
 
      <ItemGroup>
       <InputAssemblies Include="$(OutputPath)\$(AssemblyName).exe" />
-      <InputAssemblies Include="$(OutputPath)\Humanizer.dll" />
+      <InputAssemblies Include="$(OutputPath)\*.dll" />
      </ItemGroup>
 
      <ILRepack 
