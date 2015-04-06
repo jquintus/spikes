@@ -1,21 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml.Linq;
 using Outlook = Microsoft.Office.Interop.Outlook;
-using Office = Microsoft.Office.Core;
 
 namespace OutlookTaskPaneSpike
 {
+    /// <summary>
+    /// https://msdn.microsoft.com/en-us/library/bb296010.aspx
+    /// </summary>
     public partial class ThisAddIn
     {
-        private void ThisAddIn_Startup(object sender, System.EventArgs e)
+        private Outlook.Inspectors inspectors;
+
+        public Dictionary<Outlook.Inspector, InspectorWrapper> InspectorWrappers { get; private set; }
+
+        private void Inspectors_NewInspector(Outlook.Inspector Inspector)
         {
+            if (Inspector.CurrentItem is Outlook.MailItem)
+            {
+                InspectorWrappers.Add(Inspector, new InspectorWrapper(Inspector));
+            }
         }
 
-        private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
+        private void ThisAddIn_Shutdown(object sender, EventArgs e)
         {
+            inspectors.NewInspector -= Inspectors_NewInspector;
+            inspectors = null;
+            InspectorWrappers = null;
+        }
+
+        private void ThisAddIn_Startup(object sender, EventArgs e)
+        {
+            InspectorWrappers = new Dictionary<Outlook.Inspector, InspectorWrapper>();
+
+            inspectors = Application.Inspectors;
+            inspectors.NewInspector += Inspectors_NewInspector;
+
+            foreach (Outlook.Inspector inspector in inspectors)
+            {
+                Inspectors_NewInspector(inspector);
+            }
         }
 
         #region VSTO generated code
@@ -26,10 +49,10 @@ namespace OutlookTaskPaneSpike
         /// </summary>
         private void InternalStartup()
         {
-            this.Startup += new System.EventHandler(ThisAddIn_Startup);
-            this.Shutdown += new System.EventHandler(ThisAddIn_Shutdown);
+            Startup += ThisAddIn_Startup;
+            Shutdown += ThisAddIn_Shutdown;
         }
-        
-        #endregion
+
+        #endregion VSTO generated code
     }
 }
