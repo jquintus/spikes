@@ -10,10 +10,12 @@ namespace OutlookTaskPaneSpike
     public partial class ThisAddIn
     {
         private Inspectors inspectors;
+        private Explorers explorers;
 
         public Dictionary<Inspector, InspectorWrapper> InspectorWrappers { get; private set; }
+        public Dictionary<Explorer, ExplorerWrapper> ExplorerWrappers { get; private set; }
 
-        private void Inspectors_NewInspector(Inspector Inspector)
+        private void NewInspector(Inspector Inspector)
         {
             if (Inspector.CurrentItem is MailItem)
             {
@@ -21,23 +23,42 @@ namespace OutlookTaskPaneSpike
             }
         }
 
+        private void NewExplorer(Explorer explorer)
+        {
+            ExplorerWrappers.Add(explorer, new ExplorerWrapper(explorer));
+        }
+
+
         private void ThisAddIn_Shutdown(object sender, EventArgs e)
         {
-            inspectors.NewInspector -= Inspectors_NewInspector;
+            inspectors.NewInspector -= NewInspector;
             inspectors = null;
             InspectorWrappers = null;
+
+            explorers.NewExplorer -= NewExplorer;
+            explorers = null;
+            ExplorerWrappers = null;
         }
 
         private void ThisAddIn_Startup(object sender, EventArgs e)
         {
             InspectorWrappers = new Dictionary<Inspector, InspectorWrapper>();
+            ExplorerWrappers = new Dictionary<Explorer, ExplorerWrapper>();
 
             inspectors = Application.Inspectors;
-            inspectors.NewInspector += Inspectors_NewInspector;
+            inspectors.NewInspector += NewInspector;
 
             foreach (Inspector inspector in inspectors)
             {
-                Inspectors_NewInspector(inspector);
+                NewInspector(inspector);
+            }
+
+            explorers = Application.Explorers;
+            explorers.NewExplorer += NewExplorer;
+
+            foreach (Explorer explorer in explorers)
+            {
+                NewExplorer(explorer);
             }
         }
 

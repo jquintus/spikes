@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Office.Tools.Ribbon;
-using Outlook = Microsoft.Office.Interop.Outlook;
+﻿using Microsoft.Office.Interop.Outlook;
 using Microsoft.Office.Tools;
-
+using Microsoft.Office.Tools.Ribbon;
 
 namespace OutlookTaskPaneSpike
 {
@@ -13,19 +8,34 @@ namespace OutlookTaskPaneSpike
     {
         private void ManageTaskPaneRibbon_Load(object sender, RibbonUIEventArgs e)
         {
-
         }
 
         private void toggleButton1_Click(object sender, RibbonControlEventArgs e)
         {
-            Outlook.Inspector inspector = (Outlook.Inspector)e.Control.Context;
+            ToggleInspector(sender as RibbonToggleButton, e.Control.Context as Inspector);
+            ToggleExplorer(sender as RibbonToggleButton, e.Control.Context as Explorer);
+        }
+
+        private void ToggleExplorer(RibbonToggleButton button, Explorer explorer)
+        {
+            if (explorer == null) return;
+            var inspectorWrapper = Globals.ThisAddIn.ExplorerWrappers[explorer];
+            CustomTaskPane taskPane = inspectorWrapper.CustomTaskPane;
+            if (taskPane != null)
+            {
+                taskPane.Visible = button.Checked;
+            }
+        }
+
+        private void ToggleInspector(RibbonToggleButton button, Inspector inspector)
+        {
+            if (inspector == null) return;
             var inspectorWrapper = Globals.ThisAddIn.InspectorWrappers[inspector];
             CustomTaskPane taskPane = inspectorWrapper.CustomTaskPane;
             if (taskPane != null)
             {
-                taskPane.Visible = ((RibbonToggleButton)sender).Checked;
+                taskPane.Visible = button.Checked;
             }
-
         }
     }
 }

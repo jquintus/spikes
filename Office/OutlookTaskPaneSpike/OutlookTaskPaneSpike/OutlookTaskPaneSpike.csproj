@@ -160,6 +160,7 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="ExplorerWrapper.cs" />
     <Compile Include="InspectorWrapper.cs" />
     <Compile Include="ManageTaskPaneRibbon.cs">
       <SubType>Component</SubType>

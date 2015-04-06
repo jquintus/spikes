@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Outlook;
 using Microsoft.Office.Tools;
-using Microsoft.Office.Interop.Outlook;
+using System;
 
 namespace OutlookTaskPaneSpike
 {
     public class InspectorWrapper
     {
+        private static int _count = 1;
         private Inspector inspector;
         private CustomTaskPane taskPane;
 
@@ -14,8 +15,9 @@ namespace OutlookTaskPaneSpike
             inspector = Inspector;
             ((InspectorEvents_Event)inspector).Close += InspectorWrapper_Close;
 
-            taskPane = Globals.ThisAddIn.CustomTaskPanes.Add(new TaskPaneControl(), "My task pane", inspector);
+            taskPane = Globals.ThisAddIn.CustomTaskPanes.Add(new TaskPaneControl("Inspector", _count++), "My task pane", inspector);
             taskPane.VisibleChanged += TaskPane_VisibleChanged;
+            taskPane.Visible = true;
         }
 
         public CustomTaskPane CustomTaskPane { get { return taskPane; } }
@@ -37,7 +39,9 @@ namespace OutlookTaskPaneSpike
 
         private void TaskPane_VisibleChanged(object sender, EventArgs e)
         {
-            Globals.Ribbons[inspector].ManageTaskPaneRibbon.toggleButton1.Checked = taskPane.Visible;
+            var ribbon = Globals.Ribbons[inspector].ManageTaskPaneRibbon;
+            if (ribbon != null)
+                ribbon.toggleButton1.Checked = taskPane.Visible;
         }
     }
 }

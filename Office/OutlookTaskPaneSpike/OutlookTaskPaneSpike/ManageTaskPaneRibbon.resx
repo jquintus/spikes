@@ -117,4 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="$this.RibbonType" xml:space="preserve">
+    <value>Microsoft.Outlook.Appointment, Microsoft.Outlook.Contact, Microsoft.Outlook.DistributionList, Microsoft.Outlook.Explorer, Microsoft.Outlook.Journal, Microsoft.Outlook.Mail.Compose, Microsoft.Outlook.Mail.Read, Microsoft.Outlook.MeetingRequest.Read, Microsoft.Outlook.MeetingRequest.Send, Microsoft.Outlook.Post.Compose, Microsoft.Outlook.Post.Read, Microsoft.Outlook.Report, Microsoft.Outlook.Resend, Microsoft.Outlook.Response.Compose, Microsoft.Outlook.Response.CounterPropose, Microsoft.Outlook.Response.Read, Microsoft.Outlook.RSS, Microsoft.Outlook.Sharing.Compose, Microsoft.Outlook.Sharing.Read, Microsoft.Outlook.Task</value>
+  </data>
 </root>
