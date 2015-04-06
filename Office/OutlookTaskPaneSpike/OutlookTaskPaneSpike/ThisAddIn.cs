@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Outlook;
+using System;
 using System.Collections.Generic;
-using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace OutlookTaskPaneSpike
 {
@@ -9,13 +9,13 @@ namespace OutlookTaskPaneSpike
     /// </summary>
     public partial class ThisAddIn
     {
-        private Outlook.Inspectors inspectors;
+        private Inspectors inspectors;
 
-        public Dictionary<Outlook.Inspector, InspectorWrapper> InspectorWrappers { get; private set; }
+        public Dictionary<Inspector, InspectorWrapper> InspectorWrappers { get; private set; }
 
-        private void Inspectors_NewInspector(Outlook.Inspector Inspector)
+        private void Inspectors_NewInspector(Inspector Inspector)
         {
-            if (Inspector.CurrentItem is Outlook.MailItem)
+            if (Inspector.CurrentItem is MailItem)
             {
                 InspectorWrappers.Add(Inspector, new InspectorWrapper(Inspector));
             }
@@ -30,12 +30,12 @@ namespace OutlookTaskPaneSpike
 
         private void ThisAddIn_Startup(object sender, EventArgs e)
         {
-            InspectorWrappers = new Dictionary<Outlook.Inspector, InspectorWrapper>();
+            InspectorWrappers = new Dictionary<Inspector, InspectorWrapper>();
 
             inspectors = Application.Inspectors;
             inspectors.NewInspector += Inspectors_NewInspector;
 
-            foreach (Outlook.Inspector inspector in inspectors)
+            foreach (Inspector inspector in inspectors)
             {
                 Inspectors_NewInspector(inspector);
             }
