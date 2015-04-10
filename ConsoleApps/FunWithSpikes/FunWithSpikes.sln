@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunWithSpikes", "FunWithSpikes\FunWithSpikes.csproj", "{7D7C2D86-5E85-4FD4-8CC8-5F41244BFFE7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunWithNinject", "FunWithNinject\FunWithNinject.csproj", "{9C0F34D6-7D17-4E39-B9B5-440B735DB92E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{7D7C2D86-5E85-4FD4-8CC8-5F41244BFFE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D7C2D86-5E85-4FD4-8CC8-5F41244BFFE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D7C2D86-5E85-4FD4-8CC8-5F41244BFFE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C0F34D6-7D17-4E39-B9B5-440B735DB92E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C0F34D6-7D17-4E39-B9B5-440B735DB92E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C0F34D6-7D17-4E39-B9B5-440B735DB92E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C0F34D6-7D17-4E39-B9B5-440B735DB92E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

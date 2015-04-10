@@ -28,7 +28,6 @@ namespace OutlookTaskPaneSpike
             ExplorerWrappers.Add(explorer, new ExplorerWrapper(explorer));
         }
 
-
         private void ThisAddIn_Shutdown(object sender, EventArgs e)
         {
             inspectors.NewInspector -= NewInspector;
