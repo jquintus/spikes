@@ -6,8 +6,7 @@
 
     public class MyServiceFactory : IMyServiceFactory
     {
-
-        readonly IResolutionRoot resolutionRoot;
+        private readonly IResolutionRoot resolutionRoot;
 
         public MyServiceFactory(IResolutionRoot resolutionRoot)
         {

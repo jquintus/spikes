@@ -4,6 +4,7 @@
     {
         private readonly Dependency _d;
         private readonly string _name;
+
         public MyService(Dependency d, string name)
         {
             _d = d;

@@ -1,19 +1,13 @@
-﻿using Ninject;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FunWithNinject
+﻿namespace FunWithNinject
 {
+    using System;
+    using Ninject;
     using Ninject.Extensions.Factory;
 
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-
             var k = new StandardKernel();
             k.Bind<IDependency>().To<Dependency>();
             k.Bind<IService>().To<MyService>();
@@ -23,7 +17,7 @@ namespace FunWithNinject
 
 
             var f = k.Get<IMyServiceFactory>();
-            var s = f.Create("world");
+            MyService s = f.Create("world");
             Console.WriteLine(s.Do());
         }
     }
