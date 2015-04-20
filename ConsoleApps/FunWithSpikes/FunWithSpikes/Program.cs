@@ -10,7 +10,11 @@ namespace FunWithSpikes
     {
         static void Main(string[] args)
         {
-            Disposable.FunWithDisposable();
+            //Disposable.FunWithDisposable();
+
+            Foo f = new Foo().WithValue("what");
+
+            Console.WriteLine(f.Value);
         }
     }
 }
