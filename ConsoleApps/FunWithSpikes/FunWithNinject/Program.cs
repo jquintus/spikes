@@ -1,12 +1,18 @@
 ﻿namespace FunWithNinject
 {
-    using System;
     using Ninject;
     using Ninject.Extensions.Factory;
+    using System;
 
     internal class Program
     {
-        private static void Main(string[] args)
+        public static void Main(string[] args)
+        {
+            FunWithFuncs();
+            FunWithFactories();
+        }
+
+        private static void FunWithFactories()
         {
             var k = new StandardKernel();
             k.Bind<IDependency>().To<Dependency>();
@@ -15,10 +21,17 @@
 
             //var s = k.Get<IService>();
 
-
             var f = k.Get<IMyServiceFactory>();
             MyService s = f.Create("world");
             Console.WriteLine(s.Do());
+        }
+
+        private static void FunWithFuncs()
+        {
+            var k = new StandardKernel();
+
+            var bar = k.Get<Bar>();
+            bar.Do();
         }
     }
 }

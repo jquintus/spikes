@@ -50,7 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bar.cs" />
     <Compile Include="Dependency.cs" />
+    <Compile Include="Foo.cs" />
     <Compile Include="IDependency.cs" />
     <Compile Include="IMyServiceFactory.cs" />
     <Compile Include="IService.cs" />
