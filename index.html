@@ -78,6 +78,11 @@ $ git checkout gh-pages
       </div>
     </div>
 
+{% for post in site.posts limit:5 %}
+  <h1 class='title'>{{ post.date | date_to_string }} &raquo; {{ post.title }}</h1>
+  <p>[<a href="{{ post.url }}">permalink</a>]</p>
+  <br />
+{% endfor %}
   
   </body>
 </html>
