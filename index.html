@@ -55,9 +55,32 @@ $ git checkout gh-pages
 <p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
 
 <h3>
-<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true">
+  <span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
 
 <p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+
+{% for post in site.posts limit:5 %}
+<h3 > {{post.title}}
+    <!-- <a href="{{ post.url }}"> {{ post.date | date_to_string }} &raquo; {{ post.title }} </a> -->
+    <!-- <a href="{{ post.url }}"> {{ post.date | date_to_string }} &raquo; {{ post.title }} </a> -->
+  </h3>
+
+  @jquintus
+  {{ post.content }}
+{% endfor %}
+
+<h3 > Projects </h3>
+
+{% for post in site.projects limit:2 %}
+<h4 > {{post.title}} </h4>
+{% endfor %}
+
+Some words.
+
+{% gist jquintus/ec3806054895699dcc0a %}
+
+Other words.
 
 <h3>
 <a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
@@ -82,11 +105,6 @@ $ git checkout gh-pages
       </div>
     </div>
 
-{% for post in site.posts limit:5 %}
-  <h1 class='title'>{{ post.date | date_to_string }} &raquo; {{ post.title }}</h1>
-  <p>[<a href="{{ post.url }}">permalink</a>]</p>
-  <br />
-{% endfor %}
   
   </body>
 </html>
