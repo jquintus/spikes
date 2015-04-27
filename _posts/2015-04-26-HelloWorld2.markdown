@@ -1,4 +1,5 @@
 ---
+title:  hello world 2
 layout: post
 category : blog
 tagline: "Supporting tagline"

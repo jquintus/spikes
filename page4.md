@@ -5,8 +5,13 @@ tagline: "Supporting tagline"
 tags : [intro, beginner, jekyll, tutorial]
 ---
 
-Hello World
+{% assign allPosts = (site.posts | where: 'category', 'project') %}
 
-    int x = 5;
-    x++;
+    {% for post in allPosts %}
+### {{post.title}}  [![Build Status]({{post.status}})]({{post.cilocation}})
+
+{{post.excerpt}}
+
+    {% endfor %}
+
 
