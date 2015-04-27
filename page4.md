@@ -12,6 +12,7 @@ tags : [intro, beginner, jekyll, tutorial]
 
 {{post.excerpt}}
 
+[more...]({{ site.baseurl }}{{ post.url }})
     {% endfor %}
 
 
