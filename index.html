@@ -4,6 +4,13 @@ base: /
 ---
 {% include header.html %}
     <h3>
+    <a id="pages" class="anchor" href="#pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>My Pages</h3>
+      <ul>
+        <li><a href="page2.html">Partially done in markdown </a></li>
+        <li><a href="page3.html">Posts</a></li>
+        <li><a href="page4.html">A page entirely in markdown</a></li>
+      </ul>
+    <h3>
     <a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
 
     <p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
@@ -31,15 +38,6 @@ base: /
 
     <p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
 
-    {% for post in site.posts limit:5 %}
-    <h3 > {{post.title}}
-        <!-- <a href="{{ post.url }}"> {{ post.date | date_to_string }} &raquo; {{ post.title }} </a> -->
-        <!-- <a href="{{ post.url }}"> {{ post.date | date_to_string }} &raquo; {{ post.title }} </a> -->
-      </h3>
-
-      @jquintus
-      {{ post.content }}
-    {% endfor %}
 
     <h3 > Projects </h3>
 
