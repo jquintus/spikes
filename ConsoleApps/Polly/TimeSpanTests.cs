@@ -1,6 +1,7 @@
-﻿namespace Polly
+﻿namespace PollySpike
 {
     using NUnit.Framework;
+    using Polly;
     using System;
 
     [TestFixture]
@@ -12,6 +13,7 @@
             // Assemble
             bool rethrown = false;
             int retryCount = 0;
+
             try
             {
                 int zero = 1 - 1;

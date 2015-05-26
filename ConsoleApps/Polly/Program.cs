@@ -11,8 +11,8 @@ namespace PollySpike
     {
         static void Main(string[] args)
         {
-            new TimeSpanTests().TimeSpan_RetriesAndThrows();
-
+            //new TimeSpanTests().TimeSpan_RetriesAndThrows();
+            new CircutBreakerTests().CircuitBreaker();
         }
     }
 
