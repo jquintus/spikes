@@ -8,6 +8,7 @@
     public class FactoryTests
     {
         [Test]
+        [ExpectedException(typeof(Ninject.ActivationException))]
         public void FactoryDoesNotPassParametersToSubDependency()
         {
             using (var kernel = new StandardKernel())
@@ -20,9 +21,6 @@
 
                 // Act
                 var foo = factory(7);
-
-                // Assert
-                Assert.AreNotEqual(7, foo.InternalRuntimeDependency);
             }
         }
     }
