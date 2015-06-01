@@ -66,6 +66,16 @@
     <Compile Include="MyServiceFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WhenInjected\BingChildService.cs" />
+    <Compile Include="WhenInjected\BingService.cs" />
+    <Compile Include="WhenInjected\BingUtility.cs" />
+    <Compile Include="WhenInjected\GoogleChildService.cs" />
+    <Compile Include="WhenInjected\GoogleService.cs" />
+    <Compile Include="WhenInjected\GoogleUtility.cs" />
+    <Compile Include="WhenInjected\IService.cs" />
+    <Compile Include="WhenInjected\ISomeUtility.cs" />
+    <Compile Include="WhenInjected\ServiceBase.cs" />
+    <Compile Include="WhenInjected\WhenInjectedTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
