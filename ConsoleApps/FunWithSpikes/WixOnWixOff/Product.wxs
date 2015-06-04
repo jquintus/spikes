@@ -1,52 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Product Id="*" Name="WixOnWixOff" Language="1033" Version="1.2.0.2" Manufacturer="WixOnManufacture" UpgradeCode="c92fc902-3049-4671-9ca3-8cf5f58d879a">
-      
+
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <MediaTemplate />
 
-    <Feature Id="ProductFeature" Title="WixOnWixOff" Level="1">
-      <ComponentGroupRef Id="ProductComponents" />
-    </Feature>
-  </Product>
-  
-  <Fragment>     
-      <Binary Id="Wix.CustomActions.dll" src="..\WixOnWixOff\bin\$(var.Configuration)\Wix.CustomActions.CA.dll" />      
-      <Property Id="PRODUCTINSTALLFOLDER">
-        <RegistrySearch Id='ProductInstallDir' 
-                        Type='raw' Root='HKLM' 
-                        Key='SOFTWARE\Manufacturer\ExistingProduct\Setup' 
-                        Name='MsiInstallPath' 
-                        Win64='yes'/>
-      </Property>
-      <CustomAction Id='AssignConfigFile' 
-                    Property='CONFIGFILE' 
-                    Value='[PRODUCTINSTALLFOLDER]pathtoconfigfile\app.config' />
-      <CustomAction Id="CloseIt" Return="check" 
-                    Execute="immediate" 
-                    BinaryKey="Wix.CustomActions.dll" 
-                    DllEntry="CloseIt" />  
-      <InstallExecuteSequence>
-         <Custom Action="AssignConfigFile" After="CostFinalize" />
-         <Custom Action="CloseIt" Before="InstallFinalize"  />
-      </InstallExecuteSequence>     
-   </Fragment>    
-  
-  <Fragment>
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ProgramFilesFolder">
         <Directory Id="INSTALLFOLDER" Name="WixOnWixOff" />
       </Directory>
     </Directory>
-  </Fragment>
 
-  <Fragment>
+    <Feature Id="ProductFeature" Title="WixOnWixOff" Level="1">
+      <ComponentGroupRef Id="ProductComponents" />
+    </Feature>
+
+    <Binary Id="Wix.CustomActions.dll" SourceFile="$(var.Wix.CustomActions.TargetDir)$(var.Wix.CustomActions.TargetName).CA.dll" />
+
+    <CustomAction Id="CloseIt" Return="check"
+                  Execute="deferred"
+                  BinaryKey="Wix.CustomActions.dll"
+                  DllEntry="CloseIt" />
+
+    <InstallExecuteSequence>
+      <Custom Action="CloseIt" Before="InstallFinalize" />
+    </InstallExecuteSequence>
+
     <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
       <Component Id="ProductComponent">
         <File Source="$(var.ExistentialFiles.TargetPath)" />
       </Component>
     </ComponentGroup>
-  </Fragment>
+  </Product>
 </Wix>
