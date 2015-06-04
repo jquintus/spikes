@@ -7,12 +7,6 @@
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <MediaTemplate />
 
-    <Directory Id="TARGETDIR" Name="SourceDir">
-      <Directory Id="ProgramFilesFolder">
-        <Directory Id="INSTALLFOLDER" Name="WixOnWixOff" />
-      </Directory>
-    </Directory>
-
     <Feature Id="ProductFeature" Title="WixOnWixOff" Level="1">
       <ComponentGroupRef Id="ProductComponents" />
     </Feature>
@@ -27,11 +21,24 @@
     <InstallExecuteSequence>
       <Custom Action="CloseIt" Before="InstallFinalize" />
     </InstallExecuteSequence>
+  </Product>
 
+  <Fragment>
+  </Fragment>
+
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="WixOnWixOff" />
+      </Directory>
+    </Directory>
+  </Fragment>
+
+  <Fragment>
     <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
       <Component Id="ProductComponent">
         <File Source="$(var.ExistentialFiles.TargetPath)" />
       </Component>
     </ComponentGroup>
-  </Product>
+  </Fragment>
 </Wix>
