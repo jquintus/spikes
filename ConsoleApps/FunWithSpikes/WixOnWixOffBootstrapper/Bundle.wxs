@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Bundle Name="WixOnWixOffBootstrapper" Version="1.0.0.0" Manufacturer="WixOnWixOff Bundler Manufacture" UpgradeCode="706274e4-fb5a-40d3-adf9-20f752fda7c7">
+    <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense" />
+
+    <Chain>
+      <!-- TODO: Define the list of chained packages. -->
+      <!-- <MsiPackage SourceFile="path\to\your.msi" /> -->
+
+      <MsiPackage DisplayName="Bundled Existential" SourceFile="..\WixOnWixOff\bin\$(var.Configuration)\WixOnWixOff.msi" />
+    </Chain>
+  </Bundle>
+</Wix>

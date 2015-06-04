@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Product Id="*" Name="WixOnWixOff" Language="1033" Version="1.2.0.2" Manufacturer="WixOnManufacture" UpgradeCode="c92fc902-3049-4671-9ca3-8cf5f58d879a">
+      
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
@@ -10,7 +11,29 @@
       <ComponentGroupRef Id="ProductComponents" />
     </Feature>
   </Product>
-
+  
+  <Fragment>     
+      <Binary Id="Wix.CustomActions.dll" src="..\WixOnWixOff\bin\$(var.Configuration)\Wix.CustomActions.dll" />      
+      <Property Id="PRODUCTINSTALLFOLDER">
+        <RegistrySearch Id='ProductInstallDir' 
+                        Type='raw' Root='HKLM' 
+                        Key='SOFTWARE\Manufacturer\ExistingProduct\Setup' 
+                        Name='MsiInstallPath' 
+                        Win64='yes'/>
+      </Property>
+      <CustomAction Id='AssignConfigFile' 
+                    Property='CONFIGFILE' 
+                    Value='[PRODUCTINSTALLFOLDER]pathtoconfigfile\app.config' />
+      <CustomAction Id="CloseIt" Return="check" 
+                    Execute="immediate" 
+                    BinaryKey="Wix.CustomActions.dll" 
+                    DllEntry="CloseIt" />  
+      <InstallExecuteSequence>
+         <Custom Action="AssignConfigFile" After="CostFinalize" />
+         <Custom Action="CloseIt" Before="InstallFinalize"  />
+      </InstallExecuteSequence>     
+   </Fragment>    
+  
   <Fragment>
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ProgramFilesFolder">

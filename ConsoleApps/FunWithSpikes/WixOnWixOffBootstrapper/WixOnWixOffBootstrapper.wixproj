@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>3.8</ProductVersion>
-    <ProjectGuid>3bb564aa-bfa6-4d68-98ee-2d77c62ed72f</ProjectGuid>
+    <ProductVersion>3.9</ProductVersion>
+    <ProjectGuid>706274e4-fb5a-40d3-adf9-20f752fda7c7</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>WixOnWixOff</OutputName>
-    <OutputType>Package</OutputType>
+    <OutputName>WixOnWixOffBootstrapper</OutputName>
+    <OutputType>Bundle</OutputType>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
   </PropertyGroup>
@@ -21,25 +21,13 @@
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Product.wxs" />
+    <Compile Include="Bundle.wxs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ExistentialFiles\ExistentialFiles.csproj">
-      <Name>ExistentialFiles</Name>
-      <Project>{4533fd3e-501d-4724-9f82-8493c9272ad9}</Project>
-      <Private>True</Private>
-      <DoNotHarvest>True</DoNotHarvest>
-      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
-      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
-    </ProjectReference>
-    <ProjectReference Include="..\Wix.CustomActions\Wix.CustomActions.csproj">
-      <Name>Wix.CustomActions</Name>
-      <Project>{e64601f6-e2f8-4c62-b8bb-af79c3b99bfa}</Project>
-      <Private>True</Private>
-      <DoNotHarvest>True</DoNotHarvest>
-      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
-      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
-    </ProjectReference>
+    <WixExtension Include="WixBalExtension">
+      <HintPath>$(WixExtDir)\WixBalExtension.dll</HintPath>
+      <Name>WixBalExtension</Name>
+    </WixExtension>
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <!--
