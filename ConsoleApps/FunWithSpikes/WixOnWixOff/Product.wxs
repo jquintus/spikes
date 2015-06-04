@@ -13,7 +13,7 @@
   </Product>
   
   <Fragment>     
-      <Binary Id="Wix.CustomActions.dll" src="..\WixOnWixOff\bin\$(var.Configuration)\Wix.CustomActions.dll" />      
+      <Binary Id="Wix.CustomActions.dll" src="..\WixOnWixOff\bin\$(var.Configuration)\Wix.CustomActions.CA.dll" />      
       <Property Id="PRODUCTINSTALLFOLDER">
         <RegistrySearch Id='ProductInstallDir' 
                         Type='raw' Root='HKLM' 
