@@ -9,7 +9,9 @@ namespace FunWithSpikes
             var d = new Disposable();
             using (d)
             {
+#pragma warning disable 0728
                 d = null;
+#pragma warning restore 0728
             }
         }
 
