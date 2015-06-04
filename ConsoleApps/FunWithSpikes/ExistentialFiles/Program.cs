@@ -17,6 +17,8 @@ namespace ExistentialFiles
             {
                 Console.WriteLine(@"File.Exists cares about \\ !!!!!!!!!!!!!!!!");
             }
+
+            Console.ReadLine();
         }
     }
 }
