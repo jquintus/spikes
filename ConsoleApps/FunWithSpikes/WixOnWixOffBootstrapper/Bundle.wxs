@@ -7,7 +7,7 @@
       <!-- TODO: Define the list of chained packages. -->
       <!-- <MsiPackage SourceFile="path\to\your.msi" /> -->
 
-      <MsiPackage DisplayName="Bundled Existential" SourceFile="..\WixOnWixOff\bin\$(var.Configuration)\WixOnWixOff.msi" />
+      <MsiPackage DisplayName="Bundled Existential" SourceFile="$(var.WixOnWixOff.TargetPath)" />
     </Chain>
   </Bundle>
 </Wix>
