@@ -4,6 +4,7 @@ using Microsoft.Deployment.WindowsInstaller;
 namespace Wix.CustomActions
 {
     using System.IO;
+    using System.Diagnostics;
 
     public class CustomActions
     {
@@ -12,6 +13,11 @@ namespace Wix.CustomActions
         {
             try
             {
+
+                Debugger.Launch();
+
+
+
                 const string fileFullPath = @"c:\KensCustomAction.txt";
 
                 if (!File.Exists(fileFullPath))
