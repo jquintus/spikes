@@ -133,6 +133,8 @@ publish/
 # NuGet Packages Directory
 packages/*
 /**/packages
+# The above line doesn't work in SmartGit, so explicitly ignore the top level packages directory
+/packages/*
 ## TODO: If the tool you use requires repositories.config uncomment the next line
 #!packages/repositories.config
 
