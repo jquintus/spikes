@@ -1,11 +1,9 @@
-﻿using System;
-using Microsoft.Deployment.WindowsInstaller;
+﻿using Microsoft.Deployment.WindowsInstaller;
+using System;
+using System.IO;
 
 namespace Wix.CustomActions
 {
-    using System.IO;
-    using System.Diagnostics;
-
     public class CustomActions
     {
         [CustomAction]
@@ -13,12 +11,7 @@ namespace Wix.CustomActions
         {
             try
             {
-
-                Debugger.Launch();
-
-
-
-                const string fileFullPath = @"c:\KensCustomAction.txt";
+                string fileFullPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "CustomAction.txt");
 
                 if (!File.Exists(fileFullPath))
                     File.Create(fileFullPath);
@@ -31,7 +24,7 @@ namespace Wix.CustomActions
             {
                 session.Log("ERROR in custom action CloseIt {0}", ex.ToString());
                 return ActionResult.Failure;
-            }  
+            }
 
             return ActionResult.Success;
         }
