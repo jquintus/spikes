@@ -7,8 +7,6 @@ namespace ExistentialFiles
     {
         public static void Main(string[] args)
         {
-
-
             if (File.Exists(@"c:\path\\\\\\\\\\file.txt"))
             {
                 Console.WriteLine(@"File.Exists NO cares about \\");
