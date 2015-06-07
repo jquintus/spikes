@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/jquintus/spikes/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/jquintus/spikes/</projectUrl>
+    <iconUrl>http://th04.deviantart.net/fs70/200H/i/2011/027/f/2/no_dragons_logo_by_davidenorton-d31yu6t.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Released it!</releaseNotes>
+    <copyright>Copyright 2015</copyright>
+  </metadata>
+</package>

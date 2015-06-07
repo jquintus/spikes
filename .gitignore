@@ -188,3 +188,4 @@ FakesAssemblies/
 /XamarinSpikes/MvvmCrossSpikes/packages
 /XamarinSpikes/DroidSpike/Components
 /AndroidFont/packages
+/ConsoleApps/FunWithSpikes/FunWithNuget/*.nupkg

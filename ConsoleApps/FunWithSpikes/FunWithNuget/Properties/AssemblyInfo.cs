@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("FunWithNuget")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("This is a super simple nuget package used to test creating and deploying packages via AppVeyor.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Josh Quintus")]
 [assembly: AssemblyProduct("FunWithNuget")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
