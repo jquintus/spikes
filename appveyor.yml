@@ -1,0 +1,6 @@
+version: 1.0.{build}
+build:
+  verbosity: minimal
+artifacts:
+- path: '\ConsoleApps\FunWithSpikes\FunWithSpikes\bin'
+  name: Fun With Spikes
