@@ -1,6 +1,6 @@
 version: 1.0.{build}
 build:
-  project: ConsoleApps\FunWithSpikes\FunWithSpikes\FunWithSpikes.snl
+  project: ConsoleApps\FunWithSpikes\FunWithSpikes.sln
   verbosity: minimal
 artifacts:
 - path: '\ConsoleApps\FunWithSpikes\FunWithSpikes\bin'
