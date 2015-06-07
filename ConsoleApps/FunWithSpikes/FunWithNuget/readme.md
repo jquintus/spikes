@@ -1,0 +1,1 @@
+﻿This is a super simple nuget package used to test creating and deploying packages via AppVeyor.
