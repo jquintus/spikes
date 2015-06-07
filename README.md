@@ -1,4 +1,4 @@
-Spikes  [![Build Status](https://travis-ci.org/jquintus/spikes.svg)](https://travis-ci.org/jquintus/spikes)
+Spikes  [![Build Status](https://travis-ci.org/jquintus/spikes.svg)](https://travis-ci.org/jquintus/spikes) [![Build status](https://ci.appveyor.com/api/projects/status/byic9wxw78bw3clk/branch/master?svg=true)](https://ci.appveyor.com/project/jquintus/spikes/branch/master)
 ======
 
 * Test and simple sample code
