@@ -37,7 +37,7 @@
   <Fragment>
     <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
       <Component Id="ProductComponent">
-        <File Source="$(var.ExistentialFiles.TargetPath)" />
+        <File Source="$(var.SampleApp.TargetPath)" />
       </Component>
     </ComponentGroup>
   </Fragment>
