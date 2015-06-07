@@ -1,6 +1,13 @@
 version: 1.0.{build}
 build:
+  project: ConsoleApps\FunWithSpikes\FunWithSpikes\FunWithSpikes.snl
   verbosity: minimal
 artifacts:
 - path: '\ConsoleApps\FunWithSpikes\FunWithSpikes\bin'
   name: Fun With Spikes
+deploy:
+- provider: GitHub
+  tag: AppVeyor-v$(appveyor_build_version)
+  auth_token:
+    secure: oRw/rxGOqxHGggb5dxOwNJTkzB4tReQYS6d4CFjvNxMyvEAjQXWCWeZ1H5wsAQJThuJWbcgAnLK/+wWWf9hkI1j4BBV3dAjXQrB8U71FBlI=
+  artifact: Fun With Spikes
