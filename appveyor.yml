@@ -18,5 +18,5 @@ deploy:
 - provider: GitHub
   tag: AppVeyor-v$(appveyor_build_version)
   auth_token:
-    secure: oRw/rxGOqxHGggb5dxOwNJTkzB4tReQYS6d4CFjvNxMyvEAjQXWCWeZ1H5wsAQJThuJWbcgAnLK/+wWWf9hkI1j4BBV3dAjXQrB8U71FBlI=
+    secure: 5b29dcafac95cdf780456db1ae94fa3f3f9842a7
   artifact: Fun With Spikes
