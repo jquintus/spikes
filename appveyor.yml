@@ -1,4 +1,5 @@
 version: 1.0.{build}
+skip_tags: true
 configuration: Release
 assembly_info:
   patch: true
@@ -6,21 +7,31 @@ assembly_info:
   assembly_version: '{version}'
   assembly_file_version: '{version}'
   assembly_informational_version: '{version}'
+nuget:
+  account_feed: true
+  project_feed: true
 before_build:
 - nuget restore ConsoleApps\FunWithSpikes\FunWithSpikes.sln
 build:
   project: ConsoleApps\FunWithSpikes\FunWithSpikes.sln
+  publish_nuget: true
+  publish_nuget_symbols: true
   verbosity: minimal
 artifacts:
 - path: '\ConsoleApps\FunWithSpikes\FunWithSpikes\bin'
-  name: Fun With Spikes
+  name: Artifact1
+- path: '\ConsoleApps\FunWithSpikes\FunWithNuget\bin\'
 deploy:
 - provider: GitHub
   tag: AppVeyor-v$(appveyor_build_version)
   auth_token:
     secure: lgX4GxJWzuYLXkho9D//SrnbrvVAhjBP/3X/Jmcg6pXZtToG7E1GwBr7vXGSqNAu
-  artifact: /.*\Artifact1.*
+  artifact: ConsoleApps\FunWithSpikes\FunWithSpikes\Artifact1.zip
+  on:
+    branch: master
 - provider: NuGet
   api_key:
     secure: 1kBNjaCsKUKkhgEIMDY4BcaDQrhwrMdWFlyWW2gr7yY/d3O9OmStZFdDOUY61pFo
   artifact: 
+  on:
+    branch: master
