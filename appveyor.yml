@@ -28,7 +28,9 @@ deploy:
   tag: AppVeyor-v$(appveyor_build_version)
   auth_token:
     secure: lgX4GxJWzuYLXkho9D//SrnbrvVAhjBP/3X/Jmcg6pXZtToG7E1GwBr7vXGSqNAu
-  artifact: ConsoleApps\FunWithSpikes\FunWithSpikes\Artifact1.zip
+  artifact: 
+    - ConsoleApps\FunWithSpikes\FunWithSpikes\Artifact1.zip
+    - /.*\.nupkg/
   on:
     branch: master
 - provider: NuGet
