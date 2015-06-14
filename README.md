@@ -1,4 +1,4 @@
-Spikes  [![Build Status](https://travis-ci.org/jquintus/spikes.svg)](https://travis-ci.org/jquintus/spikes) [![Build status](https://ci.appveyor.com/api/projects/status/byic9wxw78bw3clk/branch/master?svg=true)](https://ci.appveyor.com/project/jquintus/spikes/branch/master)
+Spikes  [![Build Status](https://travis-ci.org/jquintus/spikes.svg)](https://travis-ci.org/jquintus/spikes)  [![Build status](https://ci.appveyor.com/api/projects/status/byic9wxw78bw3clk/branch/master?svg=true)](https://ci.appveyor.com/project/jquintus/spikes/branch/master)  [![NuGet Version](https://img.shields.io/nuget/v/FunWithNuget.svg)](https://www.nuget.org/packages/FunWithNuget/)
 ======
 
 * Test and simple sample code
