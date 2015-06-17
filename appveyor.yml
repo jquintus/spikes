@@ -6,13 +6,13 @@ configuration: Release
 init:
 - ps: >-
     $parsedReleaseBuildVersion = $env:APPVEYOR_REPO_TAG_NAME -Match "(\d+.\d+.\d+(.[\d+])?)"
-
     If($parsedReleaseBuildVersion) {
       $env:BuildVersion = $matches[0]
     }
     else {
       $env:BuildVersion = $env:appveyor_build_version
     }
+    Write-Host "Created Build Version: " $env:BuildVersion
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
