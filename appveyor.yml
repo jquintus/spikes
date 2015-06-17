@@ -7,14 +7,16 @@ init:
 - ps: >-
     $parsedReleaseBuildVersion = $env:APPVEYOR_REPO_TAG_NAME -Match "(\d+.\d+.\d+(.[\d+])?)"
     
-    If($parsedReleaseBuildVersion) {
+    If($env:appveyor_repo_tag -AND $parsedReleaseBuildVersion) {
       $env:BuildVersion = $matches[0]
+      $env:IsGithubRelease = $TRUE
     }
     else {
       $env:BuildVersion = $env:appveyor_build_version
+      $env:IsGithubRelease = ""
     }
     
-    Write-Host "Created Build Version: " $env:BuildVersion
+    Write-Host "Build Version: " $env:BuildVersion
     
     Write-Host "appveyor_build_version Variable: " $env:appveyor_build_version
 assembly_info:
@@ -26,6 +28,9 @@ assembly_info:
 nuget:
   account_feed: true
   project_feed: true
+  on:
+    branch: master
+    IsGithubRelease: true
 before_build:
 - nuget restore ConsoleApps\FunWithSpikes\FunWithSpikes.sln
 build:
@@ -44,7 +49,7 @@ deploy:
   artifact: ConsoleApps\FunWithSpikes\FunWithSpikes\Artifact1.zip
   on:
     branch: master
-    appveyor_repo_tag: true
+    IsGithubRelease: true
 - provider: NuGet
   api_key:
     secure: 1kBNjaCsKUKkhgEIMDY4BcaDQrhwrMdWFlyWW2gr7yY/d3O9OmStZFdDOUY61pFo
