@@ -13,6 +13,8 @@ init:
       $env:BuildVersion = $env:appveyor_build_version
     }
     Write-Host "Created Build Version: " $env:BuildVersion
+    Write-Host "Version Varible: " $env:version
+    Write-Host "appveyor_build_version Variable: " $env:appveyor_build_version
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
