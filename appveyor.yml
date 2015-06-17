@@ -16,15 +16,13 @@ init:
     
     Write-Host "Created Build Version: " $env:BuildVersion
     
-    Write-Host "Version Varible: " $env:version
-    
     Write-Host "appveyor_build_version Variable: " $env:appveyor_build_version
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
-  assembly_version: '{BuildVersion}'
-  assembly_file_version: '{BuildVersion}'
-  assembly_informational_version: '{BuildVersion}'
+  assembly_version: $(BuildVersion)
+  assembly_file_version: $(BuildVersion)
+  assembly_informational_version: $(BuildVersion)
 nuget:
   account_feed: true
   project_feed: true
