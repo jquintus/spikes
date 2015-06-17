@@ -3,12 +3,22 @@
 version: 1.0.{build}
 skip_tags: false
 configuration: Release
+init:
+- ps: >-
+    $parsedReleaseBuildVersion = $env:APPVEYOR_REPO_TAG_NAME -Match "(\d+.\d+.\d+(.[\d+])?)"
+
+    If($parsedReleaseBuildVersion) {
+      $env:BuildVersion = $matches[0]
+    }
+    else {
+      $env:BuildVersion = $env:appveyor_build_version
+    }
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
-  assembly_version: '{version}'
-  assembly_file_version: '{version}'
-  assembly_informational_version: '{version}'
+  assembly_version: '{BuildVersion}'
+  assembly_file_version: '{BuildVersion}'
+  assembly_informational_version: '{BuildVersion}'
 nuget:
   account_feed: true
   project_feed: true
@@ -25,7 +35,6 @@ artifacts:
 - path: '\ConsoleApps\FunWithSpikes\FunWithNuget\bin\'
 deploy:
 - provider: GitHub
-#tag: AppVeyor-v$(appveyor_build_version)
   auth_token:
     secure: lgX4GxJWzuYLXkho9D//SrnbrvVAhjBP/3X/Jmcg6pXZtToG7E1GwBr7vXGSqNAu
   artifact: ConsoleApps\FunWithSpikes\FunWithSpikes\Artifact1.zip
