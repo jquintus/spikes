@@ -28,9 +28,6 @@ assembly_info:
 nuget:
   account_feed: true
   project_feed: true
-  on:
-    branch: master
-    IsGithubRelease: true
 before_build:
 - nuget restore ConsoleApps\FunWithSpikes\FunWithSpikes.sln
 build:
@@ -56,3 +53,4 @@ deploy:
   artifact: 
   on:
     branch: master
+    IsGithubRelease: true
