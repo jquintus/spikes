@@ -43,7 +43,7 @@ deploy:
 - provider: GitHub
   auth_token:
     secure: lgX4GxJWzuYLXkho9D//SrnbrvVAhjBP/3X/Jmcg6pXZtToG7E1GwBr7vXGSqNAu
-  artifact: ConsoleApps\FunWithSpikes\FunWithSpikes\Artifact1.zip
+  artifact: 
   prerelease: false
   on:
     branch: master
