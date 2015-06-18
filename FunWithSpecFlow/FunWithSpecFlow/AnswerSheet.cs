@@ -35,5 +35,12 @@ namespace FunWithSpecFlow
                 _answers[answer] = 1;
             }
         }
+
+        public int Count(string answer)
+        {
+            return _answers.ContainsKey(answer)
+                ? _answers[answer]
+                : 0;
+        }
     }
 }

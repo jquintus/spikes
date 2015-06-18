@@ -88,13 +88,46 @@ this.ScenarioSetup(scenarioInfo);
 #line 11
  testRunner.When("you upvote answer Red", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 12
- testRunner.And("you upvote answer Green", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("you upvote answer Green", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 13
- testRunner.And("you upvote answer Green", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("you upvote answer Green", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 14
- testRunner.And("you upvote answer Green", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("you upvote answer Green", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 15
  testRunner.Then("the answer Green should be on top", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Votes are tallied correctly")]
+        [NUnit.Framework.CategoryAttribute("mytag")]
+        public virtual void VotesAreTalliedCorrectly()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Votes are tallied correctly", new string[] {
+                        "mytag"});
+#line 19
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Answer",
+                        "Vote"});
+            table2.AddRow(new string[] {
+                        "Blue",
+                        "40"});
+            table2.AddRow(new string[] {
+                        "Red",
+                        "5"});
+#line 20
+ testRunner.Given("there is a question \"What\'s your favorite color?\" with the answers", ((string)(null)), table2, "Given ");
+#line 25
+ testRunner.When("you upvote answer Red", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 26
+ testRunner.Then("the answer Red should have 6 votes", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 27
+  testRunner.And("the answer Blue should have 40 votes", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 28
+  testRunner.But("the answer Green should have 0 votes", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "But ");
 #line hidden
             this.ScenarioCleanup();
         }

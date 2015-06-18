@@ -38,5 +38,12 @@ namespace AcceptanceTests
         {
             _sheet.AddAnswer(answer);
         }
+
+        [Then]
+        public void Then_the_answer_ANSWER_should_have_COUNT_votes(string answer, int count)
+        {
+            Assert.AreEqual(count, _sheet.Count(answer));
+        }
+
     }
 }
