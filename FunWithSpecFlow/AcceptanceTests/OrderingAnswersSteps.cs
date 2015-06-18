@@ -11,9 +11,9 @@ namespace AcceptanceTests
         private AnswerSheet _sheet;
 
         [Given]
-        public void Given_there_is_a_question_P0_with_the_answers(string p0, Table table)
+        public void Given_there_is_a_question_QUESTION_with_the_answers(string question, Table table)
         {
-            _sheet = new AnswerSheet(p0);
+            _sheet = new AnswerSheet(question);
 
             foreach (var row in table.Rows)
             {
@@ -28,15 +28,15 @@ namespace AcceptanceTests
         }
 
         [Then]
-        public void Then_the_answer_P0_should_be_on_top(string p0)
+        public void Then_the_answer_ANSWER_should_be_on_top(string answer)
         {
-            Assert.AreEqual(p0, _sheet.TopAnswer);
+            Assert.AreEqual(answer, _sheet.TopAnswer);
         }
 
         [When]
-        public void When_you_upvote_answer_P0(string p0)
+        public void When_you_upvote_answer_ANSWER(string answer)
         {
-            _sheet.AddAnswer(p0);
+            _sheet.AddAnswer(answer);
         }
     }
 }
