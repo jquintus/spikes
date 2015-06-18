@@ -9,4 +9,7 @@ Scenario: The answer to the highest vote gets to the top
 		| Red    | 5    |
 
 	When you upvote answer Red
-	Then the answer Red should be on top
+	And you upvote answer Green
+	And you upvote answer Green
+	And you upvote answer Green
+	Then the answer Green should be on top
