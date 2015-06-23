@@ -47,6 +47,7 @@
     <Compile Include="DictionaryTests.cs" />
     <Compile Include="Disposable.cs" />
     <Compile Include="Foo.cs" />
+    <Compile Include="FunWithTasks.cs" />
     <Compile Include="IHaveValue.cs" />
     <Compile Include="LinqTests.cs" />
     <Compile Include="Program.cs" />

@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunWithNinject", "FunWithNi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunWithLogs", "FunWithLogs\FunWithLogs.csproj", "{2A49717B-22A4-4872-B147-E65F0369202C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExistentialFiles", "ExistentialFiles\ExistentialFiles.csproj", "{4533FD3E-501D-4724-9F82-8493C9272AD9}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunWithNuget", "FunWithNuget\FunWithNuget.csproj", "{069B9653-C071-45E8-92E7-11E899C2E6F0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{47F82763-F641-44C7-9C20-7D012FD201DA}"
@@ -38,10 +36,6 @@ Global
 		{2A49717B-22A4-4872-B147-E65F0369202C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A49717B-22A4-4872-B147-E65F0369202C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A49717B-22A4-4872-B147-E65F0369202C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4533FD3E-501D-4724-9F82-8493C9272AD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4533FD3E-501D-4724-9F82-8493C9272AD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4533FD3E-501D-4724-9F82-8493C9272AD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4533FD3E-501D-4724-9F82-8493C9272AD9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{069B9653-C071-45E8-92E7-11E899C2E6F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{069B9653-C071-45E8-92E7-11E899C2E6F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{069B9653-C071-45E8-92E7-11E899C2E6F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
