@@ -53,17 +53,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bar.cs" />
-    <Compile Include="Dependency.cs" />
     <Compile Include="Factories\Bar.cs" />
     <Compile Include="Factories\FactoryTests.cs" />
     <Compile Include="Factories\Foo.cs" />
-    <Compile Include="Foo.cs" />
-    <Compile Include="IDependency.cs" />
-    <Compile Include="IMyServiceFactory.cs" />
-    <Compile Include="IService.cs" />
-    <Compile Include="MyService.cs" />
-    <Compile Include="MyServiceFactory.cs" />
+    <Compile Include="FooBars.cs" />
+    <Compile Include="ModulesModulesModules\Module1.cs" />
+    <Compile Include="ModulesModulesModules\Module2.cs" />
+    <Compile Include="ModulesModulesModules\Tests.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WhenInjected\BingChildService.cs" />
