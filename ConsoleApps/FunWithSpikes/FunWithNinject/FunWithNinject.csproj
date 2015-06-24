@@ -57,6 +57,8 @@
     <Compile Include="Factories\FactoryTests.cs" />
     <Compile Include="Factories\Foo.cs" />
     <Compile Include="FooBars.cs" />
+    <Compile Include="Initialization\IInitializable.cs" />
+    <Compile Include="Initialization\Tests.cs" />
     <Compile Include="ModulesModulesModules\Module1.cs" />
     <Compile Include="ModulesModulesModules\Module2.cs" />
     <Compile Include="ModulesModulesModules\Tests.cs" />
