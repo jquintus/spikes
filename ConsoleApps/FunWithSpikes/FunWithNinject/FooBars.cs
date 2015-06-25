@@ -1,20 +1,27 @@
 ﻿namespace FunWithNinject
 {
-    /* 
+    /*
      * So I don't have to create a whole bunch of dependencies
-     * each time I want to create a new test, this file 
+     * each time I want to create a new test, this file
      * contains a few simple interfaces with some dependencies.
-     * 
+     *
      * If anything more complicated is needed, it will be a good
-     * idea to create new classes/dependencies specifically for 
+     * idea to create new classes/dependencies specifically for
      * the tests that require them.
-     */ 
+     */
 
     public interface IBar { }
+
+    public interface IBaz { }
 
     public interface IFoo { }
 
     public class Bar : IBar { }
+
+    public class Baz : IBaz { }
+
+    public interface IQux { }
+    public class Qux : IQux { }
 
     public class Foo : IFoo
     {

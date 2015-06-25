@@ -53,6 +53,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CtorChoosing\MyObj.cs" />
+    <Compile Include="CtorChoosing\Tests.cs" />
     <Compile Include="Factories\Bar.cs" />
     <Compile Include="Factories\FactoryTests.cs" />
     <Compile Include="Factories\Foo.cs" />
