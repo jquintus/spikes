@@ -13,8 +13,15 @@
             var k = new StandardKernel();
             k.Bind<IFoo>().To<Foo>();
 
-            // Act / Assert (Actsert!)
-            Assert.Throws<ActivationException>(() => k.Get<MyObj>());
+            // Act
+            var o = k.Get<MyObj>();
+
+            // Assert
+            Assert.IsNotNull(o);
+            Assert.IsNotNull(o.Foo);
+            Assert.IsNull(o.Bar);
+
+            Assert.IsTrue(o.ShortCtorCalled);
         }
 
         [Test]

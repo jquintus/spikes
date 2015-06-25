@@ -16,16 +16,21 @@
 
     public interface IFoo { }
 
+    public interface IQux { }
+
     public class Bar : IBar { }
 
     public class Baz : IBaz { }
 
-    public interface IQux { }
-    public class Qux : IQux { }
+    public class Foo : IFoo { }
 
-    public class Foo : IFoo
+    public class Foo1 : IFoo { }
+
+    public class Foo2 : IFoo { }
+
+    public class FooDependingOnBar : IFoo
     {
-        public Foo(IBar bar)
+        public FooDependingOnBar(IBar bar)
         {
             Bar = bar;
         }
@@ -33,7 +38,5 @@
         public IBar Bar { get; set; }
     }
 
-    public class Foo1 : IFoo { }
-
-    public class Foo2 : IFoo { }
+    public class Qux : IQux { }
 }
