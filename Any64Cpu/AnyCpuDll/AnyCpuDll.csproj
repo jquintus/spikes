@@ -47,6 +47,10 @@
       <Project>{835f3604-7833-45b8-8680-d1076052174f}</Project>
       <Name>64BitDll</Name>
     </ProjectReference>
+    <ProjectReference Include="..\x86Dll\x86Dll.csproj">
+      <Project>{2606ccf2-0ac4-4087-8f94-4365515b820a}</Project>
+      <Name>x86Dll</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

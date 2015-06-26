@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Reflection;
 
-namespace _64BitDll
+namespace x86Dll
 {
-    public static class Class64
+    public class Class86
     {
         public static void GetInfo()
         {
-            GetAsmInfo(typeof(Class64).Assembly);
+            GetAsmInfo(typeof(Class86).Assembly);
         }
 
         private static void GetAsmInfo(Assembly asm)

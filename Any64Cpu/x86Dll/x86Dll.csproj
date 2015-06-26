@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DCFBFBEE-A7F5-406D-83BA-C85C20D2281D}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{2606CCF2-0AC4-4087-8F94-4365515B820A}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>x86Exe</RootNamespace>
-    <AssemblyName>x86Exe</AssemblyName>
+    <RootNamespace>x86Dll</RootNamespace>
+    <AssemblyName>x86Dll</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -21,7 +20,6 @@
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -31,7 +29,6 @@
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -43,25 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Class86.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\64BitDll\64BitDll.csproj">
-      <Project>{835f3604-7833-45b8-8680-d1076052174f}</Project>
-      <Name>64BitDll</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AnyCpuDll\AnyCpuDll.csproj">
-      <Project>{e6fa39cb-0595-48c4-ba3f-55d2ea063bbf}</Project>
-      <Name>AnyCpuDll</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\x86Dll\x86Dll.csproj">
-      <Project>{2606ccf2-0ac4-4087-8f94-4365515b820a}</Project>
-      <Name>x86Dll</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
