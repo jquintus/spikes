@@ -42,6 +42,12 @@
     <Compile Include="AnyClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\64BitDll\64BitDll.csproj">
+      <Project>{835f3604-7833-45b8-8680-d1076052174f}</Project>
+      <Name>64BitDll</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
