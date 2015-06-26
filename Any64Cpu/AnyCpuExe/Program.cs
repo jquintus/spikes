@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AnyCpuDll;
+using System;
 using System.Reflection;
 
 namespace AnyCpuExe
@@ -12,8 +13,10 @@ namespace AnyCpuExe
             ImageFileMachine imageFileMachine;
 
             asm.ManifestModule.GetPEKind(out peKind, out imageFileMachine);
+            var someClass = new SomeClass();
 
-            Console.WriteLine("{0} {1}", asm.ManifestModule.Name, imageFileMachine);
+
+            Console.WriteLine("{0} {1} {2}", asm.ManifestModule.Name, imageFileMachine, SomeClass.DllInfo);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AnyCpuDll;
+using System;
 using System.Reflection;
 
 namespace _64bitExe
@@ -13,7 +14,7 @@ namespace _64bitExe
 
             asm.ManifestModule.GetPEKind(out peKind, out imageFileMachine);
 
-            Console.WriteLine("{0} {1}", asm.ManifestModule.Name, imageFileMachine);
+            Console.WriteLine("{0} {1} {2}", asm.ManifestModule.Name, imageFileMachine, SomeClass.DllInfo);
         }
     }
 }
