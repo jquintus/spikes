@@ -1,26 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AnyCpuDll
 {
     public class SomeClass
     {
-        static SomeClass()
+        public static void GetInfo(Assembly entryAsm)
         {
-            Assembly asm = typeof(SomeClass).Assembly;
+            GetAsmInfo(entryAsm);
+            GetAsmInfo(typeof(SomeClass).Assembly);
+        }
 
+        private static void GetAsmInfo(Assembly asm)
+        {
             PortableExecutableKinds peKind;
             ImageFileMachine imageFileMachine;
 
             asm.ManifestModule.GetPEKind(out peKind, out imageFileMachine);
-
-            DllInfo = "DLL built with" + imageFileMachine;
+            Console.WriteLine("{0} {1}", asm.ManifestModule.Name, imageFileMachine);
         }
-
-        public static string DllInfo { get; set; }
     }
 }
