@@ -1,14 +1,12 @@
-﻿using AnyCpuDll;
-using System;
-using System.Reflection;
-
-namespace AnyCpuExe
+﻿namespace AnyCpuExe
 {
     internal class Program
     {
         private static void Main(string[] args)
         {
-            SomeClass.GetInfo(System.Reflection.Assembly.GetEntryAssembly());
+            AnyCpuDll.AnyClass.GetInfo(System.Reflection.Assembly.GetEntryAssembly());
+
+            //_64BitDll.Class64.GetInfo();  // This will throw a bad image exception
         }
     }
 }

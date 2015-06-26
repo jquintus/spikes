@@ -49,6 +49,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\64BitDll\64BitDll.csproj">
+      <Project>{835f3604-7833-45b8-8680-d1076052174f}</Project>
+      <Name>64BitDll</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AnyCpuDll\AnyCpuDll.csproj">
       <Project>{e6fa39cb-0595-48c4-ba3f-55d2ea063bbf}</Project>
       <Name>AnyCpuDll</Name>
