@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FunWithNinject.Web.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,14 +9,22 @@ namespace FunWithNinject.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private IService _service;
+
+        public HomeController(IService service)
+        {
+            _service = service;
+        }
+
         public ActionResult Index()
         {
+            ViewBag.Title = _service.Title;
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = _service.AboutMessage;
 
             return View();
         }
