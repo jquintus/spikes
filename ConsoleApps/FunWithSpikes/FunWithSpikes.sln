@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\..\README.md = ..\..\README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunWithNinject.Web", "FunWithNinject.Web\FunWithNinject.Web.csproj", "{71BAD432-029A-4236-9D74-809456B93E3C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,10 @@ Global
 		{069B9653-C071-45E8-92E7-11E899C2E6F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{069B9653-C071-45E8-92E7-11E899C2E6F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{069B9653-C071-45E8-92E7-11E899C2E6F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71BAD432-029A-4236-9D74-809456B93E3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71BAD432-029A-4236-9D74-809456B93E3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71BAD432-029A-4236-9D74-809456B93E3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71BAD432-029A-4236-9D74-809456B93E3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
