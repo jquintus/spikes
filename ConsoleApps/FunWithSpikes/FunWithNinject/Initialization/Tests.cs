@@ -2,6 +2,7 @@
 {
     using Ninject;
     using NUnit.Framework;
+    using System.Threading;
 
     [TestFixture]
     public class Tests
@@ -36,6 +37,21 @@
 
             // Assert
             Assert.IsTrue(initted.IsInit);
+        }
+
+
+
+        [Test]
+        public void OnActivation_RunsSyncrhonously()
+        {
+            var currentId = Thread.CurrentThread.ManagedThreadId;
+            var k = new StandardKernel();
+            k.Bind<IFoo>()
+                .To<Foo>()
+                .OnActivation(i =>
+                {
+                    Assert.AreEqual(currentId, Thread.CurrentThread.ManagedThreadId);
+                });
         }
     }
 }
