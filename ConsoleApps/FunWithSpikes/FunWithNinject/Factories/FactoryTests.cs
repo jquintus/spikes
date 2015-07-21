@@ -23,5 +23,24 @@
                 var foo = factory(7);
             }
         }
+
+        [Test]
+        public void FactoryPrefersParametersOverBindings()
+        {
+            using (var kernel = new StandardKernel())
+            {
+                // Assemble
+                kernel.Bind<FunWithNinject.IFoo>().To<FunWithNinject.FooDependingOnBar>();
+                kernel.Bind<FunWithNinject.IBar>().To<FunWithNinject.Bar>();
+
+                var factory = kernel.Get<Func<FunWithNinject.IBar, FunWithNinject.IFoo>>();
+
+                // Act
+                var foo = factory(new FunWithNinject.Bar2());
+
+                // Assert
+                Assert.IsInstanceOf<FunWithNinject.Bar2>(((FooDependingOnBar)foo).Bar);
+            }
+        }
     }
 }
