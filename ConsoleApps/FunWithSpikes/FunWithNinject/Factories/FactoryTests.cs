@@ -42,5 +42,43 @@
                 Assert.IsInstanceOf<FunWithNinject.Bar2>(((FooDependingOnBar)foo).Bar);
             }
         }
+
+        [Test]
+        public void Func_RegisterDependencyAsSingleton_FuncAlwaysReturnsSameInstance()
+        {
+            using (var kernel = new StandardKernel())
+            {
+                // Assemble
+                kernel.Bind<FunWithNinject.IFoo>().To<FunWithNinject.Foo>().InSingletonScope();
+
+                var factory = kernel.Get<Func<FunWithNinject.IFoo>>();
+
+                // Act
+                var foo1 = factory();
+                var foo2 = factory();
+
+                // Assert
+                Assert.AreSame(foo1, foo2);
+            }
+        }
+
+        [Test]
+        public void Func_RegisterDependencyAsTransient_FuncAlwaysReturnsNewInstance()
+        {
+            using (var kernel = new StandardKernel())
+            {
+                // Assemble
+                kernel.Bind<FunWithNinject.IFoo>().To<FunWithNinject.Foo>().InTransientScope();
+
+                var factory = kernel.Get<Func<FunWithNinject.IFoo>>();
+
+                // Act
+                var foo1 = factory();
+                var foo2 = factory();
+
+                // Assert
+                Assert.AreNotSame(foo1, foo2);
+            }
+        }
     }
 }
