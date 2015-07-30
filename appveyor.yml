@@ -17,8 +17,9 @@ init:
     }
     
     Write-Host "Build Version: " $env:BuildVersion
-      Write-Host "Full commit:  " $env:appveyor_repo_tag
-
+    Write-Host "Tag name:  " $env:appveyor_repo_tag
+    Write-Host "Commit: " $env:APPVEYOR_REPO_COMMIT_MESSAGE 
+    Write-Host "Commit extended:" $env:APPVEYOR_REPO_COMMIT_MESSAGE_EXTENDED 
     
     Write-Host "appveyor_build_version Variable: " $env:appveyor_build_version
 assembly_info:
