@@ -21,4 +21,6 @@ I get asked "What does `spike` mean?" a lot.  Well, here's the answer (from
 > other story or task, the spike is then given an estimate and included in the
 > sprint backlog.
 
-Some Change here
+- [ ] some list
+- [x] done list
+
