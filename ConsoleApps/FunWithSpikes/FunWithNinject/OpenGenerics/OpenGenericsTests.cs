@@ -1,52 +1,50 @@
 ﻿using Ninject;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FunWithNinject.OpenGenerics
 {
     [TestFixture]
     public class OpenGenericsTests
     {
-
-        public interface ILogger<T>
-        {
-            Type GenericParam { get; }
-        }
-        public class Logger<T> : ILogger<T>
-        {
-            public Type GenericParam { get { return typeof(T); } }
-
-        }
-
-        public class DependsOnLogger
-        {
-            public DependsOnLogger(ILogger<int> intLogger)
-            {
-                GenericParam = intLogger.GenericParam;
-            }
-
-            public Type GenericParam { get; set; }
-
-        }
-
         [Test]
         public void OpenGenericBinding()
         {
             using (var k = new StandardKernel())
             {
                 // Assemble
-                k.Bind(typeof(ILogger<>)).To(typeof(Logger<>));
+                k.Bind(typeof(IAutoCache<>)).To(typeof(AutoCache<>));
 
                 // Act
                 var dependsOn = k.Get<DependsOnLogger>();
 
                 // Assert
-                Assert.AreEqual(typeof(int), dependsOn.GenericParam);
+                Assert.AreEqual(typeof(int), dependsOn.CacheType);
             }
         }
+
+        #region Types
+
+        public interface IAutoCache<T>
+        {
+            Type CacheType { get; }
+        }
+
+        public class AutoCache<T> : IAutoCache<T>
+        {
+            public Type CacheType { get { return typeof(T); } }
+        }
+
+        public class DependsOnLogger
+        {
+            public DependsOnLogger(IAutoCache<int> intCacher)
+            {
+                CacheType = intCacher.CacheType;
+            }
+
+            public Type CacheType { get; set; }
+        }
+
+        #endregion
     }
 }
