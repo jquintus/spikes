@@ -1,6 +1,5 @@
 ﻿using Ninject;
 using NUnit.Framework;
-using System;
 
 namespace FunWithNinject.OpenGenerics
 {
@@ -14,35 +13,45 @@ namespace FunWithNinject.OpenGenerics
             {
                 // Assemble
                 k.Bind(typeof(IAutoCache<>)).To(typeof(AutoCache<>));
+                k.Bind < IProvider<int>>().To<IntProvider>();
 
                 // Act
-                var dependsOn = k.Get<DependsOnLogger>();
+                var dependsOn = k.Get<DependsOnCachedInt>();
 
                 // Assert
-                Assert.AreEqual(typeof(int), dependsOn.CacheType);
+                Assert.AreEqual(42, dependsOn.CachedValue);
             }
         }
 
         #region Types
 
-        public interface IAutoCache<T>
-        {
-            Type CacheType { get; }
-        }
+        public interface IAutoCache<T> { T CachedValue { get; } }
+
+        public interface IProvider<T> { T Value { get; } }
 
         public class AutoCache<T> : IAutoCache<T>
         {
-            public Type CacheType { get { return typeof(T); } }
-        }
-
-        public class DependsOnLogger
-        {
-            public DependsOnLogger(IAutoCache<int> intCacher)
+            public AutoCache(IProvider<T> provider)
             {
-                CacheType = intCacher.CacheType;
+                CachedValue = provider.Value;
             }
 
-            public Type CacheType { get; set; }
+            public T CachedValue { get; set; }
+        }
+
+        public class DependsOnCachedInt
+        {
+            public DependsOnCachedInt(IAutoCache<int> intCacher)
+            {
+                CachedValue = intCacher.CachedValue;
+            }
+
+            public int CachedValue { get; set; }
+        }
+
+        public class IntProvider : IProvider<int>
+        {
+            public int Value { get { return 42; } }
         }
 
         #endregion
