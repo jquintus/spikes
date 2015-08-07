@@ -7,7 +7,6 @@ namespace FunWithSpikes
         private static void Main(string[] args)
         {
 
-            new ReflectionTests().GetFuncs();
 
 
         }
