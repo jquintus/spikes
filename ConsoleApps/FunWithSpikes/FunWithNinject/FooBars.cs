@@ -19,6 +19,7 @@
     public interface IQux { }
 
     public class Bar : IBar { }
+    public class Bar2 : IBar { }
 
     public class Baz : IBaz { }
 
