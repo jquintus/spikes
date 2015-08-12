@@ -1,4 +1,4 @@
-Spikes  [![Build Status](https://travis-ci.org/jquintus/spikes.svg)](https://travis-ci.org/jquintus/spikes) [![Build status](https://ci.appveyor.com/api/projects/status/byic9wxw78bw3clk/branch/master?svg=true)](https://ci.appveyor.com/project/jquintus/spikes/branch/master) [![NuGet version](https://badge.fury.io/nu/FunWithNuget.svg)](https://www.nuget.org/packages/FunWithNuget/)
+Spikes [![Build status](https://ci.appveyor.com/api/projects/status/byic9wxw78bw3clk/branch/master?svg=true)](https://ci.appveyor.com/project/jquintus/spikes/branch/master) [![NuGet version](https://badge.fury.io/nu/FunWithNuget.svg)](https://www.nuget.org/packages/FunWithNuget/)
 ======
 
 * Test and simple sample code
@@ -21,4 +21,6 @@ I get asked "What does `spike` mean?" a lot.  Well, here's the answer (from
 > other story or task, the spike is then given an estimate and included in the
 > sprint backlog.
 
+- [ ] some list
+- [x] done list
 
