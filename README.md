@@ -20,5 +20,3 @@ I get asked "What does `spike` mean?" a lot.  Well, here's the answer (from
 > which is a story whose purpose is to provide the answer or solution. Like any
 > other story or task, the spike is then given an estimate and included in the
 > sprint backlog.
-
-
