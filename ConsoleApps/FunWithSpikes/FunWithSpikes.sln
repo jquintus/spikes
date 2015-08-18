@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunWithSpikes", "FunWithSpikes\FunWithSpikes.csproj", "{7D7C2D86-5E85-4FD4-8CC8-5F41244BFFE7}"
 EndProject
@@ -23,6 +23,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunWithInternals", "FunWithInternals\FunWithInternals.csproj", "{5C6739D3-5351-4863-8B4E-D3ED40099756}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunWithReflection", "FunWithReflection\FunWithReflection.csproj", "{A9375C41-254F-4837-8C5D-884C42B87FF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunWithMoq", "FunWithMoq\FunWithMoq.csproj", "{67320CC0-BE8E-4443-BBE1-F5AED0E8C88C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,6 +60,10 @@ Global
 		{A9375C41-254F-4837-8C5D-884C42B87FF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9375C41-254F-4837-8C5D-884C42B87FF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9375C41-254F-4837-8C5D-884C42B87FF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67320CC0-BE8E-4443-BBE1-F5AED0E8C88C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67320CC0-BE8E-4443-BBE1-F5AED0E8C88C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67320CC0-BE8E-4443-BBE1-F5AED0E8C88C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67320CC0-BE8E-4443-BBE1-F5AED0E8C88C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
