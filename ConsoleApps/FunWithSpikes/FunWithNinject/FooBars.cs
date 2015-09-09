@@ -19,6 +19,7 @@
     public interface IQux { }
 
     public class Bar : IBar { }
+
     public class Bar2 : IBar { }
 
     public class Baz : IBaz { }
@@ -28,6 +29,18 @@
     public class Foo1 : IFoo { }
 
     public class Foo2 : IFoo { }
+
+    public class FooDependingOnMultipleBars : IFoo
+    {
+        public FooDependingOnMultipleBars(IBar bar1, IBar bar2)
+        {
+            Bar1 = bar1;
+            Bar2 = bar2;
+        }
+
+        public IBar Bar1 { get; set; }
+        public IBar Bar2 { get; set; }
+    }
 
     public class FooDependingOnBar : IFoo
     {
