@@ -46,7 +46,7 @@ namespace FunWithSpikes
             jackson();
 
             // Assert
-            Assert.AreEqual(3, lambdaCount);
+            Assert.AreEqual(1, lambdaCount);
             Assert.AreEqual(2, actionCount);
         }
 
