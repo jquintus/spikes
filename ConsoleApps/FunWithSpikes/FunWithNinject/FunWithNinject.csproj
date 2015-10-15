@@ -74,6 +74,13 @@
     <Compile Include="ModulesModulesModules\Module2.cs" />
     <Compile Include="ModulesModulesModules\Tests.cs" />
     <Compile Include="ChildKernel\ChildKernelTests.cs" />
+    <Compile Include="NamedBindings\Leaf.cs" />
+    <Compile Include="NamedBindings\LevelThree.cs" />
+    <Compile Include="NamedBindings\LevelTwo.cs" />
+    <Compile Include="NamedBindings\NamedBindingsTests.cs" />
+    <Compile Include="NamedBindings\Parent.cs" />
+    <Compile Include="NamedBindings\Root.cs" />
+    <Compile Include="NamedBindings\SingleLevel.cs" />
     <Compile Include="OpenGenerics\OpenGenericsTests.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
