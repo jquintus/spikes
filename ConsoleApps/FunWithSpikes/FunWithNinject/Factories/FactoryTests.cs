@@ -80,5 +80,24 @@
                 Assert.AreNotSame(foo1, foo2);
             }
         }
+
+
+        [Test]
+        public void Func_KernelDisposed_Throws()
+        {
+            Func<FunWithNinject.IFoo> factory;
+            StandardKernel kernel;
+            using (kernel = new StandardKernel())
+            {
+                // Assemble
+                kernel.Bind<FunWithNinject.IFoo>().To<FunWithNinject.Foo>().InTransientScope();
+                factory = kernel.Get<Func<FunWithNinject.IFoo>>();
+                factory();
+            }
+
+            // Act
+            Assert.Throws<InvalidOperationException>(() => factory());
+            Assert.Throws<InvalidOperationException>(() => kernel.Get<Func<FunWithNinject.IFoo>>());
+        }
     }
 }
