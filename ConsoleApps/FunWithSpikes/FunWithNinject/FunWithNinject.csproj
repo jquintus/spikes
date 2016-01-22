@@ -84,6 +84,7 @@
     <Compile Include="OpenGenerics\OpenGenericsTests.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Provider\NamedFooProvider.cs" />
     <Compile Include="WhenInjected\BingChildService.cs" />
     <Compile Include="WhenInjected\BingService.cs" />
     <Compile Include="WhenInjected\BingUtility.cs" />
