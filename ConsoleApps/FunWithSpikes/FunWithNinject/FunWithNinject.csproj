@@ -84,7 +84,14 @@
     <Compile Include="OpenGenerics\OpenGenericsTests.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Provider\DirectDependency.cs" />
+    <Compile Include="Provider\DirectDualDependency.cs" />
+    <Compile Include="Provider\IndirectDependencyOnFoo2.cs" />
+    <Compile Include="Provider\IndirectDependencyOnFoo1.cs" />
+    <Compile Include="Provider\IntermediateDependency.cs" />
+    <Compile Include="Provider\MoreIndirectDependencyOnFoo1.cs" />
     <Compile Include="Provider\NamedFooProvider.cs" />
+    <Compile Include="Provider\NamedFooProvider_2.cs" />
     <Compile Include="WhenInjected\BingChildService.cs" />
     <Compile Include="WhenInjected\BingService.cs" />
     <Compile Include="WhenInjected\BingUtility.cs" />
