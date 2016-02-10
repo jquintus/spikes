@@ -39,8 +39,6 @@
             Assert.IsTrue(initted.IsInit);
         }
 
-
-
         [Test]
         public void OnActivation_RunsSyncrhonously()
         {
