@@ -1,24 +1,20 @@
 ﻿using Moq;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FunWithMoq
 {
     [TestFixture]
     public class AbstractMoqTests
     {
-        public abstract class MyClass
+        [Test]
+        public void MockOf_MockOutMethod_MockWorks()
         {
-            public abstract string MyString { get; }
+            // Assemble
+            var mock = Mock.Of<MyClass>(c => c.MyMethod(5) == "Hello" && c.MyMethod(9) == "World");
 
-            public string GetMyString()
-            {
-                return MyString;
-            }
+            // Act/Assert
+            Assert.AreEqual("Hello", mock.MyMethod(5));
+            Assert.AreEqual("World", mock.MyMethod(9));
         }
 
         [Test]
@@ -32,6 +28,18 @@ namespace FunWithMoq
 
             // Assert
             Assert.AreEqual("Hello", actual);
+        }
+
+        public abstract class MyClass
+        {
+            public abstract string MyString { get; }
+
+            public string GetMyString()
+            {
+                return MyString;
+            }
+
+            public abstract string MyMethod(int input);
         }
     }
 }
