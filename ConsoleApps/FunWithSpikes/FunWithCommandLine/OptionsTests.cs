@@ -32,6 +32,35 @@ namespace FunWithCommandLine
             Assert.AreEqual(Letter.A, options.DefaultedLetter);
         }
 
+        [Test]
+        public void OptionsWithEnums_EnumStringValueInArgs_ReturnsEnumValue()
+        {
+            // Assemble
+            var args = new string[] { "--letter", "C" };
+
+            // Act
+            var options = CreateOptions<OptionsWithEnums>(args);
+
+            // Assert
+            Assert.AreEqual(Letter.C, options.DefaultedLetter);
+        }
+
+
+        [Test]
+        public void OptionsWithEnums_EnumStringValueWithIncorrectCasingInArgs_ReturnsEnumValue()
+        {
+            // Assemble
+            var args = new string[] { "--letter", "c" };
+
+            // Act
+            var options = CreateOptions<OptionsWithEnums>(args);
+
+            // Assert
+            Assert.AreEqual(Letter.C, options.DefaultedLetter);
+        }
+
+
+
         private T CreateOptions<T>(string[] args) where T : new()
         {
             var options = new T();
