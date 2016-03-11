@@ -13,8 +13,9 @@
   </metadata>
   <files>
     <!--http://stackoverflow.com/questions/19478775/add-native-files-from-nuget-package-to-project-output-directory-->
-    <file src="bin\**" exclude="PlatformSpecific.dll" />
-    
+    <!--<file src="bin\debug\*" exclude="PlatformSpecific.dll" />-->
+    <file src="bin\debug\Package.dll" target="lib\net40"/>
+    <file src="bin\debug\Package.pdb" target="lib\net40"/>
     <file src="..\PlatformSpecific\bin\x64\Debug\PlatformSpecific.dll" target="build\x64\" />
     <file src="..\PlatformSpecific\bin\x86\Debug\PlatformSpecific.dll" target="build\x86\" />
     <file src="build\NuGetSpecial.targets" target="build\NuGetSpecial.targets" />
