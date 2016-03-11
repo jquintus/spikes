@@ -14,7 +14,10 @@ namespace ConsoleApplication
 
         public static bool Enable
         {
-            get { return _isEnabled; }
+            get
+            {
+                return _isEnabled;
+            }
             set
             {
                 lock (_lock)
@@ -40,8 +43,13 @@ namespace ConsoleApplication
             var basePath = AppDomain.CurrentDomain.SetupInformation.ApplicationBase;
             var platformFolder = Is64BitProcess ? "x64" : "x86";
             string assemblyName = args.Name.Split(new[] { ',' }, 2)[0] + ".dll";
+            var archSpecificPath = Path.Combine(basePath, platformFolder, assemblyName);
 
-            string archSpecificPath = Path.Combine(basePath, platformFolder, assemblyName);
+            if (!File.Exists(archSpecificPath))
+            {
+                archSpecificPath = Path.Combine(basePath, platformFolder, "Dynamic." + assemblyName);
+            }
+
             Assembly asm = null;
 
             if (File.Exists(archSpecificPath))

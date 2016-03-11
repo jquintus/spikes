@@ -1,5 +1,4 @@
-﻿using Intermediary;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.IO;
 
@@ -15,7 +14,7 @@ namespace ConsoleApplication
 
                 MultiPlatformDllLoader.Enable = true;
 
-                Console.WriteLine(Class1.DiggingDeep);
+                Console.WriteLine(Intermediary.Class1.DiggingDeep);
             }
             catch (Exception ex)
             {
