@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>NuGetSpecial</id>
+    <version>$version$</version>
+    <title>NuGetSpecial</title>
+    <authors>Me</authors>
+    <owners>Me</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>description</description>
+    <copyright>Copyright 2016</copyright>
+    <tags>Some Tags</tags>
+  </metadata>
+  <files>
+    <!--http://stackoverflow.com/questions/19478775/add-native-files-from-nuget-package-to-project-output-directory-->
+    <file src="bin\**" exclude="PlatformSpecific.dll" />
+    
+    <file src="..\PlatformSpecific\bin\x64\Debug\PlatformSpecific.dll" target="build\x64\" />
+    <file src="..\PlatformSpecific\bin\x86\Debug\PlatformSpecific.dll" target="build\x86\" />
+    <file src="build\NuGetSpecial.targets" target="build\NuGetSpecial.targets" />
+  </files>
+</package>

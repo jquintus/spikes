@@ -1,0 +1,106 @@
+#OS junk files
+[Tt]humbs.db
+*.DS_Store
+
+#Caliburn
+*.tmp
+
+#zip
+*.zip
+
+# NuGet Packages
+*.nupkg
+# The packages folder can be ignored because of Package Restore
+**/packages/*
+# The above line doesn't work in SmartGit, so explicitly ignore the top level packages directory
+/packages/*
+# except build/, which is used as an MSBuild target.
+!**/packages/build/
+# Uncomment if necessary however generally it will be regenerated when needed
+#!**/packages/repositories.config
+
+#Visual Studio files
+*.build.csdef
+[Uu]pgrade[Ll]og*.[Xx][Mm][Ll]
+*.Publish.xml
+*.[Oo]bj
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.[Cc]ache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.sdf
+*.vshost.sql
+ipch/
+csx/
+obj/
+[Bb]in
+[Dd]ebug*/
+[Rr]elease*/
+Ankh.NoLoad
+_UpgradeReport_Files/
+ConfigFiles/
+#Tooling
+_ReSharper*/
+*.resharper
+[Tt]est[Rr]esult*
+#Project files
+[Bb]uild/
+#Subversion files
+.svn
+# Office Temp Files
+~$*
+*.csproj.user
+*.vbproj.user
+*/[Oo]bj/*
+*/[Bb]in/*
+*DXCore.Solution
+[Tt]humbs.db 
+*.bak.* 
+*.bak 
+*/[Pp]ublish/*
+*.vs10x
+*/[Dd]otfuscated/*
+[Dd]otfuscated/*
+*.vsp
+[Nn][Dd]epend[Oo]ut/*
+*.licx
+*.docstates
+*.cscfg
+*.csdef
+#Specific to our implementation
+ServiceConfiguration.cscfg
+DotAlignCRM/Server/GeneratedArtifacts/*
+DotAlignCRM/Client/GeneratedArtifacts/*
+DotAlignCRM/Common/GeneratedArtifacts/*
+DotAlignCRM/Client/ModelManifest.xml
+DotAlignCRM/Server/ModelManifest.xml
+DotAlignCRM/Server/Web/DotAlignCRM.Client.xap
+Data/ApplicationDatabase.db3
+/*.opensdf
+MAPIOutput/*
+Data/Images/*
+sign.bat
+signbundle.bat
+dependencies.wxs
+ConfuserEx/output/
+Obfuscator.crproj
+*.pfx
+*.opendb
+/pingme.txt
+
+
+DotEntities/DbKnown/StdTable/*.cs.generated
+Package/out/
