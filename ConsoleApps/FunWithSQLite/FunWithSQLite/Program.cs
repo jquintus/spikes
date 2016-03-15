@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MasterDevs.Core.Utils;
+using System;
 using System.Data.SQLite;
 using System.Diagnostics;
 using System.IO;
@@ -32,6 +33,7 @@ namespace FunWithSQLite
         {
             using (var source = new SQLiteConnection(_sourceConnString))
             using (var destination = new SQLiteConnection(_destConnString))
+            using (DisposeWatch.Start(e => Console.WriteLine($"Backup Completed in {e.TotalMilliseconds} ms")))
             {
                 source.Open();
                 destination.Open();
@@ -108,11 +110,16 @@ namespace FunWithSQLite
             var t1 = Task.Factory.StartNew(() => LotsOfSql(s, SQL_WRITE));
             var t2 = Task.Factory.StartNew(() => LotsOfSql(s, SQL_READ));
 
-            Thread.Sleep(TimeSpan.FromSeconds(2.5));
+            Console.WriteLine("Wait for some reads and writes to start");
+            Thread.Sleep(TimeSpan.FromSeconds(0.5));
             Backup();
-            s.KeepGoing = false;
 
-            Task.WaitAll(t1, t2);
+            using (DisposeWatch.Start(e => Console.WriteLine($"Waited {e.TotalMilliseconds} ms")))
+            {
+                s.KeepGoing = false;
+
+                Task.WaitAll(t1, t2);
+            }
 
             CompareCounts();
         }
