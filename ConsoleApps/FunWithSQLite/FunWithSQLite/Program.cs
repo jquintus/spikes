@@ -10,8 +10,8 @@ namespace FunWithSQLite
 {
     public class Program
     {
-        private static string _destConnString = $@"Data Source=.\data\dest.db3;Version=3;";
-        private static string _sourceConnString = $@"Data Source=.\data\source.db3;Version=3;";
+        private static string _dstConnString = $@"Data Source=.\data\dst.db3;Version=3;Password=src;";
+        private static string _srcConnString = $@"Data Source=.\data\src.db3;Version=3;Password=dst;";
 
         private static string SQL_CREATE = @"CREATE TABLE IF NOT EXISTS Table1 (Name varchar(20), Value int)";
         private static string SQL_READ = @"SELECT * FROM Table1";
@@ -31,31 +31,31 @@ namespace FunWithSQLite
 
         private static void Backup()
         {
-            using (var source = new SQLiteConnection(_sourceConnString))
-            using (var destination = new SQLiteConnection(_destConnString))
+            using (var src = new SQLiteConnection(_srcConnString))
+            using (var dst = new SQLiteConnection(_dstConnString))
             using (DisposeWatch.Start(e => Console.WriteLine($"Backup Completed in {e.TotalMilliseconds} ms")))
             {
-                source.Open();
-                destination.Open();
+                src.Open();
+                dst.Open();
 
                 Console.WriteLine("Start Copy");
-                source.BackupDatabase(destination, "main", "main", -1, null, 0);
+                src.BackupDatabase(dst, "main", "main", -1, null, 0);
                 Console.WriteLine("End  Copy");
             }
         }
 
         private static void CompareCounts()
         {
-            var sourceCount = ReadCount(_sourceConnString);
-            var destCount = ReadCount(_destConnString);
+            var srcCount = ReadCount(_srcConnString);
+            var dstCount = ReadCount(_dstConnString);
 
-            Console.WriteLine($"Source:  {sourceCount}");
-            Console.WriteLine($"dest:    {destCount}");
+            Console.WriteLine($"Source:  {srcCount}");
+            Console.WriteLine($"dest:    {dstCount}");
         }
 
         private static void CreateSourceDb()
         {
-            var connectionString = new SQLiteConnectionStringBuilder(_sourceConnString);
+            var connectionString = new SQLiteConnectionStringBuilder(_srcConnString);
             var file = new FileInfo(connectionString.DataSource);
 
             if (!file.Directory.Exists)
@@ -69,7 +69,7 @@ namespace FunWithSQLite
                 Console.WriteLine("Created database with one table");
             }
 
-            using (var con = new SQLiteConnection(_sourceConnString))
+            using (var con = new SQLiteConnection(_srcConnString))
             using (var cmd = new SQLiteCommand(SQL_CREATE, con))
             {
                 con.Open();
@@ -79,7 +79,7 @@ namespace FunWithSQLite
 
         private static void LotsOfSql(Signal s, string sql)
         {
-            using (var con = new SQLiteConnection(_sourceConnString))
+            using (var con = new SQLiteConnection(_srcConnString))
             using (var cmd = new SQLiteCommand(sql, con))
             {
                 con.Open();
