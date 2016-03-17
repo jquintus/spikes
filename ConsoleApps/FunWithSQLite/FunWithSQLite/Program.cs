@@ -29,18 +29,47 @@ namespace FunWithSQLite
             }
         }
 
+        private static string GetConnString(string input)
+        {
+            var cb = new SQLiteConnectionStringBuilder(input)
+            {
+                ReadOnly = false,
+                ForeignKeys = false,
+                SyncMode = SynchronizationModes.Full,
+                //JournalMode = SQLiteJournalModeEnum.Wal,
+                FailIfMissing = false,
+                BinaryGUID = false,
+            };
+
+
+            return cb.ToString();
+        }
         private static void Backup()
         {
-            using (var src = new SQLiteConnection(_srcConnString))
-            using (var dst = new SQLiteConnection(_dstConnString))
-            using (DisposeWatch.Start(e => Console.WriteLine($"Backup Completed in {e.TotalMilliseconds} ms")))
+            try
             {
-                src.Open();
-                dst.Open();
+                string srcC = GetConnString(_srcConnString);
+                string dstC = GetConnString(_dstConnString);
 
-                Console.WriteLine("Start Copy");
-                src.BackupDatabase(dst, "main", "main", -1, null, 0);
-                Console.WriteLine("End  Copy");
+                using (var src = new SQLiteConnection(srcC))
+                using (var dst = new SQLiteConnection(dstC))
+                using (DisposeWatch.Start(e => Console.WriteLine($"Backup Completed in {e.TotalMilliseconds} ms")))
+                {
+                    src.Open();
+                    dst.Open();
+
+                    Console.WriteLine("Start Copy");
+                    src.BackupDatabase(dst, "main", "main", -1, null, 0);
+                    Console.WriteLine("End  Copy");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine("Couldn't copy");
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -92,13 +121,25 @@ namespace FunWithSQLite
 
         private static long ReadCount(string connString)
         {
-            var sql = SQL_READ_COUNT;
-            using (var con = new SQLiteConnection(connString))
-            using (var cmd = new SQLiteCommand(sql, con))
+            try
             {
-                con.Open();
-                var value = cmd.ExecuteScalar();
-                return (long)value;
+
+                var sql = SQL_READ_COUNT;
+                using (var con = new SQLiteConnection(connString))
+                using (var cmd = new SQLiteCommand(sql, con))
+                {
+                    con.Open();
+                    var value = cmd.ExecuteScalar();
+                    return (long)value;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine($"Couldn't read count from {connString}");
+                Console.WriteLine(ex.Message);
+                return -1;
             }
         }
 
