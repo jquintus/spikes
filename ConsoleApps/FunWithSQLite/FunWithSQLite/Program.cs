@@ -29,7 +29,7 @@ namespace FunWithSQLite
             }
         }
 
-        private static string GetConnString(string input)
+        private static string GetConnString(string input, bool zip = false)
         {
             var cb = new SQLiteConnectionStringBuilder(input)
             {
@@ -39,6 +39,7 @@ namespace FunWithSQLite
                 //JournalMode = SQLiteJournalModeEnum.Wal,
                 FailIfMissing = false,
                 BinaryGUID = false,
+                ZipVfsVersion = zip ? "v3" : null,
             };
 
 
@@ -49,7 +50,7 @@ namespace FunWithSQLite
             try
             {
                 string srcC = GetConnString(_srcConnString);
-                string dstC = GetConnString(_dstConnString);
+                string dstC = GetConnString(_dstConnString, zip: true);
 
                 using (var src = new SQLiteConnection(srcC))
                 using (var dst = new SQLiteConnection(dstC))
