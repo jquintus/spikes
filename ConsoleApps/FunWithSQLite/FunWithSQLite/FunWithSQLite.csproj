@@ -71,8 +71,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConnectionStringBuilder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlData.cs" />
+    <Compile Include="SqliteUri.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

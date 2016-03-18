@@ -5,19 +5,12 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using static FunWithSQLite.SqlData;
 
 namespace FunWithSQLite
 {
     public class Program
     {
-        private static string _dstConnString = $@"Data Source=.\data\dst.db3;Version=3;Password=src;";
-        private static string _srcConnString = $@"Data Source=.\data\src.db3;Version=3;Password=dst;";
-
-        private static string SQL_CREATE = @"CREATE TABLE IF NOT EXISTS Table1 (Name varchar(20), Value int)";
-        private static string SQL_READ = @"SELECT * FROM Table1";
-        private static string SQL_READ_COUNT = @"SELECT count ('x') FROM Table1";
-        private static string SQL_WRITE = @"INSERT INTO Table1 (name, value) VALUES ('John', 4)";
-
         public static void Main(string[] args)
         {
             Work();
@@ -29,31 +22,12 @@ namespace FunWithSQLite
             }
         }
 
-        private static string GetConnString(string input, bool zip = false)
-        {
-            var cb = new SQLiteConnectionStringBuilder(input)
-            {
-                ReadOnly = false,
-                ForeignKeys = false,
-                SyncMode = SynchronizationModes.Full,
-                //JournalMode = SQLiteJournalModeEnum.Wal,
-                FailIfMissing = false,
-                BinaryGUID = false,
-                ZipVfsVersion = zip ? "v3" : null,
-            };
-
-
-            return cb.ToString();
-        }
         private static void Backup()
         {
             try
             {
-                string srcC = GetConnString(_srcConnString);
-                string dstC = GetConnString(_dstConnString, zip: true);
-
-                using (var src = new SQLiteConnection(srcC))
-                using (var dst = new SQLiteConnection(dstC))
+                using (var src = new SQLiteConnection(Src))
+                using (var dst = new SQLiteConnection(Dst))
                 using (DisposeWatch.Start(e => Console.WriteLine($"Backup Completed in {e.TotalMilliseconds} ms")))
                 {
                     src.Open();
@@ -76,8 +50,8 @@ namespace FunWithSQLite
 
         private static void CompareCounts()
         {
-            var srcCount = ReadCount(_srcConnString);
-            var dstCount = ReadCount(_dstConnString);
+            var srcCount = ReadCount(Src);
+            var dstCount = ReadCount(Dst);
 
             Console.WriteLine($"Source:  {srcCount}");
             Console.WriteLine($"dest:    {dstCount}");
@@ -85,8 +59,7 @@ namespace FunWithSQLite
 
         private static void CreateSourceDb()
         {
-            var connectionString = new SQLiteConnectionStringBuilder(_srcConnString);
-            var file = new FileInfo(connectionString.DataSource);
+            var file = new FileInfo(SrcFilePath);
 
             if (!file.Directory.Exists)
             {
@@ -99,7 +72,7 @@ namespace FunWithSQLite
                 Console.WriteLine("Created database with one table");
             }
 
-            using (var con = new SQLiteConnection(_srcConnString))
+            using (var con = new SQLiteConnection(Src))
             using (var cmd = new SQLiteCommand(SQL_CREATE, con))
             {
                 con.Open();
@@ -109,7 +82,7 @@ namespace FunWithSQLite
 
         private static void LotsOfSql(Signal s, string sql)
         {
-            using (var con = new SQLiteConnection(_srcConnString))
+            using (var con = new SQLiteConnection(Src))
             using (var cmd = new SQLiteCommand(sql, con))
             {
                 con.Open();
@@ -124,7 +97,6 @@ namespace FunWithSQLite
         {
             try
             {
-
                 var sql = SQL_READ_COUNT;
                 using (var con = new SQLiteConnection(connString))
                 using (var cmd = new SQLiteCommand(sql, con))
@@ -153,7 +125,7 @@ namespace FunWithSQLite
             var t2 = Task.Factory.StartNew(() => LotsOfSql(s, SQL_READ));
 
             Console.WriteLine("Wait for some reads and writes to start");
-            Thread.Sleep(TimeSpan.FromSeconds(0.5));
+            Thread.Sleep(TimeSpan.FromSeconds(30.5));
             Backup();
 
             using (DisposeWatch.Start(e => Console.WriteLine($"Waited {e.TotalMilliseconds} ms")))
