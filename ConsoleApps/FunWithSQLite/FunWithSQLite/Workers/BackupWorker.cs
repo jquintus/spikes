@@ -1,4 +1,5 @@
-﻿using MasterDevs.Core.Utils;
+﻿using MasterDevs.Core;
+using MasterDevs.Core.Utils;
 using System;
 using System.Data.SQLite;
 using System.IO;
@@ -8,8 +9,20 @@ using static FunWithSQLite.SqlData;
 
 namespace FunWithSQLite.Workers
 {
+    public class BackupOptions
+    {
+        public const string VERB = "backup";
+    }
+
     public class BackupWorker
     {
+        private readonly BackupOptions _options;
+
+        public BackupWorker(BackupOptions options)
+        {
+            _options = options.RequireNotNull(nameof(options));
+        }
+
         public void Work()
         {
             CreateSourceDb();
@@ -36,8 +49,8 @@ namespace FunWithSQLite.Workers
         {
             try
             {
-                using (var src = new SQLiteConnection(Src))
-                using (var dst = new SQLiteConnection(Dst))
+                using (var src = new SQLiteConnection(SrcZip))
+                using (var dst = new SQLiteConnection(DstZip))
                 using (DisposeWatch.Start(e => Console.WriteLine($"Backup Completed in {e.TotalMilliseconds} ms")))
                 {
                     src.Open();
@@ -60,8 +73,8 @@ namespace FunWithSQLite.Workers
 
         private void CompareCounts()
         {
-            var srcCount = ReadCount(Src);
-            var dstCount = ReadCount(Dst);
+            var srcCount = ReadCount(SrcZip);
+            var dstCount = ReadCount(DstZip);
 
             Console.WriteLine($"Source:  {srcCount}");
             Console.WriteLine($"dest:    {dstCount}");
@@ -82,7 +95,7 @@ namespace FunWithSQLite.Workers
                 Console.WriteLine("Created database with one table");
             }
 
-            using (var con = new SQLiteConnection(Src))
+            using (var con = new SQLiteConnection(SrcZip))
             using (var cmd = new SQLiteCommand(SQL_CREATE, con))
             {
                 con.Open();
@@ -92,7 +105,7 @@ namespace FunWithSQLite.Workers
 
         private void LotsOfSql(Signal s, string sql)
         {
-            using (var con = new SQLiteConnection(Src))
+            using (var con = new SQLiteConnection(SrcZip))
             using (var cmd = new SQLiteCommand(sql, con))
             {
                 con.Open();

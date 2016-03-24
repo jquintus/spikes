@@ -12,8 +12,12 @@ namespace FunWithSQLite
 
         private static string _dstConnString = $@"Data Source=.\data\dst.db3;Version=3;Password=dst;";
         private static string _srcConnString = $@"Data Source=.\data\src.db3;Version=3;Password=src;";
-        public static string Dst => GetZipConnectionString(_dstConnString);
-        public static string Src => GetZipConnectionString(_srcConnString);
+        public static string DstZip => GetZipConnectionString(_dstConnString);
+        public static string SrcZip => GetZipConnectionString(_srcConnString);
+
+        public static string SimpleDst=> GetSimpleConnString(_dstConnString);
+        public static string SimpleSrc => GetSimpleConnString(_srcConnString);
+
 
         public static string SrcFilePath => new SQLiteConnectionStringBuilder(_srcConnString).DataSource;
     }

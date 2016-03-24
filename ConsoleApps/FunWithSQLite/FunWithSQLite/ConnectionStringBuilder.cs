@@ -20,10 +20,8 @@ namespace FunWithSQLite
                 BinaryGUID = false,
             };
 
-
             return cb.ToString();
         }
-
 
         public static string GetZipConnectionString(string input)
         {
@@ -78,20 +76,6 @@ namespace FunWithSQLite
             return new SqliteUri(fileInfo, nvc);
         }
 
-        private static string GetDotNetConnStr(SqliteUri dbUri, bool hasPassword, bool isZipVfs)
-        {
-            var sb = new StringBuilder();
-
-            sb.Append($"FullUri={dbUri.FormattedValue};");
-
-            if (isZipVfs && hasPassword)
-            {
-                sb.Append("ZipVfsVersion=v3;");
-            }
-
-            return sb.ToString();
-        }
-
         /// <summary>
         /// Valid values are 2^n where result b/w 512 and 65536 (or 2^8 through 2^16th)
         /// </summary>
@@ -110,6 +94,20 @@ namespace FunWithSQLite
             {
                 throw new ArgumentException($"pageSize {pageSize }");
             }
+        }
+
+        private static string GetDotNetConnStr(SqliteUri dbUri, bool hasPassword, bool isZipVfs)
+        {
+            var sb = new StringBuilder();
+
+            sb.Append($"FullUri={dbUri.FormattedValue};");
+
+            if (isZipVfs && hasPassword)
+            {
+                sb.Append("ZipVfsVersion=v3;");
+            }
+
+            return sb.ToString();
         }
     }
 }
