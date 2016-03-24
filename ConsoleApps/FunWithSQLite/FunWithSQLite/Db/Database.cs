@@ -48,6 +48,7 @@ CREATE TABLE MyTable (
         public void CreateDb(string tableCreate = CREATE_TABLE_SQL)
         {
             if (File.Exists(FullPath)) File.Delete(FullPath);
+            Directory.CreateDirectory(new FileInfo(FullPath).Directory.FullName);
 
             SQLiteConnection.CreateFile(FullPath);
 
