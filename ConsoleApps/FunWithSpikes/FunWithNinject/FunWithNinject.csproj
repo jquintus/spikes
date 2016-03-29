@@ -69,6 +69,10 @@
     <Compile Include="FooBars.cs" />
     <Compile Include="Initialization\IInitializable.cs" />
     <Compile Include="Initialization\Tests.cs" />
+    <Compile Include="InjectingSequences\Foo.cs" />
+    <Compile Include="InjectingSequences\IEnumerableOfFoo.cs" />
+    <Compile Include="InjectingSequences\ListOfFoo.cs" />
+    <Compile Include="InjectingSequences\SequenceInjectionTests.cs" />
     <Compile Include="InjectionTests.cs" />
     <Compile Include="ModulesModulesModules\Module1.cs" />
     <Compile Include="ModulesModulesModules\Module2.cs" />
