@@ -8,6 +8,12 @@ namespace FunWithNewtonsoft
     [TestFixture]
     public class ListTests
     {
+        public interface INamed
+        {
+            string Meta { get; }
+            string Name { get; set; }
+        }
+
         [Test]
         public void DeserializeObject_JsonList_ReturnsIEnumerable()
         {
@@ -59,6 +65,21 @@ namespace FunWithNewtonsoft
         }
 
         [Test]
+        public void DeserializeObject_ListOfInterface_Throws()
+        {
+            // Assemble
+            var expected = new List<INamed>
+            {
+                new FooNamed {Name = "Fu Fighters" },
+                new FooNamed {Name = "Kung Fu Panda" },
+            };
+            var json = JsonConvert.SerializeObject(expected);
+
+            // Act/Assert
+            Assert.Throws<JsonSerializationException>(() => JsonConvert.DeserializeObject<List<INamed>>(json));
+        }
+
+        [Test]
         public void DeserializeObject_MissingSquareBracesAroundJsonList_Throws()
         {
             // Assemble
@@ -94,6 +115,12 @@ namespace FunWithNewtonsoft
 
             Assert.AreEqual(3, actual[2].Number);
             Assert.AreEqual("C", actual[2].Letter);
+        }
+
+        public class FooNamed : INamed
+        {
+            public string Meta => "Foo";
+            public string Name { get; set; }
         }
     }
 }
