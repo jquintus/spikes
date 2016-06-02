@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using FluentAssertions;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -82,6 +83,33 @@ namespace FunWithSpikes
                           select i;
             // Assert
             CollectionAssert.AreEqual(expected, ordered);
+        }
+
+        [Test]
+        public void ToList_AddingToList_DoesNotUpdateOriginalList()
+        {
+            // Assemble
+            List<int> numbers = new List<int> { 1, 2, 4 };
+            List<int> expected = new List<int> { 1, 2, 4 };
+
+            // Act
+            numbers.ToList().Add(5);
+
+            // Assert
+            CollectionAssert.AreEquivalent(expected, numbers);
+        }
+
+        [Test]
+        public void ToList_ReturnsNewInstance()
+        {
+            // Assemble
+            List<int> original = new List<int>();
+
+            // Act
+            var actual = original.ToList();
+
+            // Assert
+            actual.Should().NotBeSameAs(original);
         }
     }
 }
