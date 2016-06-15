@@ -59,6 +59,7 @@
     <Compile Include="FunWithTasks.cs" />
     <Compile Include="IHaveValue.cs" />
     <Compile Include="LinqTests.cs" />
+    <Compile Include="Permuations.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReflectionTests.cs" />

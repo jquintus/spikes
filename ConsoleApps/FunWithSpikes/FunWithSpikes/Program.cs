@@ -7,7 +7,7 @@ namespace FunWithSpikes
         private static void Main(string[] args)
         {
 
-
+            Permuations.Run();
 
         }
     }
