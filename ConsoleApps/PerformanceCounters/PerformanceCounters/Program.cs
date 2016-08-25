@@ -78,21 +78,11 @@ namespace PerformanceCounters
             }
         }
 
-        private static void ClearCounter(PerformanceCounter dogCounter)
+        private static void ClearCounter(PerformanceCounter counter)
         {
-            dogCounter.IncrementBy(-1 * dogCounter.RawValue);
+            counter.IncrementBy(-1 * counter.RawValue);
         }
 
-        private static void CreatePerformanceCounterFromMads()
-        {
-            PerfmormanceMonitor mon = new PerfmormanceMonitor("Headlight Parser");
-            mon.AddCounter("# operations executed", "Total number of executed commands", PerformanceCounterType.NumberOfItems64);
-            mon.AddCounter("# logfiles parsed", "Total number of logfiles parsed", PerformanceCounterType.NumberOfItems64);
-            mon.AddCounter("# operations / sec", "Number of operations executed per second", PerformanceCounterType.RateOfCountsPerSecond32);
-            mon.AddCounter("average time per operation", "Average duration per operation execution", PerformanceCounterType.AverageTimer32);
-            mon.AddCounter("average time per operation base", "Average duration per operation execution base", PerformanceCounterType.AverageBase);
-            mon.CreateCounters();
-        }
 
         private static void CreatePerformanceCounter()
         {
@@ -100,6 +90,7 @@ namespace PerformanceCounters
             PerfmormanceMonitor mon = new PerfmormanceMonitor("DotAlign");
             mon.AddCounter("# of enters", "Total number of times enter is hit", PerformanceCounterType.NumberOfItems64);
             mon.AddCounter("# of dogs", "Total number of times user types in 'dog'", PerformanceCounterType.NumberOfItems64);
+            mon.AddCounter("# of cats", "Total number of times user types in 'cat'", PerformanceCounterType.NumberOfItems64);
             mon.CreateCounters();
         }
 

@@ -38,7 +38,7 @@ namespace PerformanceCounters
         /// </summary>
         public void CreateCounters()
         {
-            if (!PerformanceCounterCategory.Exists(_category))
+            //if (!PerformanceCounterCategory.Exists(_category))
             {
                 PerformanceCounterCategory.Create(_category, _category, PerformanceCounterCategoryType.Unknown, _counters);
             }
