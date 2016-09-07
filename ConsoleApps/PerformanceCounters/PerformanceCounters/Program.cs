@@ -1,18 +1,31 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 
 namespace PerformanceCounters
 {
-    internal class Program
+    public class Program
     {
+        public static readonly string _animalsCounterName = "# of animals";
+        private static readonly string _dogsCounterName = "# of dogs";
+        private static readonly string _entersCounterName = "# of enters";
+        private static readonly PerfmormanceMonitor _mon = new PerfmormanceMonitor(".DotAlign-Single", ".DotAlign-Multi");
+
         public static void Main(string[] args)
         {
             try
             {
                 Console.WriteLine("Hello world");
-                CreatePerformanceCounter();
 
-                Run();
+                if (args.FirstOrDefault() == "-d")
+                {
+                    _mon.DeleteCounters();
+                }
+                else
+                {
+                    CreatePerformanceCounter();
+                    Run();
+                }
             }
             catch (Exception ex)
             {
@@ -28,101 +41,81 @@ namespace PerformanceCounters
             Console.WriteLine("Goodbye world");
         }
 
+        private static void ClearCounter(PerformanceCounter counter)
+        {
+            counter.IncrementBy(-1 * counter.RawValue);
+        }
+
+        private static void CreatePerformanceCounter()
+        {
+            // This needs to be run as an administrator
+            _mon.AddCounter(_entersCounterName, "Total number of times enter is hit", PerformanceCounterType.NumberOfItems64);
+            _mon.AddCounter(_dogsCounterName, "Total number of times user types in 'dog'", PerformanceCounterType.NumberOfItems64);
+            _mon.AddCounter(_animalsCounterName, "Total number of times user types in 'cat'", PerformanceCounterType.NumberOfItems64);
+            _mon.CreateCounters();
+        }
+
         private static void Run()
         {
-            Console.WriteLine("Type 'dog' to increase the count of dogs");
-            Console.WriteLine("Type 'cat' to decrease the count of dogs");
-            Console.WriteLine("Type 'clear' to reset the enter and the dog counters");
+            ShowInstructions();
 
-            var enterCounter = new PerformanceCounter
-            {
-                CategoryName = "DotAlign",
-                CounterName = "# of enters",
-                MachineName = ".",
-                ReadOnly = false,
-            };
+            var enterCounter = _mon.GetCounter(_entersCounterName);
+            var dogCounter = _mon.GetCounter(_dogsCounterName);
 
-            var dogCounter = new PerformanceCounter
-            {
-                CategoryName = "DotAlign",
-                CounterName = "# of dogs",
-                MachineName = ".",
-                ReadOnly = false,
-            };
-            ClearCounter(dogCounter);
-            ClearCounter(enterCounter);
-
+            //ClearCounter(dogCounter);
+            //ClearCounter(enterCounter);
 
             var input = "";
             while (input.ToLower() != "exit")
             {
                 input = Console.ReadLine().Trim().ToLower();
+                var isAnimal = false;
 
                 switch (input)
                 {
                     case "dog":
                         dogCounter.Increment();
+                        isAnimal = true;
                         break;
+
                     case "cat":
+                        isAnimal = true;
                         dogCounter.Decrement();
                         break;
+
+                    case "duck":
+                    case "worm":
+                    case "bear":
+                    case "horse":
+                        isAnimal = true;
+                        break;
+
                     case "clear":
                         ClearCounter(dogCounter);
                         ClearCounter(enterCounter);
                         break;
+
                     default:
                         break;
+                }
+
+                if (isAnimal)
+                {
+                    using (var animal = _mon.CreateCounter(_animalsCounterName, input))
+                    {
+                        animal.Increment();
+                    }
                 }
 
                 enterCounter.Increment();
             }
         }
 
-        private static void ClearCounter(PerformanceCounter counter)
+        private static void ShowInstructions()
         {
-            counter.IncrementBy(-1 * counter.RawValue);
-        }
-
-
-        private static void CreatePerformanceCounter()
-        {
-            // This needs to be run as an administrator
-            PerfmormanceMonitor mon = new PerfmormanceMonitor("DotAlign");
-            mon.AddCounter("# of enters", "Total number of times enter is hit", PerformanceCounterType.NumberOfItems64);
-            mon.AddCounter("# of dogs", "Total number of times user types in 'dog'", PerformanceCounterType.NumberOfItems64);
-            mon.AddCounter("# of cats", "Total number of times user types in 'cat'", PerformanceCounterType.NumberOfItems64);
-            mon.CreateCounters();
-        }
-
-
-        private static void MsdnSample()
-        {
-            // Create a collection of type CounterCreationDataCollection.
-            CounterCreationDataCollection CounterDatas = new CounterCreationDataCollection();
-
-            // Create the counters and set their properties.
-            var cdCounter1 = new CounterCreationData
-            {
-                CounterName = "Counter1",
-                CounterHelp = "help string1",
-                CounterType = PerformanceCounterType.NumberOfItems64,
-            };
-
-            var cdCounter2 = new CounterCreationData
-            {
-                CounterName = "Counter2",
-                CounterHelp = "help string 2",
-                CounterType = PerformanceCounterType.NumberOfItems64,
-            };
-
-            // Add both counters to the collection.
-            CounterDatas.Add(cdCounter1);
-            CounterDatas.Add(cdCounter2);
-
-            // Create the category and pass the collection to it.
-            PerformanceCounterCategory.Create(
-                "Multi Counter Category", "Category help",
-                PerformanceCounterCategoryType.SingleInstance, CounterDatas);
+            Console.WriteLine("Type 'dog' to increase the count of dogs");
+            Console.WriteLine("Type 'cat' to decrease the count of dogs");
+            Console.WriteLine("Type 'clear' to reset the enter and the dog counters");
         }
     }
 }
