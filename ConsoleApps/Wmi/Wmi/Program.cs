@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Management;
 
 namespace Wmi
@@ -12,12 +13,36 @@ namespace Wmi
             // https://www.microsoft.com/en-us/download/confirmation.aspx?id=8572
 
             TotalRam();
+            DumpProcessorInfo();
 
             if (Debugger.IsAttached)
             {
                 Console.WriteLine("Press any key to exit");
                 Console.ReadKey();
             }
+        }
+
+        private static void DumpProcessorInfo()
+        {
+            Console.WriteLine("Processor Info");
+
+            var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_Processor");
+
+            /* Win32_Processor
+             * https://msdn.microsoft.com/en-us/library/aa394373%28v=vs.85%29.aspx?f=255&MSPPError=-2147217396
+             * Properties found to be useful:
+             * - Architecture
+             * - Name
+             * - NumberOfLogicalProcessors
+             */
+            foreach (var queryObj in searcher.Get().OfType<ManagementObject>())
+            {
+                foreach (var prop in queryObj.Properties)
+                {
+                    Console.WriteLine($"Win32_Processor\\{prop.Name}: {prop.Value}");
+                }
+            }
+            Console.WriteLine();
         }
 
         private static double BytesToGigs(ManagementObject queryObj, string column)
@@ -30,12 +55,18 @@ namespace Wmi
 
         private static void TotalRam()
         {
+            /*
+             * As per the documentation, Win32_PhysicalMemory.Capacity is the 
+             * preferred way to get the total installed RAM, since 
+             * Win32_ComputerSystem.TotalPhysicalMemory does not report the full
+             * installed ram.  It removes 
+             */
+
             Console.WriteLine("Calculating total installed RAM...");
             TotalRamFromComputerSystem();
-
-            // As per the documentation, this is the 
-            // preferred way to get the total installed RAM.
             TotalRamFromPhysicalMemory();
+
+            Console.WriteLine();
         }
 
         private static void TotalRamFromPhysicalMemory()
@@ -51,7 +82,6 @@ namespace Wmi
 
         private static void TotalRamFromComputerSystem()
         {
-
             // https://msdn.microsoft.com/en-us/library/aa394102%28v=vs.85%29.aspx?f=255&MSPPError=-2147217396
             // From the docs:
             // --------------------------------------------------------------------------
