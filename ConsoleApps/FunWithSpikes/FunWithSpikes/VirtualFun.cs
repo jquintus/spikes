@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FunWithSpikes
 {
@@ -11,58 +7,87 @@ namespace FunWithSpikes
     {
         public static void Run()
         {
-            var timer = new Stopwatch();
             const int count = 100_000_000;
 
             var test = new TestClass();
 
             for (int i = 0; i < 4; i++)
             {
-                TimeIt("static   ", count, () => TestClass.StaticMethod());
-                TimeIt("interface", count, () => test.InterfaceMethod());
-                TimeIt("abstract ", count, () => test.AbstractMethod());
-                TimeIt("virtual  ", count, () => test.VirtualMethod());
-                TimeIt("sealed   ", count, () => test.SealedMethod());
+                TimeStatic(count);
+                TimeInterface(count, test);
+                TimeAbstract(count, test);
+                TimeVirtual(count, test);
+                TimeSealed(count, test);
                 Console.WriteLine();
             }
-            // Sample output:
-            //static    - 335
-            //interface - 266
-            //abstract  - 509
-            //virtual   - 400
-            //sealed    - 315
 
-            //static    - 275
-            //interface - 270
-            //abstract  - 370
-            //virtual   - 395
-            //sealed    - 226
-
-            //static    - 262
-            //interface - 279
-            //abstract  - 395
-            //virtual   - 365
-            //sealed    - 283
-
-            //static    - 234
-            //interface - 275
-            //abstract  - 377
-            //virtual   - 429
-            //sealed    - 227
+            // Results
+            //             Run 1   Run 2   Run 3   Run 4
+            // Static    :  47      32      33      38
+            // Interface :  37      32      32      33
+            // Sealed    :  32      32      37      34
+            // Abstract  : 183     168     164     171
+            // Virtual   : 239     189     223     200
         }
 
-        private static void TimeIt(string name, int count, Action action)
+        private static void TimeAbstract(int count, TestClass test)
         {
             var sw = Stopwatch.StartNew();
             for (int i = 0; i < count; i++)
             {
-                action();
+                test.AbstractMethod();
             }
             sw.Stop();
-            Console.WriteLine($"{name} - {sw.ElapsedMilliseconds}");
+            Console.WriteLine($"abstract  : {sw.ElapsedMilliseconds}");
         }
 
-        public interface ISomething
+        private static void TimeInterface(int count, TestClass test)
+        {
+            var sw = Stopwatch.StartNew();
+            for (int i = 0; i < count; i++)
+            {
+                test.InterfaceMethod();
+            }
+            sw.Stop();
+            Console.WriteLine($"interface : {sw.ElapsedMilliseconds}");
+        }
+
+        private static void TimeSealed(int count, TestClass test)
+        {
+            var sw = Stopwatch.StartNew();
+            for (int i = 0; i < count; i++)
+            {
+                test.SealedMethod();
+            }
+            sw.Stop();
+            Console.WriteLine($"sealed    : {sw.ElapsedMilliseconds}");
+        }
+
+        private static void TimeStatic(int count)
+        {
+            var sw = Stopwatch.StartNew();
+            for (int i = 0; i < count; i++)
+            {
+                TestClass.StaticMethod();
+            }
+            sw.Stop();
+            Console.WriteLine($"static    : {sw.ElapsedMilliseconds}");
+        }
+
+        private static void TimeVirtual(int count, TestClass test)
+        {
+            var sw = Stopwatch.StartNew();
+            for (int i = 0; i < count; i++)
+            {
+                test.VirtualMethod();
+            }
+            sw.Stop();
+            Console.WriteLine($"virtual   : {sw.ElapsedMilliseconds}");
+        }
+
+        #region Nested Classes
+
+        private interface ISomething
         {
             void InterfaceMethod();
         }
@@ -71,13 +96,30 @@ namespace FunWithSpikes
         {
             public abstract void AbstractMethod();
         }
+
         public class TestClass : BaseClass, ISomething
         {
-            public void InterfaceMethod() { }
-            public override void AbstractMethod() { }
-            public static void StaticMethod() { }
-            public virtual void VirtualMethod() { }
-            public void SealedMethod() { }
+            public static void StaticMethod()
+            {
+            }
+
+            public override void AbstractMethod()
+            {
+            }
+
+            public void InterfaceMethod()
+            {
+            }
+
+            public void SealedMethod()
+            {
+            }
+
+            public virtual void VirtualMethod()
+            {
+            }
         }
+
+        #endregion
     }
 }
