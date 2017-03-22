@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace FunWithSpikes
 {
@@ -8,6 +9,12 @@ namespace FunWithSpikes
         {
 
             VirtualFun.Run();
+
+            if (Debugger.IsAttached)
+            {
+                Console.Write("Press any key to continue . . .");
+                Console.ReadKey();
+            }
 
         }
     }

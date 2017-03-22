@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
+using System.Text;
 
 namespace FunWithSpikes
 {
@@ -7,30 +10,81 @@ namespace FunWithSpikes
     {
         public static void Run()
         {
-            const int count = 100_000_000;
+            const int count = 100000000;
+            var dict = CreateDataDictionary();
 
-            var test = new TestClass();
-
-            for (int i = 0; i < 4; i++)
-            {
-                TimeStatic(count);
-                TimeInterface(count, test);
-                TimeAbstract(count, test);
-                TimeVirtual(count, test);
-                TimeSealed(count, test);
-                Console.WriteLine();
-            }
+            TimeAll(count, dict);
+            PrintResults(dict);
 
             // Results
-            //             Run 1   Run 2   Run 3   Run 4
-            // Static    :  47      32      33      38
-            // Interface :  37      32      32      33
-            // Sealed    :  32      32      37      34
-            // Abstract  : 183     168     164     171
-            // Virtual   : 239     189     223     200
+            //             Run 1   Run 2   Run 3   Run 4   Run 5   Total               % Delta
+            //    Static    1113     743     855     839     946    4496                0.00 %
+            // Interface    1264     882    1067    1180    1012    5405               20.22 %
+            //    Sealed     954    1027    1105    1110     926    5122               13.92 %
+            //  Abstract    1267    1148    1105    1344    1009    5873               30.63 %
+            //   Virtual    1227    1174    1200    1389    1065    6055               34.68 %
         }
 
-        private static void TimeAbstract(int count, TestClass test)
+        private static Dictionary<string, List<long>> CreateDataDictionary()
+        {
+            return new Dictionary<string, List<long>>
+            {
+                { "Static", new List<long>() },
+                { "Interface", new List<long>() },
+                { "Sealed", new List<long>() },
+                { "Abstract", new List<long>() },
+                { "Virtual", new List<long>() },
+            };
+        }
+
+        private static void PrintResults(Dictionary<string, List<long>> dict)
+        {
+            var staticTotalMs = dict["Static"].Sum();
+            PrintResultsHeader(dict["Static"].Count);
+            foreach (var kvp in dict)
+            {
+                PrintResults(kvp, staticTotalMs);
+            }
+        }
+
+        private static void PrintResults(KeyValuePair<string, List<long>> kvp, double staticTotalMs)
+        {
+            var total = kvp.Value.Sum();
+            var percentDelta = staticTotalMs == 0
+                ? 0
+                : (total - staticTotalMs) / staticTotalMs;
+
+            var sb = new StringBuilder();
+            sb.Append($"{kvp.Key,10}");
+
+            foreach (var item in kvp.Value)
+            {
+                sb.AppendFormat("{0,8}", item);
+            }
+
+            sb.AppendFormat("{0,8}", total);
+            sb.AppendFormat("{0,22:P2}", percentDelta);
+
+            Console.WriteLine(sb);
+        }
+
+        private static void PrintResultsHeader(int count)
+        {
+            var sb = new StringBuilder();
+            sb.Append($"{"",12}");
+
+            for (int i = 0; i < count; i++)
+            {
+                sb.AppendFormat("{0,8}", $"Run {i + 1}");
+            }
+
+            sb.AppendFormat("{0,8}", "Total");
+            sb.AppendFormat("{0,20}", "% Delta");
+
+            Console.WriteLine(sb);
+        }
+
+        private static long TimeAbstract(int count, BaseClass test)
         {
             var sw = Stopwatch.StartNew();
             for (int i = 0; i < count; i++)
@@ -38,10 +92,23 @@ namespace FunWithSpikes
                 test.AbstractMethod();
             }
             sw.Stop();
-            Console.WriteLine($"abstract  : {sw.ElapsedMilliseconds}");
+            return sw.ElapsedMilliseconds;
         }
 
-        private static void TimeInterface(int count, TestClass test)
+        private static void TimeAll(int count, Dictionary<string, List<long>> dict)
+        {
+            var test = new TestClass();
+            for (int i = 0; i < 5; i++)
+            {
+                dict["Static"].Add(TimeStatic(count));
+                dict["Interface"].Add(TimeInterface(count, test));
+                dict["Abstract"].Add(TimeAbstract(count, test));
+                dict["Virtual"].Add(TimeVirtual(count, test));
+                dict["Sealed"].Add(TimeSealed(count, test));
+            }
+        }
+
+        private static long TimeInterface(int count, ISomething test)
         {
             var sw = Stopwatch.StartNew();
             for (int i = 0; i < count; i++)
@@ -49,10 +116,10 @@ namespace FunWithSpikes
                 test.InterfaceMethod();
             }
             sw.Stop();
-            Console.WriteLine($"interface : {sw.ElapsedMilliseconds}");
+            return sw.ElapsedMilliseconds;
         }
 
-        private static void TimeSealed(int count, TestClass test)
+        private static long TimeSealed(int count, TestClass test)
         {
             var sw = Stopwatch.StartNew();
             for (int i = 0; i < count; i++)
@@ -60,10 +127,10 @@ namespace FunWithSpikes
                 test.SealedMethod();
             }
             sw.Stop();
-            Console.WriteLine($"sealed    : {sw.ElapsedMilliseconds}");
+            return sw.ElapsedMilliseconds;
         }
 
-        private static void TimeStatic(int count)
+        private static long TimeStatic(int count)
         {
             var sw = Stopwatch.StartNew();
             for (int i = 0; i < count; i++)
@@ -71,10 +138,10 @@ namespace FunWithSpikes
                 TestClass.StaticMethod();
             }
             sw.Stop();
-            Console.WriteLine($"static    : {sw.ElapsedMilliseconds}");
+            return sw.ElapsedMilliseconds;
         }
 
-        private static void TimeVirtual(int count, TestClass test)
+        private static long TimeVirtual(int count, TestClass test)
         {
             var sw = Stopwatch.StartNew();
             for (int i = 0; i < count; i++)
@@ -82,7 +149,7 @@ namespace FunWithSpikes
                 test.VirtualMethod();
             }
             sw.Stop();
-            Console.WriteLine($"virtual   : {sw.ElapsedMilliseconds}");
+            return sw.ElapsedMilliseconds;
         }
 
         #region Nested Classes
@@ -120,6 +187,6 @@ namespace FunWithSpikes
             }
         }
 
-        #endregion
+        #endregion Nested Classes
     }
 }
