@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Linq;
 using System.Management;
+using static Wmi.Utils;
 
 namespace Wmi
 {
@@ -20,28 +20,6 @@ namespace Wmi
             {
                 Console.WriteLine("Press any key to exit");
                 Console.ReadKey();
-            }
-        }
-
-        private static double BytesToGigs(ManagementObject queryObj, string column)
-        {
-            var totalPhysicalMemoryString = queryObj[column];
-            var totalPhysicalMemory = Convert.ToDouble(totalPhysicalMemoryString);
-            var totalPhysicalGigs = Math.Round(totalPhysicalMemory / 1024 / 1024 / 1024, digits: 2);
-            return totalPhysicalGigs;
-        }
-
-        private static void DumpAllPropertiesForClass(string queryClass, string root = @"Root\CIMV2")
-        {
-            using (var searcher = new ManagementObjectSearcher(root, $"SELECT * FROM {queryClass}"))
-            {
-                foreach (var queryObj in searcher.Get().OfType<ManagementObject>())
-                {
-                    foreach (var prop in queryObj.Properties)
-                    {
-                        Console.WriteLine($"{queryClass}\\{prop.Name}: {prop.Value}");
-                    }
-                }
             }
         }
 
