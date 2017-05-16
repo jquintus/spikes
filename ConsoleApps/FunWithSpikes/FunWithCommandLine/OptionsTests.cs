@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using System;
 
 namespace FunWithCommandLine
 {
@@ -13,7 +12,7 @@ namespace FunWithCommandLine
             var args = new string[0];
 
             // Act
-            var options = CreateOptions<OptionsWithDefaultEnum>(args);
+            var options = OptionsHelpers.Parse<OptionsWithDefaultEnum>(args);
 
             // Assert
             Assert.AreEqual(Letter.B, options.DefaultedLetter);
@@ -26,7 +25,7 @@ namespace FunWithCommandLine
             var args = new string[0];
 
             // Act
-            var options = CreateOptions<OptionsWithEnums>(args);
+            var options = OptionsHelpers.Parse<OptionsWithEnums>(args);
 
             // Assert
             Assert.AreEqual(Letter.A, options.DefaultedLetter);
@@ -39,12 +38,11 @@ namespace FunWithCommandLine
             var args = new string[] { "--letter", "C" };
 
             // Act
-            var options = CreateOptions<OptionsWithEnums>(args);
+            var options = OptionsHelpers.Parse<OptionsWithEnums>(args);
 
             // Assert
             Assert.AreEqual(Letter.C, options.DefaultedLetter);
         }
-
 
         [Test]
         public void OptionsWithEnums_EnumStringValueWithIncorrectCasingInArgs_ReturnsEnumValue()
@@ -53,26 +51,10 @@ namespace FunWithCommandLine
             var args = new string[] { "--letter", "c" };
 
             // Act
-            var options = CreateOptions<OptionsWithEnums>(args);
+            var options = OptionsHelpers.Parse<OptionsWithEnums>(args);
 
             // Assert
             Assert.AreEqual(Letter.C, options.DefaultedLetter);
-        }
-
-
-
-        private T CreateOptions<T>(string[] args) where T : new()
-        {
-            var options = new T();
-            if (CommandLine.Parser.Default.ParseArguments(args, options))
-            {
-                return options;
-            }
-            else
-            {
-                Assert.Fail("could not parse args");
-                throw new Exception("this will never be hit since Assert.Fail throws internally");
-            }
         }
     }
 }
