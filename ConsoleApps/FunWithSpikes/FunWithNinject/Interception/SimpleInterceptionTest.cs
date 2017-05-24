@@ -13,6 +13,23 @@ namespace FunWithNinject.Interception
     [TestFixture]
     public class SimpleInterceptionTest
     {
+        /*
+         * I wasn't able to figure out how to get interception to work yet
+         * I wasn't able to figure out how to get interception to work yet
+         * I wasn't able to figure out how to get interception to work yet
+         * I wasn't able to figure out how to get interception to work yet
+         * I wasn't able to figure out how to get interception to work yet
+         * I wasn't able to figure out how to get interception to work yet
+         * I wasn't able to figure out how to get interception to work yet
+         * I wasn't able to figure out how to get interception to work yet
+         * I wasn't able to figure out how to get interception to work yet
+         * I wasn't able to figure out how to get interception to work yet
+         * I wasn't able to figure out how to get interception to work yet
+         * I wasn't able to figure out how to get interception to work yet
+         * I wasn't able to figure out how to get interception to work yet
+         * I wasn't able to figure out how to get interception to work yet
+         */
+
         [Test]
         public void Test()
         {
