@@ -59,5 +59,23 @@ namespace FunWithNinject.WhenInjected
                 Assert.IsInstanceOf<GoogleUtility>(goog.Utility);
             }
         }
+
+        [Test]
+        public void WhenInjectedInto_SpecifyByInterface()
+        {
+            // Assemble
+            using (var k = new StandardKernel())
+            {
+                k.Bind<IFoo>().To<FooDependingOnBar>();
+                k.Bind<IBar>().To<Bar2>().WhenInjectedInto<IFoo>();
+
+                // Act
+                var foo = k.Get<IFoo>();
+
+                // Assert
+                var fooWithBar = (FooDependingOnBar)foo;
+                Assert.IsInstanceOf<Bar2>(fooWithBar.Bar);
+            }
+        }
     }
 }

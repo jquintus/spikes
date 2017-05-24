@@ -45,6 +45,14 @@
     <Reference Include="Ninject.Extensions.Factory">
       <HintPath>..\packages\Ninject.Extensions.Factory.3.2.1.0\lib\net45-full\Ninject.Extensions.Factory.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject.Extensions.Interception, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.Interception.3.2.0.0\lib\net45-full\Ninject.Extensions.Interception.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Interception.DynamicProxy, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.Interception.DynamicProxy.3.2.0.0\lib\net45-full\Ninject.Extensions.Interception.DynamicProxy.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ninject.Extensions.NamedScope, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.Extensions.NamedScope.3.2.0.0\lib\net45-full\Ninject.Extensions.NamedScope.dll</HintPath>
       <Private>True</Private>
@@ -69,6 +77,7 @@
     <Compile Include="Factories\FactoryTests.cs" />
     <Compile Include="Factories\Foo.cs" />
     <Compile Include="FooBars.cs" />
+    <Compile Include="Initialization\FooBars.cs" />
     <Compile Include="Initialization\IInitializable.cs" />
     <Compile Include="Initialization\Tests.cs" />
     <Compile Include="InjectingSequences\Foo.cs" />
@@ -76,6 +85,7 @@
     <Compile Include="InjectingSequences\ListOfFoo.cs" />
     <Compile Include="InjectingSequences\SequenceInjectionTests.cs" />
     <Compile Include="InjectionTests.cs" />
+    <Compile Include="Interception\SimpleInterceptionTest.cs" />
     <Compile Include="ModulesModulesModules\Module1.cs" />
     <Compile Include="ModulesModulesModules\Module2.cs" />
     <Compile Include="ModulesModulesModules\Tests.cs" />
