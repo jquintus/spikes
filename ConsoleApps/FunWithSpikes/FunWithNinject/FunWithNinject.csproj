@@ -85,6 +85,8 @@
     <Compile Include="InjectingSequences\ListOfFoo.cs" />
     <Compile Include="InjectingSequences\SequenceInjectionTests.cs" />
     <Compile Include="InjectionTests.cs" />
+    <Compile Include="Interception\Foo.cs" />
+    <Compile Include="Interception\ReturnMaxIntInterceptor.cs" />
     <Compile Include="Interception\SimpleInterceptionTest.cs" />
     <Compile Include="ModulesModulesModules\Module1.cs" />
     <Compile Include="ModulesModulesModules\Module2.cs" />
