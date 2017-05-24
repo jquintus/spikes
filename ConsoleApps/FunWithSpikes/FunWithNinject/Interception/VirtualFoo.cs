@@ -1,9 +1,9 @@
 ﻿namespace FunWithNinject.Interception
 {
-    public class Foo
+    public class VirtualFoo : IFoo
     {
         /// <remarks>
-        /// In order to be intercepted, the 
+        /// In order to be intercepted, the
         /// property MUST be marked as virtual
         /// </remarks>
         public virtual int Bar(string input)

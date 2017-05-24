@@ -1,4 +1,5 @@
 ﻿using Ninject.Extensions.Interception;
+
 namespace FunWithNinject.Interception
 {
     public class ReturnMaxIntInterceptor : SimpleInterceptor

@@ -85,9 +85,14 @@
     <Compile Include="InjectingSequences\ListOfFoo.cs" />
     <Compile Include="InjectingSequences\SequenceInjectionTests.cs" />
     <Compile Include="InjectionTests.cs" />
-    <Compile Include="Interception\Foo.cs" />
+    <Compile Include="Interception\NonVirtualFoo.cs" />
+    <Compile Include="Interception\OverrideReturnInterceptor.cs" />
+    <Compile Include="Interception\SetReturnValueAttribute.cs" />
+    <Compile Include="Interception\AttributedFoo .cs" />
+    <Compile Include="Interception\IFoo.cs" />
     <Compile Include="Interception\ReturnMaxIntInterceptor.cs" />
     <Compile Include="Interception\SimpleInterceptionTest.cs" />
+    <Compile Include="Interception\VirtualFoo.cs" />
     <Compile Include="ModulesModulesModules\Module1.cs" />
     <Compile Include="ModulesModulesModules\Module2.cs" />
     <Compile Include="ModulesModulesModules\Tests.cs" />
