@@ -1,4 +1,4 @@
-﻿namespace FunWithNinject.NamedBindings
+﻿namespace FunWithNinject.AncestorBindings
 {
     public class SingleLevel
     {

@@ -1,6 +1,6 @@
 using Ninject;
 
-namespace FunWithNinject.NamedBindings
+namespace FunWithNinject.AncestorBindings
 {
     public class Root
     {

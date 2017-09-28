@@ -1,10 +1,10 @@
 ﻿using Ninject;
 using NUnit.Framework;
 
-namespace FunWithNinject.NamedBindings
+namespace FunWithNinject.AncestorBindings
 {
     [TestFixture]
-    public class NamedBindingsTests
+    public class AncestorBindingsTests
     {
         [Test]
         public void Named_NamedAndUnnamedInstanceRegisters_Throws()
