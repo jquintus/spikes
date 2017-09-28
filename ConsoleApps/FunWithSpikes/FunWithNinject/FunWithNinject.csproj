@@ -42,6 +42,10 @@
       <HintPath>..\packages\Ninject.Extensions.ChildKernel.3.2.0.0\lib\net45-full\Ninject.Extensions.ChildKernel.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ninject.Extensions.ContextPreservation, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.ContextPreservation.3.2.0.0\lib\net45-full\Ninject.Extensions.ContextPreservation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ninject.Extensions.Factory">
       <HintPath>..\packages\Ninject.Extensions.Factory.3.2.1.0\lib\net45-full\Ninject.Extensions.Factory.dll</HintPath>
     </Reference>
@@ -104,6 +108,13 @@
     <Compile Include="AncestorBindings\Parent.cs" />
     <Compile Include="AncestorBindings\Root.cs" />
     <Compile Include="AncestorBindings\SingleLevel.cs" />
+    <Compile Include="NamedScopes\NamedScopesTests.cs" />
+    <Compile Include="NamedScopes\NamedScopesTests.EventAggregator.cs" />
+    <Compile Include="NamedScopes\NamedScopesTests.HaveFunc.cs" />
+    <Compile Include="NamedScopes\NamedScopesTests.IEventAggregator.cs" />
+    <Compile Include="NamedScopes\NamedScopesTests.IHaveFunc.cs" />
+    <Compile Include="NamedScopes\NamedScopesTests.IRoot.cs" />
+    <Compile Include="NamedScopes\NamedScopesTests.Root.cs" />
     <Compile Include="OpenGenerics\OpenGenericsTests.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
