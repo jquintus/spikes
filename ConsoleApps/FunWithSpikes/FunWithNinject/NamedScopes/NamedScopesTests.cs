@@ -10,6 +10,8 @@ namespace FunWithNinject.NamedScopes
         [Test]
         public void Get_FuncBoundInNamedScope_ResolvedFuncIsInSameScopeAsParent()
         {
+            // This test depends on Ninject.Extensions.ContextPreservation being loaded.
+
             // Assemble
             using (var k = new StandardKernel())
             {
