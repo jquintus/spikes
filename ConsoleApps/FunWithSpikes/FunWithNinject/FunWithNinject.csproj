@@ -46,6 +46,9 @@
       <HintPath>..\packages\Ninject.Extensions.ContextPreservation.3.2.0.0\lib\net45-full\Ninject.Extensions.ContextPreservation.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ninject.Extensions.Conventions, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.Conventions.3.2.0.0\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject.Extensions.Factory">
       <HintPath>..\packages\Ninject.Extensions.Factory.3.2.1.0\lib\net45-full\Ninject.Extensions.Factory.dll</HintPath>
     </Reference>
@@ -75,6 +78,7 @@
   <ItemGroup>
     <Compile Include="ConflictingScopes\Implementations.cs" />
     <Compile Include="ConflictingScopes\Tests.cs" />
+    <Compile Include="Conventions\ConventionsTests.cs" />
     <Compile Include="CtorChoosing\MyObj.cs" />
     <Compile Include="CtorChoosing\Tests.cs" />
     <Compile Include="Factories\Bar.cs" />
