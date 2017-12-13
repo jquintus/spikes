@@ -1,9 +1,4 @@
 ﻿using FunWithSpikes.PardonTheExpression.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FunWithSpikes.PardonTheExpression
 {
@@ -20,6 +15,16 @@ namespace FunWithSpikes.PardonTheExpression
             var books = db.Query<Book>()
                           .Where(b => b.Title, "Time Machine")
                           .Where(b => b.Genre, Genre.ScienceFact)
+                          .Execute();
+
+            var booksAndAuthors = db.Query<Book>()
+                                    .Join(
+                                        b => b.Author,
+                                        a => a.Id,
+                                        b => b.AuthorId)
+                          .Where(b => b.Author.Name, "Dr. Science")
+                          .OrderBy(b => b.PubYear)
+                          .OrderBy(b => b.Author.Rating)
                           .Execute();
         }
     }
