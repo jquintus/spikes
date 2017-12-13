@@ -3,18 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
-using FunWithSpikes.PardonTheExpression.Model;
 
 namespace FunWithSpikes.PardonTheExpression
 {
     public class Query<T>
     {
-        private readonly IDatabase _db;
+        public IDatabase Database { get; }
+
         private readonly List<IWhere> _wheres;
 
         public Query(IDatabase db)
         {
-            _db = db;
+            // The fact that the query needs to know about 
+            // the database is a bit of a hack but can actually 
+            // be avoided with a query wrapper.  This was 
+            // ommitted because I just wanted to demonstrate the 
+            // usage of the query.
+            Database = db;
             _wheres = new List<IWhere>();
         }
 
@@ -41,13 +46,7 @@ namespace FunWithSpikes.PardonTheExpression
             return this;
         }
 
-        public IEnumerable<T> Execute()
-        {
-            var sql = ToSql();
-            return _db.Execute<T>(sql);
-        }
-
-        private string ToSql()
+        public string ToSql()
         {
             var sb = new StringBuilder();
             sb.AppendLine($"SELECT * FROM {typeof(T).Name}");
