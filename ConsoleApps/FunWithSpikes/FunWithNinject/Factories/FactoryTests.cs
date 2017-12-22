@@ -8,7 +8,7 @@
     public class FactoryTests
     {
         [Test]
-        [ExpectedException(typeof(Ninject.ActivationException))]
+        //[ExpectedException(typeof(Ninject.ActivationException))]
         public void FactoryDoesNotPassParametersToSubDependency()
         {
             using (var kernel = new StandardKernel())
@@ -20,7 +20,7 @@
                 var factory = kernel.Get<Func<int, IFoo>>();
 
                 // Act
-                var foo = factory(7);
+                Assert.Throws<ActivationException>(() => factory(7));
             }
         }
 
