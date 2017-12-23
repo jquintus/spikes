@@ -18,6 +18,7 @@ namespace FunWithNinject.Interception.CacheInterceptor
             if (_returnValue == null)
             {
                 invocation.Proceed();
+                SetCachedValue(invocation);
             }
             else
             {
@@ -27,17 +28,22 @@ namespace FunWithNinject.Interception.CacheInterceptor
 
         private object GetCachedValue(IInvocation invocation)
         {
-            object value = null;
             var key = invocation.Request.Method;
-            if (_returnValues.TryGetValue(key, out value))
+            if (_returnValues.TryGetValue(key, out object value))
             {
-                _returnValues[key] = null;
+                _returnValues.Remove(key);
                 return value;
             }
             else
             {
                 return null;
             }
+        }
+
+        private void SetCachedValue(IInvocation invocation)
+        {
+            var key = invocation.Request.Method;
+            _returnValues[key] = invocation.ReturnValue;
         }
     }
 }

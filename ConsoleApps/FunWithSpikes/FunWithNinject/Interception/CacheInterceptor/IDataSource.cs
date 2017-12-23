@@ -2,6 +2,8 @@
 {
     public interface IDataSource
     {
+        int TimesCalled { get; }
+
         int GetInt();
         string GetString();
     }

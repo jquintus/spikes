@@ -1,10 +1,6 @@
 ﻿using Ninject;
 using Ninject.Extensions.Interception.Infrastructure.Language;
 using NUnit.Framework;
-using System;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FunWithNinject.Interception.CacheInterceptor
 {
@@ -26,7 +22,46 @@ namespace FunWithNinject.Interception.CacheInterceptor
                 Assert.AreEqual(10, actual);
             }
         }
-        
+
+        [Test]
+        public void GetInt_SecondCall_ReturnsCachedValueWithoutCallingRealMethod()
+        {
+            // Assemble
+            using (var kernel = new StandardKernel())
+            {
+                var dataSource = CreateDataSource(kernel);
+
+                // Act
+                var firstCall = dataSource.GetInt();
+                var actual = dataSource.GetInt();
+
+                // Assert
+                Assert.AreEqual(10, actual);
+                Assert.AreEqual(firstCall, actual);
+                Assert.AreEqual(1, dataSource.TimesCalled);
+            }
+        }
+
+        [Test]
+        public void GetInt_ThirdCall_ReturnsNonCachedValue()
+        {
+            // Assemble
+            using (var kernel = new StandardKernel())
+            {
+                var dataSource = CreateDataSource(kernel);
+
+                // Act
+                var firstCall = dataSource.GetInt();
+                var secondCall = dataSource.GetInt();
+                var actual = dataSource.GetInt();
+
+                // Assert
+                Assert.AreEqual(11, actual);
+                Assert.AreNotEqual(secondCall, actual);
+                Assert.AreEqual(2, dataSource.TimesCalled);
+            }
+        }
+
         private static IDataSource CreateDataSource(IKernel kernel)
         {
             kernel.Bind<IDataSource>()
