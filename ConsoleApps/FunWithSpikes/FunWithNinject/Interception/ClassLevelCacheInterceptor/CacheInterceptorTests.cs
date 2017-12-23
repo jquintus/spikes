@@ -2,7 +2,7 @@
 using Ninject.Extensions.Interception.Infrastructure.Language;
 using NUnit.Framework;
 
-namespace FunWithNinject.Interception.CacheInterceptor
+namespace FunWithNinject.Interception.ClassLevelCacheInterceptor
 {
     [TestFixture]
     public class CacheInterceptorTests

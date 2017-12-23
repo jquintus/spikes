@@ -1,4 +1,4 @@
-﻿namespace FunWithNinject.Interception.CacheInterceptor
+﻿namespace FunWithNinject.Interception.ClassLevelCacheInterceptor
 {
     public class DataSource : IDataSource
     {

@@ -96,10 +96,10 @@
     <Compile Include="InjectingSequences\ListOfFoo.cs" />
     <Compile Include="InjectingSequences\SequenceInjectionTests.cs" />
     <Compile Include="InjectionTests.cs" />
-    <Compile Include="Interception\CacheInterceptor\CacheInterceptorTests.cs" />
-    <Compile Include="Interception\CacheInterceptor\DataSource.cs" />
-    <Compile Include="Interception\CacheInterceptor\IDataSource.cs" />
-    <Compile Include="Interception\CacheInterceptor\SimpleCache.cs" />
+    <Compile Include="Interception\ClassLevelCacheInterceptor\CacheInterceptorTests.cs" />
+    <Compile Include="Interception\ClassLevelCacheInterceptor\DataSource.cs" />
+    <Compile Include="Interception\ClassLevelCacheInterceptor\IDataSource.cs" />
+    <Compile Include="Interception\ClassLevelCacheInterceptor\SimpleCache.cs" />
     <Compile Include="Interception\NonVirtualFoo.cs" />
     <Compile Include="Interception\OverrideReturnInterceptor.cs" />
     <Compile Include="Interception\SetReturnValueAttribute.cs" />

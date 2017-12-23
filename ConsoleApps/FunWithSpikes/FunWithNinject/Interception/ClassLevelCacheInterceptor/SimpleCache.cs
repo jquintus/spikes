@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace FunWithNinject.Interception.CacheInterceptor
+namespace FunWithNinject.Interception.ClassLevelCacheInterceptor
 {
     public class SimpleCache : IInterceptor
     {
