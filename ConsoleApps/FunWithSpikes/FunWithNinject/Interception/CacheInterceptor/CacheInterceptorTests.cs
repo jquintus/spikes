@@ -62,6 +62,63 @@ namespace FunWithNinject.Interception.CacheInterceptor
             }
         }
 
+        [Test]
+        public void GetString_CalledTwice_ReturnsCachedValue()
+        {
+            // Assemble
+            using (var kernel = new StandardKernel())
+            {
+                var dataSource = CreateDataSource(kernel);
+
+                // Act
+                var firstCall = dataSource.GetString();
+                var actual = dataSource.GetString();
+
+                // Assert
+                Assert.AreEqual("10", actual);
+                Assert.AreEqual(firstCall, actual);
+                Assert.AreEqual(1, dataSource.TimesCalled);
+            }
+        }
+
+        [Test]
+        public void GetString_CalledAfterGetInt_ReturnsNonCachedValue()
+        {
+            // Assemble
+            using (var kernel = new StandardKernel())
+            {
+                var dataSource = CreateDataSource(kernel);
+
+                // Act
+                dataSource.GetInt();
+                var actual = dataSource.GetString();
+
+                // Assert
+                Assert.AreEqual("11", actual);
+                Assert.AreEqual(2, dataSource.TimesCalled);
+            }
+        }
+
+        [Test]
+        public void GetString_CalledTwiceAfterGetInt_ReturnsCachedValue()
+        {
+            // Assemble
+            using (var kernel = new StandardKernel())
+            {
+                var dataSource = CreateDataSource(kernel);
+
+                // Act
+                dataSource.GetInt();
+                var firstCall = dataSource.GetString();
+                var actual = dataSource.GetString();
+
+                // Assert
+                Assert.AreEqual("11", actual);
+                Assert.AreEqual(firstCall, actual);
+                Assert.AreEqual(2, dataSource.TimesCalled);
+            }
+        }
+
         private static IDataSource CreateDataSource(IKernel kernel)
         {
             kernel.Bind<IDataSource>()
