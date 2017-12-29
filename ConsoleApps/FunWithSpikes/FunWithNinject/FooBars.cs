@@ -30,6 +30,16 @@
 
     public class Foo2 : IFoo { }
 
+    public class FooDependingOnBar : IFoo
+    {
+        public FooDependingOnBar(IBar bar)
+        {
+            Bar = bar;
+        }
+
+        public IBar Bar { get; set; }
+    }
+
     public class FooDependingOnMultipleBars : IFoo
     {
         public FooDependingOnMultipleBars(IBar bar1, IBar bar2)
@@ -40,16 +50,6 @@
 
         public IBar Bar1 { get; set; }
         public IBar Bar2 { get; set; }
-    }
-
-    public class FooDependingOnBar : IFoo
-    {
-        public FooDependingOnBar(IBar bar)
-        {
-            Bar = bar;
-        }
-
-        public IBar Bar { get; set; }
     }
 
     public class Qux : IQux { }

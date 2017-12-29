@@ -42,7 +42,6 @@ namespace FunWithNinject.NamedScopes
                 Bind(k);
                 k.Rebind<IHaveFunc>().To<HaveFunc>().InSingletonScope();
 
-
                 // Act
                 var root1 = k.Get<IRoot>();
                 var root2 = k.Get<IRoot>();

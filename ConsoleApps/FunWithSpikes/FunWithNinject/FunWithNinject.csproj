@@ -76,6 +76,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\AttributeTests.cs" />
+    <Compile Include="Attributes\DependsOnDefaultFoo.cs" />
+    <Compile Include="Attributes\DependsOnSpecialFoo.cs" />
+    <Compile Include="Attributes\SpecialFooAttribute.cs" />
     <Compile Include="ConflictingScopes\Implementations.cs" />
     <Compile Include="ConflictingScopes\Tests.cs" />
     <Compile Include="Conventions\ConventionsTests.cs" />
