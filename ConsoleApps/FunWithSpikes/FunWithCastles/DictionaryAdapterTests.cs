@@ -8,6 +8,7 @@ namespace FunWithCastles
     [TestFixture]
     public class DictionaryAdapterTests
     {
+        private const string DATE = nameof(ISettings.LastModified);
         private const string MAX = nameof(ISettings.MaxItems);
         private const string NAME = nameof(ISettings.Name);
 
@@ -89,6 +90,22 @@ namespace FunWithCastles
 
             // Assert
             Assert.AreEqual("Adams", dictionary[NAME]);
+        }
+
+        [Test]
+        public void Set_ValueIsDate_SavesDate()
+        {
+            // Assemble
+            var dictionary = new System.Collections.Hashtable();
+            var adapter = CreateSettings(dictionary);
+
+            var actualDate = new DateTime(1979, 10, 12);
+
+            // Act
+            adapter.LastModified = actualDate;
+
+            // Assert
+            Assert.AreEqual(actualDate, dictionary[DATE]);
         }
 
         [Test]
