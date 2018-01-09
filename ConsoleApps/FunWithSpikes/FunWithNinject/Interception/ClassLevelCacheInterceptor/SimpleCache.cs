@@ -29,7 +29,8 @@ namespace FunWithNinject.Interception.ClassLevelCacheInterceptor
         private object GetCachedValue(IInvocation invocation)
         {
             var key = invocation.Request.Method;
-            if (_returnValues.TryGetValue(key, out object value))
+            object value = null;
+            if (_returnValues.TryGetValue(key, out value))
             {
                 _returnValues.Remove(key);
                 return value;
