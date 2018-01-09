@@ -61,6 +61,14 @@
     <Compile Include="FieldNames.cs" />
     <Compile Include="IAppSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\Env.cs" />
+    <Compile Include="Settings\EnvironmentVariableAdapter.cs" />
+    <Compile Include="Settings\ISettingsAdapter.cs" />
+    <Compile Include="Settings\MemoryAdapter.cs" />
+    <Compile Include="Settings\MemoryAdapterSettingsBuilderExt.cs" />
+    <Compile Include="Settings\SettingsBuilder.cs" />
+    <Compile Include="Settings\SettingsBuilderTests.cs" />
+    <Compile Include="Settings\SettingsInterceptor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
