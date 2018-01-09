@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace FunWithCastles.Settings
+namespace FunWithCastles.Settings.Adapters
 {
     public class MemoryAdapter : ISettingsAdapter
     {
