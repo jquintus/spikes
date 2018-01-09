@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FunWithCastles.Settings
+namespace FunWithCastles.Settings.Adapters
 {
     public class EnvironmentVariableAdapter : ISettingsAdapter
     {
