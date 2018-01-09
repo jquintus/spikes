@@ -130,10 +130,10 @@ namespace FunWithCastles
             Assert.Throws<ArgumentException>(() => adapter.MaxItems = 42);
         }
 
-        private static ISettings CreateSettings(System.Collections.IDictionary dictionary)
+        private static IAppSettings CreateSettings(System.Collections.IDictionary dictionary)
         {
             var factory = new DictionaryAdapterFactory();
-            var adapter = factory.GetAdapter<ISettings>(dictionary);
+            var adapter = factory.GetAdapter<IAppSettings>(dictionary);
             return adapter;
         }
     }

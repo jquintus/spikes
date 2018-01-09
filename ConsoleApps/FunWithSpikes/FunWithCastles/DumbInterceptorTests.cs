@@ -63,14 +63,14 @@ namespace FunWithCastles
             Assert.AreEqual(55, proxy.MaxItems);
         }
 
-        private static ISettings CreateSettingsProxy(
+        private static IAppSettings CreateSettingsProxy(
             int maxItems = 0,
             string name = null,
             DateTime lastModified = default(DateTime))
         {
             var interceptor = new DumbInterceptor(maxItems, name, lastModified);
             var generator = new ProxyGenerator();
-            var proxy = generator.CreateInterfaceProxyWithoutTarget<ISettings>(interceptor);
+            var proxy = generator.CreateInterfaceProxyWithoutTarget<IAppSettings>(interceptor);
             return proxy;
         }
     }
