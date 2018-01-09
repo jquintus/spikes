@@ -2,16 +2,13 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using static FunWithCastles.FieldNames;
 
 namespace FunWithCastles
 {
     [TestFixture]
     public class DictionaryAdapterTests
     {
-        private const string DATE = nameof(ISettings.LastModified);
-        private const string MAX = nameof(ISettings.MaxItems);
-        private const string NAME = nameof(ISettings.Name);
-
         [Test]
         public void Get_ReferenceTypeDoesNotExistsInDictionary_ReturnsNull()
         {

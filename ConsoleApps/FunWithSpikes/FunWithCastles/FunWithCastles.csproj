@@ -53,6 +53,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DictionaryAdapterTests.cs" />
+    <Compile Include="DumbInterceptor.cs" />
+    <Compile Include="DumbInterceptorTests.cs" />
+    <Compile Include="FieldNames.cs" />
     <Compile Include="ISettings.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
