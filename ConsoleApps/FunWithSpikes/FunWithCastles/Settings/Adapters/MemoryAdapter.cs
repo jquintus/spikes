@@ -11,19 +11,20 @@ namespace FunWithCastles.Settings.Adapters
             _data = data ?? new Hashtable();
         }
 
+        public object this[string name]
+        {
+            get { return _data[name]; }
+            set { _data[name] = value; }
+        }
+
         public bool CanRead(string name)
         {
             return _data.ContainsKey(name);
         }
 
-        public object Read(string name)
+        public bool CanWrite(string name)
         {
-            return _data[name];
-        }
-
-        public void Write(string name, object value)
-        {
-            _data[name] = value;
+            return true;
         }
     }
 }

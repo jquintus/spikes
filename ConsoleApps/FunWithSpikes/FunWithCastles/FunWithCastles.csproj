@@ -61,6 +61,7 @@
     <Compile Include="FieldNames.cs" />
     <Compile Include="IAppSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\Adapters\ReadOnlyAdapter.cs" />
     <Compile Include="Settings\Adapters\RegistryAdapter.cs" />
     <Compile Include="Settings\Env.cs" />
     <Compile Include="Settings\Adapters\EnvironmentVariableAdapter.cs" />
