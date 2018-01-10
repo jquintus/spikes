@@ -1,5 +1,6 @@
 ﻿using Castle.DynamicProxy;
 using FunWithCastles.Settings.Adapters;
+using FunWithCastles.Settings.Loaders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,12 @@ namespace FunWithCastles.Settings
         private readonly Dictionary<Type, MemoryAdapter> _defaults;
         private readonly ProxyGenerator _generator;
         private readonly List<IInterceptor> _interceptors;
+
+        public SettingsBuilder Load(ISettingsLoader loader)
+        {
+            var data = loader.Load();
+            return AddReadOnly(new MemoryAdapter(data));
+        }
 
         private SettingsBuilder()
         {
@@ -37,16 +44,6 @@ namespace FunWithCastles.Settings
         {
             var interceptors = adapters.Select(a => new SettingsInterceptor(a));
             _interceptors.AddRange(interceptors);
-            return this;
-        }
-
-        public SettingsBuilder AddDefault<TSettings>(TSettings defaults)
-        {
-            var defaultDict = defaults.ToPropertyDictionary();
-            var adapter = GetDefaultAdapter<TSettings>();
-
-            adapter.Data.Merge(defaultDict);
-
             return this;
         }
 

@@ -1,17 +1,19 @@
-﻿using System.Collections;
+﻿using FunWithCastles.Settings.Loaders;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace FunWithCastles.Settings.Adapters
 {
     public class MemoryAdapter : ISettingsAdapter
     {
-        private readonly Hashtable _data;
+        private readonly IDictionary<string, object> _data;
 
-        public MemoryAdapter(Hashtable data = null)
+        public MemoryAdapter(IDictionary<string, object> data = null)
         {
-            _data = data ?? new Hashtable();
+            _data = data ?? new Dictionary<string, object>();
         }
 
-        public IDictionary Data => _data;
+        public IDictionary<string, object> Data => _data;
 
         public object this[string name]
         {

@@ -1,45 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace FunWithCastles.Settings.Adapters
+namespace FunWithCastles.Settings.Loaders
 {
-    public class CommandLineAdapter : ISettingsAdapter
+    public class CommandLineLoader : ISettingsLoader
     {
-        private readonly Dictionary<string, object> _data;
+        private readonly Dictionary<string, string> _switchMappings;
 
-        public CommandLineAdapter(IEnumerable<string> args, IDictionary<string, string> switchMappings = null)
+        public CommandLineLoader(IEnumerable<string> args, IDictionary<string, string> switchMappings = null)
         {
             Args = args;
-            var mappings = switchMappings == null
-                ? null
-                : GetValidatedSwitchMappingsCopy(switchMappings);
-
-            _data = Load(args, mappings);
+            _switchMappings = GetValidatedSwitchMappingsCopy(switchMappings);
         }
 
         public IEnumerable<string> Args { get; }
 
-        public object this[string name]
+        public IDictionary<string, object> Load()
         {
-            get { return _data[name]; }
-            set
-            {
-                new InvalidOperationException($"Reading values is not supported by the {nameof(CommandLineAdapter)}");
-            }
-        }
-
-        public bool CanRead(string name)
-        {
-            return _data.ContainsKey(name);
-        }
-
-        public bool CanWrite(string name)
-        {
-            return false;
+            return Load(Args, _switchMappings);
         }
 
         private static Dictionary<string, string> GetValidatedSwitchMappingsCopy(IDictionary<string, string> switchMappings)
         {
+            if (switchMappings == null) return null;
+
             // The dictionary passed in might be constructed with a case-sensitive comparer
             // However, the keys in configuration providers are all case-insensitive
             // So we check whether the given switch mappings contain duplicated keys with case-insensitive comparer

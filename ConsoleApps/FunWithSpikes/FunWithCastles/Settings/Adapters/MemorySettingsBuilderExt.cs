@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System.Collections.Generic;
 
 namespace FunWithCastles.Settings.Adapters
 {
@@ -6,14 +6,14 @@ namespace FunWithCastles.Settings.Adapters
     {
         public static SettingsBuilder AddMemoryAdapter(
             this SettingsBuilder builder,
-            Hashtable data = null)
+            IDictionary<string, object> data = null)
         {
             return builder.Add(new MemoryAdapter(data));
         }
 
         public static SettingsBuilder AddReadOnlyMemoryAdapter(
             this SettingsBuilder builder,
-            Hashtable data = null)
+            IDictionary<string, object> data = null)
         {
             return builder.AddReadOnly(new MemoryAdapter(data));
         }

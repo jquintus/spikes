@@ -1,6 +1,8 @@
 ﻿using FunWithCastles.Settings.Adapters;
+using FunWithCastles.Settings.Loaders;
 using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace FunWithCastles.Settings
 {
@@ -11,13 +13,13 @@ namespace FunWithCastles.Settings
         public void AddDefault_InstanceSuppliedForDefault_CanReadDefault()
         {
             // Assemble
-            ITestSettings defaultValues = new DefaultTestSettings
+            var defaultValues = new DefaultTestSettings
             {
                 Name = "Adams",
             };
 
             var settings = SettingsBuilder.Create()
-                                          .AddDefault(defaultValues)
+                                          .LoadFromObject(defaultValues)
                                           .Build<ITestSettings>();
             // Act
             var name = settings.Name;
@@ -60,7 +62,7 @@ namespace FunWithCastles.Settings
         [Test]
         public void Read_EnvAndMemoryAdapters_ReadsFromEnv()
         {
-            var memData = new Hashtable()
+            var memData = new Dictionary<string, object>
             {
                 ["Name"] = "Adams",
             };
@@ -83,7 +85,7 @@ namespace FunWithCastles.Settings
         {
             using (Env.SetVariable("Test.Name", "Douglas"))
             {
-                var memData = new Hashtable()
+                var memData = new Dictionary<string, object>
                 {
                     ["Name"] = "Adams",
                 };
@@ -181,7 +183,7 @@ namespace FunWithCastles.Settings
 
             // Assert
             Assert.AreEqual("Douglas", mem1["Name"]);
-            Assert.IsNull(mem2["Name"]);
+            Assert.IsFalse(mem2.CanRead("Name"));
         }
 
         [Test]
@@ -200,7 +202,7 @@ namespace FunWithCastles.Settings
 
             // Assert
             Assert.AreEqual("Douglas", mem1["Name"]);
-            Assert.IsNull(mem2["Name"]);
+            Assert.IsFalse(mem2.CanRead("Name"));
         }
     }
 }
