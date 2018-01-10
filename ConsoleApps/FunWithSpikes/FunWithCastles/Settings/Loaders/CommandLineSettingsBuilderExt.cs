@@ -4,8 +4,8 @@ namespace FunWithCastles.Settings.Loaders
 {
     public static class CommandLineSettingsBuilderExt
     {
-        public static SettingsBuilder LoadFromCommandLine(
-            this SettingsBuilder builder,
+        public static ISettingsBuilder LoadFromCommandLine(
+            this ISettingsBuilder builder,
             IEnumerable<string> args,
             IDictionary<string, string> switchMappings = null)
         {

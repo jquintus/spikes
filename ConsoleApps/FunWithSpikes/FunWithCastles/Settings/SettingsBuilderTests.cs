@@ -1,7 +1,6 @@
 ﻿using FunWithCastles.Settings.Adapters;
 using FunWithCastles.Settings.Loaders;
 using NUnit.Framework;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace FunWithCastles.Settings
@@ -35,7 +34,8 @@ namespace FunWithCastles.Settings
         {
             // Assemble
             var settings = SettingsBuilder.Create()
-                                          .AddDefault<IAppSettings, string>(s => s.Name, "Adams")
+                                          .StartMapping<IAppSettings>()
+                                          .Map(s => s.Name, "Adams")
                                           .Build<IAppSettings>();
             // Act
             var name = settings.Name;
@@ -130,7 +130,8 @@ namespace FunWithCastles.Settings
             var mem2 = new MemoryAdapter();
 
             var builder = SettingsBuilder.Create()
-                                         .Add(mem1, mem2);
+                                         .Add(mem1)
+                                         .Add(mem2);
 
             var settings = builder.Build<IAppSettings>();
 
@@ -194,7 +195,8 @@ namespace FunWithCastles.Settings
             var mem2 = new MemoryAdapter();
 
             var builder = SettingsBuilder.Create()
-                                         .Add(mem1, mem2);
+                                         .Add(mem1)
+                                         .Add(mem2);
             var settings = builder.Build<IAppSettings>();
 
             // Act
