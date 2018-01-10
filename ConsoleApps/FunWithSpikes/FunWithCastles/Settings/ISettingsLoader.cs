@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace FunWithCastles.Settings.Loaders
+namespace FunWithCastles.Settings
 {
     public interface ISettingsLoader
     {

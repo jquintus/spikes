@@ -2,8 +2,8 @@
 {
     public static class ObjectLoaderSettingsBuilderExt
     {
-        public static SettingsBuilder LoadFromObject<T>(
-            this SettingsBuilder builder,
+        public static ISettingsBuilder LoadFromObject<T>(
+            this ISettingsBuilder builder,
             T data)
         {
             return builder.Load(new ObjectLoader<T>(data));
