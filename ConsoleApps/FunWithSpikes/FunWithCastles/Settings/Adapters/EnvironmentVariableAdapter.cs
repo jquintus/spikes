@@ -11,24 +11,31 @@ namespace FunWithCastles.Settings.Adapters
             _prefix = prefix;
         }
 
+        public object this[string name]
+        {
+            get
+            {
+                name = _prefix + name;
+                var variable = Environment.GetEnvironmentVariable(name);
+                return variable;
+            }
+            set
+            {
+                name = _prefix + name;
+                var strValue = value?.ToString();
+                Environment.SetEnvironmentVariable(name, strValue);
+            }
+        }
+
         public bool CanRead(string name)
         {
-            var variable = Read(name);
+            var variable = this[name];
             return null == variable;
         }
 
-        public object Read(string name)
+        public bool CanWrite(string name)
         {
-            name = _prefix + name;
-            var variable = Environment.GetEnvironmentVariable(name);
-            return variable;
-        }
-
-        public void Write(string name, object value)
-        {
-            name = _prefix + name;
-            var strValue = value?.ToString();
-            Environment.SetEnvironmentVariable(name, strValue);
+            return true;
         }
     }
 }

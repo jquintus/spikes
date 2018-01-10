@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using FunWithCastles.Settings.Adapters;
+using NUnit.Framework;
 using System.Collections;
 
 namespace FunWithCastles.Settings
@@ -70,8 +71,8 @@ namespace FunWithCastles.Settings
             var settings = new SettingsBuilder().Add(mem1)
                                                 .Add(mem2)
                                                 .Build<IAppSettings>();
-            mem1.Write("Name", "Douglas");
-            mem2.Write("Name", "Adams");
+            mem1["Name"] = "Douglas";
+            mem2["Name"] = "Adams";
 
             // Act
             var name = settings.Name;
@@ -91,13 +92,34 @@ namespace FunWithCastles.Settings
 
             var settings = builder.Build<IAppSettings>();
 
-            mem2.Write("Name", "Adams");
+            mem2["Name"] = "Adams";
 
             // Act
             var name = settings.Name;
 
             // Assert
             Assert.AreEqual("Adams", name);
+        }
+
+        [Test]
+        public void Write_FirstAdapterIsReadOnly_WritesToSecondAdapter()
+        {
+            // Assemble
+            var mem1 = new MemoryAdapter();
+            var mem2 = new MemoryAdapter();
+
+            var settings = new SettingsBuilder().AddReadOnly(mem1)
+                                                .Add(mem2)
+                                                .Build<IAppSettings>();
+            mem1["Name"] = "Unset";
+            mem2["Name"] = "Unset";
+
+            // Act
+            settings.Name = "Adams";
+
+            // Assert
+            Assert.AreEqual("Unset", mem1["Name"]);
+            Assert.AreEqual("Adams", mem2["Name"]);
         }
 
         [Test]
@@ -115,8 +137,8 @@ namespace FunWithCastles.Settings
             settings.Name = "Douglas";
 
             // Assert
-            Assert.AreEqual("Douglas", mem1.Read("Name"));
-            Assert.IsNull(mem2.Read("Name"));
+            Assert.AreEqual("Douglas", mem1["Name"]);
+            Assert.IsNull(mem2["Name"]);
         }
 
         [Test]
@@ -133,8 +155,8 @@ namespace FunWithCastles.Settings
             settings.Name = "Douglas";
 
             // Assert
-            Assert.AreEqual("Douglas", mem1.Read("Name"));
-            Assert.IsNull(mem2.Read("Name"));
+            Assert.AreEqual("Douglas", mem1["Name"]);
+            Assert.IsNull(mem2["Name"]);
         }
     }
 }

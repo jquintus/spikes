@@ -14,24 +14,17 @@ namespace FunWithCastles.Settings
         public void Intercept(IInvocation invocation)
         {
             var name = invocation.Method.Name;
+            bool handled = false;
             if (name.StartsWith("get_"))
             {
-                name = Clean(name, "get_");
-                if (_adapter.CanRead(name))
-                {
-                    invocation.ReturnValue = _adapter.Read(name);
-                }
-                else
-                {
-                    invocation.Proceed();
-                }
+                handled = Get(invocation, name);
             }
             else if (name.StartsWith("set_"))
             {
-                name = Clean(name, "set_");
-                _adapter.Write(name, invocation.Arguments[0]);
+                handled = Set(invocation, name);
             }
-            else
+
+            if (!handled)
             {
                 invocation.Proceed();
             }
@@ -40,6 +33,30 @@ namespace FunWithCastles.Settings
         private static string Clean(string input, string prefix)
         {
             return input.Substring(prefix.Length);
+        }
+
+        private bool Get(IInvocation invocation, string name)
+        {
+            name = Clean(name, "get_");
+            if (_adapter.CanRead(name))
+            {
+                invocation.ReturnValue = _adapter[name];
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool Set(IInvocation invocation, string name)
+        {
+            name = Clean(name, "set_");
+            if (_adapter.CanWrite(name))
+            {
+                _adapter[name] = invocation.Arguments[0];
+                return true;
+            }
+
+            return false;
         }
     }
 }
