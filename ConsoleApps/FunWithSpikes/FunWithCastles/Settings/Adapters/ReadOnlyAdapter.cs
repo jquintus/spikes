@@ -8,13 +8,20 @@ namespace FunWithCastles.Settings.Adapters
 
         public ReadOnlyAdapter(ISettingsAdapter adaptee)
         {
-            _adaptee = adaptee ?? throw new ArgumentNullException(nameof(adaptee));
+            if (null == adaptee)
+            {
+                throw new ArgumentNullException(nameof(adaptee));
+            }
+            _adaptee = adaptee;
         }
 
         public object this[string name]
         {
-            get => _adaptee[name];
-            set => new InvalidOperationException($"Reading values is not supported by the {nameof(ReadOnlyAdapter)}");
+            get { return _adaptee[name]; }
+            set
+            {
+                new InvalidOperationException($"Reading values is not supported by the {nameof(ReadOnlyAdapter)}");
+            }
         }
 
         public bool CanRead(string name)
