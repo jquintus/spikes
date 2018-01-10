@@ -8,10 +8,27 @@ namespace FunWithCastles.Settings
     public class SettingsBuilderTests
     {
         [Test]
+        public void AddDefault_NonDefaultDoesNotHaveAValue_ReturnsValueFromDefault()
+        {
+            // Assemble
+            var memData = new Hashtable();
+            var settings = SettingsBuilder.Create()
+                                          .AddDefault<IAppSettings, string>(s => s.Name, "Adams")
+                                          .AddMemoryAdapter()
+                                          .Build<IAppSettings>();
+            // Act
+            var name = settings.Name;
+
+            // Assert
+            Assert.AreEqual("Adams", name);
+        }
+
+        [Test]
         public void Build_OneAdapter_CreatesSettingsObject()
         {
             // Assemble
-            var builder = new SettingsBuilder().AddMemoryAdapter();
+            var builder = SettingsBuilder.Create()
+                                         .AddMemoryAdapter();
 
             // Act
             var settings = builder.Build<IAppSettings>();
@@ -30,9 +47,10 @@ namespace FunWithCastles.Settings
             };
             using (Env.SetVariable("Test.Name", "Douglas"))
             {
-                var settings = new SettingsBuilder().AddEnvironmentVariableAdapter("Test.")
-                                                    .AddMemoryAdapter(memData)
-                                                    .Build<IAppSettings>();
+                var settings = SettingsBuilder.Create()
+                                              .AddEnvironmentVariableAdapter("Test.")
+                                              .AddMemoryAdapter(memData)
+                                              .Build<IAppSettings>();
                 // Act
                 var name = settings.Name;
 
@@ -50,9 +68,10 @@ namespace FunWithCastles.Settings
                 {
                     ["Name"] = "Adams",
                 };
-                var settings = new SettingsBuilder().AddMemoryAdapter(memData)
-                                                    .AddEnvironmentVariableAdapter("Test.")
-                                                    .Build<IAppSettings>();
+                var settings = SettingsBuilder.Create()
+                                              .AddMemoryAdapter(memData)
+                                              .AddEnvironmentVariableAdapter("Test.")
+                                              .Build<IAppSettings>();
                 // Act
                 var name = settings.Name;
 
@@ -68,9 +87,10 @@ namespace FunWithCastles.Settings
             var mem1 = new MemoryAdapter();
             var mem2 = new MemoryAdapter();
 
-            var settings = new SettingsBuilder().Add(mem1)
-                                                .Add(mem2)
-                                                .Build<IAppSettings>();
+            var settings = SettingsBuilder.Create()
+                                          .Add(mem1)
+                                          .Add(mem2)
+                                          .Build<IAppSettings>();
             mem1["Name"] = "Douglas";
             mem2["Name"] = "Adams";
 
@@ -88,7 +108,8 @@ namespace FunWithCastles.Settings
             var mem1 = new MemoryAdapter();
             var mem2 = new MemoryAdapter();
 
-            var builder = new SettingsBuilder().Add(mem1, mem2);
+            var builder = SettingsBuilder.Create()
+                                         .Add(mem1, mem2);
 
             var settings = builder.Build<IAppSettings>();
 
@@ -108,9 +129,10 @@ namespace FunWithCastles.Settings
             var mem1 = new MemoryAdapter();
             var mem2 = new MemoryAdapter();
 
-            var settings = new SettingsBuilder().AddReadOnly(mem1)
-                                                .Add(mem2)
-                                                .Build<IAppSettings>();
+            var settings = SettingsBuilder.Create()
+                                          .AddReadOnly(mem1)
+                                          .Add(mem2)
+                                          .Build<IAppSettings>();
             mem1["Name"] = "Unset";
             mem2["Name"] = "Unset";
 
@@ -129,7 +151,9 @@ namespace FunWithCastles.Settings
             var mem1 = new MemoryAdapter();
             var mem2 = new MemoryAdapter();
 
-            var builder = new SettingsBuilder().Add(mem1).Add(mem2);
+            var builder = SettingsBuilder.Create()
+                                         .Add(mem1)
+                                         .Add(mem2);
 
             var settings = builder.Build<IAppSettings>();
 
@@ -148,7 +172,8 @@ namespace FunWithCastles.Settings
             var mem1 = new MemoryAdapter();
             var mem2 = new MemoryAdapter();
 
-            var builder = new SettingsBuilder().Add(mem1, mem2);
+            var builder = SettingsBuilder.Create()
+                                         .Add(mem1, mem2);
             var settings = builder.Build<IAppSettings>();
 
             // Act

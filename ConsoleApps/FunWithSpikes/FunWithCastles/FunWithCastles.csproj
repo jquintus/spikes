@@ -70,6 +70,7 @@
     <Compile Include="Settings\Adapters\EnvironmentVariableAdapter.cs" />
     <Compile Include="Settings\ISettingsAdapter.cs" />
     <Compile Include="Settings\Adapters\MemoryAdapter.cs" />
+    <Compile Include="Settings\LinqExt.cs" />
     <Compile Include="Settings\SettingsBuilder.cs" />
     <Compile Include="Settings\SettingsBuilderTests.cs" />
     <Compile Include="Settings\SettingsInterceptor.cs" />
