@@ -7,8 +7,8 @@ namespace FunWithSpikes
     [TestFixture]
     public class DictionaryTests
     {
+#pragma warning disable IDE0028 // Simplify collection initialization
         [Test]
-        [ExpectedException(typeof(ArgumentException))]
         public void Add_EntryExists_Throws()
         {
             // Assemble
@@ -17,7 +17,7 @@ namespace FunWithSpikes
             x.Add("one", 1);
 
             // Act
-            x.Add("one", 2);
+            Assert.Throws<ArgumentException>(() => x.Add("one", 2));
         }
 
         [Test]
@@ -32,5 +32,6 @@ namespace FunWithSpikes
             // Assert
             Assert.AreEqual(3, dictionary["hello"]);
         }
+#pragma warning restore IDE0028 // Simplify collection initialization
     }
 }
