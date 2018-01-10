@@ -66,11 +66,14 @@
     <Compile Include="Settings\Adapters\ReadOnlyAdapter.cs" />
     <Compile Include="Settings\Adapters\RegistryAdapter.cs" />
     <Compile Include="Settings\Adapters\RegistrySettingsBuilderExt.cs" />
+    <Compile Include="Settings\DefaultTestSettings.cs" />
     <Compile Include="Settings\Env.cs" />
     <Compile Include="Settings\Adapters\EnvironmentVariableAdapter.cs" />
     <Compile Include="Settings\ISettingsAdapter.cs" />
     <Compile Include="Settings\Adapters\MemoryAdapter.cs" />
+    <Compile Include="Settings\ITestSettings.cs" />
     <Compile Include="Settings\LinqExt.cs" />
+    <Compile Include="Settings\ReflectionExt.cs" />
     <Compile Include="Settings\SettingsBuilder.cs" />
     <Compile Include="Settings\SettingsBuilderTests.cs" />
     <Compile Include="Settings\SettingsInterceptor.cs" />

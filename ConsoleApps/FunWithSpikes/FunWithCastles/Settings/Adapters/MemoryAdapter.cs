@@ -11,6 +11,8 @@ namespace FunWithCastles.Settings.Adapters
             _data = data ?? new Hashtable();
         }
 
+        public IDictionary Data => _data;
+
         public object this[string name]
         {
             get { return _data[name]; }
