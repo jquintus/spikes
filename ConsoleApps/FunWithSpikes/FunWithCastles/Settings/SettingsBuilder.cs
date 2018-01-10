@@ -7,6 +7,7 @@ using System.Linq.Expressions;
 
 namespace FunWithCastles.Settings
 {
+
     public class SettingsBuilder
     {
         private readonly Dictionary<Type, MemoryAdapter> _defaults;
@@ -36,6 +37,16 @@ namespace FunWithCastles.Settings
         {
             var interceptors = adapters.Select(a => new SettingsInterceptor(a));
             _interceptors.AddRange(interceptors);
+            return this;
+        }
+
+        public SettingsBuilder AddDefault<TSettings>(TSettings defaults)
+        {
+            var defaultDict = defaults.ToPropertyDictionary();
+            var adapter = GetDefaultAdapter<TSettings>();
+
+            adapter.Data.Merge(defaultDict);
+
             return this;
         }
 

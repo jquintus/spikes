@@ -8,13 +8,32 @@ namespace FunWithCastles.Settings
     public class SettingsBuilderTests
     {
         [Test]
+        public void AddDefault_InstanceSuppliedForDefault_CanReadDefault()
+        {
+            // Assemble
+            ITestSettings defaultValues = new DefaultTestSettings
+            {
+                Name = "Adams",
+            };
+
+            var settings = SettingsBuilder.Create()
+                                          .AddDefault(defaultValues)
+                                          .Build<ITestSettings>();
+            // Act
+            var name = settings.Name;
+            var answer = settings.TheAnswer;
+
+            // Assert
+            Assert.AreEqual("Adams", name);
+            Assert.AreEqual(42, answer);
+        }
+
+        [Test]
         public void AddDefault_NonDefaultDoesNotHaveAValue_ReturnsValueFromDefault()
         {
             // Assemble
-            var memData = new Hashtable();
             var settings = SettingsBuilder.Create()
                                           .AddDefault<IAppSettings, string>(s => s.Name, "Adams")
-                                          .AddMemoryAdapter()
                                           .Build<IAppSettings>();
             // Act
             var name = settings.Name;
