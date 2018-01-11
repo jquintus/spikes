@@ -53,6 +53,8 @@ namespace FunWithCastles.Settings.Tests
         [Test]
         [TestCase("/name", "Douglas", "/name", "Adams", ExpectedResult = "Adams")]
         [TestCase("--name", "Douglas", ExpectedResult = "Douglas")]
+        [TestCase("--name", "Adams, Douglas", ExpectedResult = "Adams, Douglas")]
+        [TestCase("--name", "Douglas Adams", ExpectedResult = "Douglas Adams")]
         [TestCase("/name=Douglas", ExpectedResult = "Douglas")]
         [TestCase("--name=Douglas", ExpectedResult = "Douglas")]
         [TestCase("--name=Douglas", ExpectedResult = "Douglas")]
