@@ -3,7 +3,7 @@ using FunWithCastles.Settings.Loaders;
 using NUnit.Framework;
 using System.Collections.Generic;
 
-namespace FunWithCastles.Settings
+namespace FunWithCastles.Settings.Tests
 {
     [TestFixture]
     public class SettingsBuilderTests

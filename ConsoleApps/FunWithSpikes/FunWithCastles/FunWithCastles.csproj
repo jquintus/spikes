@@ -86,7 +86,8 @@
     <Compile Include="Settings\Loaders\ObjectLoaderSettingsBuilderExt.cs" />
     <Compile Include="Settings\ReflectionExt.cs" />
     <Compile Include="Settings\SettingsBuilder.cs" />
-    <Compile Include="Settings\SettingsBuilderTests.cs" />
+    <Compile Include="Settings\Tests\CommandLineLoaderTests.cs" />
+    <Compile Include="Settings\Tests\SettingsBuilderTests.cs" />
     <Compile Include="Settings\SettingsInterceptor.cs" />
   </ItemGroup>
   <ItemGroup>
