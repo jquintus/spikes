@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FunWithCastles.Settings
+namespace FunWithCastles.Settings.Utils
 {
     public static class LinqExt
     {

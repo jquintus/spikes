@@ -1,5 +1,6 @@
 ﻿using FunWithCastles.Settings.Adapters;
 using FunWithCastles.Settings.Loaders;
+using FunWithCastles.Settings.Utils;
 using NUnit.Framework;
 using System.Collections.Generic;
 

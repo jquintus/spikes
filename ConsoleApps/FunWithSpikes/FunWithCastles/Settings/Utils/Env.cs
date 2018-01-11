@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FunWithCastles.Settings
+namespace FunWithCastles.Settings.Utils
 {
     public class Env : IDisposable
     {

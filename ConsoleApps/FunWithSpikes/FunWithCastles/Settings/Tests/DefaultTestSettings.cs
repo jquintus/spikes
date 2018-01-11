@@ -1,4 +1,4 @@
-﻿namespace FunWithCastles.Settings
+﻿namespace FunWithCastles.Settings.Tests
 {
     public class DefaultTestSettings : ITestSettings
     {
