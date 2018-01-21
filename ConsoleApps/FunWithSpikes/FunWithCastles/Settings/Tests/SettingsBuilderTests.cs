@@ -70,8 +70,8 @@ namespace FunWithCastles.Settings.Tests
             using (Env.SetVariable("Test.Name", "Douglas"))
             {
                 var settings = SettingsBuilder.Create()
-                                              .AddEnvironmentVariableAdapter("Test.")
                                               .AddMemoryAdapter(memData)
+                                              .AddEnvironmentVariableAdapter("Test.")
                                               .Build<IAppSettings>();
                 // Act
                 var name = settings.Name;
