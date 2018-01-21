@@ -4,16 +4,18 @@
     {
         public static ISettingsBuilder AddReadOnlyRegistryAdapter(
             this ISettingsBuilder builder,
-            string root)
+            string root,
+            ISettingConverter converter = null)
         {
-            return builder.AddReadOnly(new RegistryAdapter(root));
+            return builder.AddReadOnly(new RegistryAdapter(root), converter);
         }
 
         public static ISettingsBuilder AddRegistryAdapter(
             this ISettingsBuilder builder,
-            string root)
+            string root,
+            ISettingConverter converter = null)
         {
-            return builder.Add(new RegistryAdapter(root));
+            return builder.Add(new RegistryAdapter(root), converter);
         }
     }
 }

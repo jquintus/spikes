@@ -6,9 +6,10 @@ namespace FunWithCastles.Settings.Loaders
     {
         public static ISettingsBuilder LoadFromDictionary(
             this ISettingsBuilder builder,
-            IDictionary<string, object> dict)
+            IDictionary<string, object> dict,
+            ISettingConverter converter = null)
         {
-            return builder.Load(new DictionaryLoader(dict));
+            return builder.Load(new DictionaryLoader(dict), converter);
         }
     }
 }

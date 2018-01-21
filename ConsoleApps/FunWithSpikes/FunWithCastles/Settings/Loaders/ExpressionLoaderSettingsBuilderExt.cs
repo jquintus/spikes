@@ -14,9 +14,11 @@ namespace FunWithCastles.Settings.Loaders
                           .Map(expression, value);
         }
 
-        public static ExpressionLoaderSettingsBuilder<TMapper> StartMapping<TMapper>(this ISettingsBuilder builder)
+        public static ExpressionLoaderSettingsBuilder<TMapper> StartMapping<TMapper>(
+            this ISettingsBuilder builder,
+            ISettingConverter converter = null)
         {
-            return new ExpressionLoaderSettingsBuilder<TMapper>(builder);
+            return new ExpressionLoaderSettingsBuilder<TMapper>(builder, converter);
         }
     }
 }

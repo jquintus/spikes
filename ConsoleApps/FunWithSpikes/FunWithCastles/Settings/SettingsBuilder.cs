@@ -8,13 +8,11 @@ namespace FunWithCastles.Settings
     {
         private readonly ProxyGenerator _generator;
         private readonly List<IInterceptor> _interceptors;
-        private ISettingConverter _converter;
 
         private SettingsBuilder()
         {
             _generator = new ProxyGenerator();
             _interceptors = new List<IInterceptor>();
-            _converter = new SettingConverter();
         }
 
         public static ISettingsBuilder Create()
@@ -22,16 +20,18 @@ namespace FunWithCastles.Settings
             return new SettingsBuilder();
         }
 
-        public ISettingsBuilder Add(ISettingsAdapter adapter)
+        public ISettingsBuilder Add(ISettingsAdapter adapter, ISettingConverter converter)
         {
-            _interceptors.Add(new SettingsInterceptor(adapter, _converter));
+            converter = converter ?? new DefaultSettingConverter();
+            var interceptor = new SettingsInterceptor(adapter, converter);
+            _interceptors.Add(interceptor);
             return this;
         }
 
-        public ISettingsBuilder AddReadOnly(ISettingsAdapter adapter)
+        public ISettingsBuilder AddReadOnly(ISettingsAdapter adapter, ISettingConverter converter)
         {
             var readOnlyAdapter = new ReadOnlyAdapter(adapter);
-            return Add(readOnlyAdapter);
+            return Add(readOnlyAdapter, converter);
         }
 
         public TSettings Build<TSettings>() where TSettings : class
@@ -42,10 +42,10 @@ namespace FunWithCastles.Settings
             return proxy;
         }
 
-        public ISettingsBuilder Load(ISettingsLoader loader)
+        public ISettingsBuilder Load(ISettingsLoader loader, ISettingConverter converter)
         {
             var data = loader.Load();
-            return AddReadOnly(new MemoryAdapter(data));
+            return AddReadOnly(new MemoryAdapter(data), converter);
         }
     }
 }
