@@ -30,7 +30,7 @@ namespace FunWithCastles.Settings.Adapters
         public bool CanRead(string name)
         {
             var variable = this[name];
-            return null == variable;
+            return null != variable;
         }
 
         public bool CanWrite(string name)

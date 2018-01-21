@@ -62,6 +62,7 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="IAppSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\ISettingConverter.cs" />
     <Compile Include="Settings\ISettingsBuilder.cs" />
     <Compile Include="Settings\Loaders\CommandLineLoader.cs" />
     <Compile Include="Settings\Adapters\EnvironmentVariablSettingsBuilderExt.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Settings\Adapters\RegistryAdapter.cs" />
     <Compile Include="Settings\Adapters\RegistrySettingsBuilderExt.cs" />
     <Compile Include="Settings\Tests\DefaultTestSettings.cs" />
+    <Compile Include="Settings\Tests\EnvironmentVariableAdapterTests.cs" />
     <Compile Include="Settings\Utils\Env.cs" />
     <Compile Include="Settings\Adapters\EnvironmentVariableAdapter.cs" />
     <Compile Include="Settings\ISettingsAdapter.cs" />

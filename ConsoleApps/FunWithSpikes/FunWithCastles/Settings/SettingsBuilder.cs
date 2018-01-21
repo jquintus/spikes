@@ -8,11 +8,13 @@ namespace FunWithCastles.Settings
     {
         private readonly ProxyGenerator _generator;
         private readonly List<IInterceptor> _interceptors;
+        private ISettingConverter _converter;
 
         private SettingsBuilder()
         {
             _generator = new ProxyGenerator();
             _interceptors = new List<IInterceptor>();
+            _converter = new SettingConverter();
         }
 
         public static ISettingsBuilder Create()
@@ -22,7 +24,7 @@ namespace FunWithCastles.Settings
 
         public ISettingsBuilder Add(ISettingsAdapter adapter)
         {
-            _interceptors.Add(new SettingsInterceptor(adapter));
+            _interceptors.Add(new SettingsInterceptor(adapter, _converter));
             return this;
         }
 

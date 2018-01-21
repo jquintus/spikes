@@ -5,10 +5,12 @@ namespace FunWithCastles.Settings
     public class SettingsInterceptor : IInterceptor
     {
         private readonly ISettingsAdapter _adapter;
+        private readonly ISettingConverter _converter;
 
-        public SettingsInterceptor(ISettingsAdapter adapter)
+        public SettingsInterceptor(ISettingsAdapter adapter, ISettingConverter converter)
         {
             _adapter = adapter;
+            _converter = converter;
         }
 
         public void Intercept(IInvocation invocation)
@@ -40,7 +42,9 @@ namespace FunWithCastles.Settings
             name = Clean(name, "get_");
             if (_adapter.CanRead(name))
             {
-                invocation.ReturnValue = _adapter[name];
+                var adapterValue = _adapter[name];
+                var convertedValue = _converter.ConvertTo(invocation.Method.ReturnType, adapterValue);
+                invocation.ReturnValue = adapterValue;
                 return true;
             }
 
