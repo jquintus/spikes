@@ -4,9 +4,10 @@
     {
         public static ISettingsBuilder LoadFromObject<T>(
             this ISettingsBuilder builder,
-            T data)
+            T data,
+            ISettingConverter converter = null)
         {
-            return builder.Load(new ObjectLoader<T>(data));
+            return builder.Load(new ObjectLoader<T>(data), converter);
         }
     }
 }

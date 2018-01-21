@@ -2,12 +2,12 @@
 {
     public interface ISettingsBuilder
     {
-        ISettingsBuilder Add(ISettingsAdapter adapter);
+        ISettingsBuilder Add(ISettingsAdapter adapter, ISettingConverter converter = null);
 
-        ISettingsBuilder AddReadOnly(ISettingsAdapter adapter);
+        ISettingsBuilder AddReadOnly(ISettingsAdapter adapter, ISettingConverter converter = null);
 
         TSettings Build<TSettings>() where TSettings : class;
 
-        ISettingsBuilder Load(ISettingsLoader loader);
+        ISettingsBuilder Load(ISettingsLoader loader, ISettingConverter converter = null);
     }
 }

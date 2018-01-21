@@ -6,8 +6,8 @@ namespace FunWithCastles.Settings
     {
         object ConvertTo(Type dstType, object src);
     }
-
-    public class SettingConverter : ISettingConverter
+    
+    public class DefaultSettingConverter : ISettingConverter
     {
         public object ConvertTo(Type dstType, object src)
         {
