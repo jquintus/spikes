@@ -34,7 +34,9 @@ namespace FunWithCastles.Settings
 
         private static string Clean(string input, string prefix)
         {
-            return input.Substring(prefix.Length);
+            return input.StartsWith(prefix)
+                ? input.Substring(prefix.Length)
+                : input;
         }
 
         private bool Get(IInvocation invocation, string name)
@@ -44,7 +46,7 @@ namespace FunWithCastles.Settings
             {
                 var adapterValue = _adapter[name];
                 var convertedValue = _converter.ConvertTo(invocation.Method.ReturnType, adapterValue);
-                invocation.ReturnValue = adapterValue;
+                invocation.ReturnValue = convertedValue;
                 return true;
             }
 
