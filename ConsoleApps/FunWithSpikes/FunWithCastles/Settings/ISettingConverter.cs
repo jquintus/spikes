@@ -24,7 +24,8 @@ namespace FunWithCastles.Settings
                 [typeof(uint)] = s => Convert.ToUInt32(s),
                 [typeof(ulong)] = s => Convert.ToUInt64(s),
 
-                [typeof(ulong)] = s => Convert.ToDateTime(s),
+                [typeof(DateTime)] = s => Convert.ToDateTime(s),
+                [typeof(TimeSpan)] = s => TimeSpan.Parse(s),
             };
         }
 

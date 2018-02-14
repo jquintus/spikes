@@ -9,3 +9,10 @@
     Justification = "AppVeyor doesn't like this suggestion", 
     Scope = "member", 
     Target = "~M:FunWithCastles.Settings.Adapters.ReadOnlyAdapter`1.#ctor(FunWithCastles.Settings.ISettingsAdapter{`0})")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage(
+    "Style", 
+    "IDE0016:Use 'throw' expression", 
+    Justification = "I find the if more clear", 
+    Scope = "member", 
+    Target = "~M:FunWithCastles.Settings.Loaders.ObjectLoader`1.#ctor(`0)")]
+
