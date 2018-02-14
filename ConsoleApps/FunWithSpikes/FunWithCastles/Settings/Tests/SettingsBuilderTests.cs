@@ -2,6 +2,7 @@
 using FunWithCastles.Settings.Loaders;
 using FunWithCastles.Settings.Utils;
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 
 namespace FunWithCastles.Settings.Tests
@@ -58,6 +59,58 @@ namespace FunWithCastles.Settings.Tests
             // Assert
             settings.Name = "Douglas";
             Assert.AreEqual("Douglas", settings.Name);
+        }
+
+        [Test]
+        public void Load_DefaultConverter_ConvertsDateTime()
+        {
+            // Assemble
+            var args = new[] { "--TotalTime", "7:1:20:33.4" };
+            var settings = SettingsBuilder.Create()
+                                          .LoadFromCommandLine(args)
+                                          .Build<ITestSettings>();
+            var expected = new TimeSpan(
+                days: 7,
+                hours: 1,
+                minutes: 20,
+                seconds: 33,
+                milliseconds: 400);
+
+            // Act
+            var date = settings.TotalTime;
+
+            // Assert
+            Assert.AreEqual(expected, date);
+        }
+
+        [Test]
+        public void Load_DefaultConverter_ConvertsInts()
+        {
+            // Assemble
+            var args = new[] { "--TheAnswer", "42" };
+            var settings = SettingsBuilder.Create()
+                                          .LoadFromCommandLine(args)
+                                          .Build<ITestSettings>();
+            // Act
+            var answer = settings.TheAnswer;
+
+            // Assert
+            Assert.AreEqual(42, answer);
+        }
+
+        [Test]
+        public void Load_DefaultConverter_ConvertsTimeSpan()
+        {
+            // Assemble
+            var args = new[] { "--Date", "2012-3-4" };
+            var settings = SettingsBuilder.Create()
+                                          .LoadFromCommandLine(args)
+                                          .Build<ITestSettings>();
+            // Act
+            var date = settings.Date;
+
+            // Assert
+            Assert.AreEqual(new DateTime(2012, 3, 4), date);
         }
 
         [Test]
