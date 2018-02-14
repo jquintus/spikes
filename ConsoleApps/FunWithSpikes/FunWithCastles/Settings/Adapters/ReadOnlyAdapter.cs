@@ -15,21 +15,12 @@ namespace FunWithCastles.Settings.Adapters
             _adaptee = adaptee;
         }
 
-        public object this[string name]
+        public bool TryRead(string name, out object value)
         {
-            get { return _adaptee[name]; }
-            set
-            {
-                new InvalidOperationException($"Reading values is not supported by the {nameof(ReadOnlyAdapter)}");
-            }
+            return _adaptee.TryRead(name, out value);
         }
 
-        public bool CanRead(string name)
-        {
-            return _adaptee.CanRead(name);
-        }
-
-        public bool CanWrite(string name)
+        public bool TryWrite(string name, object value)
         {
             return false;
         }

@@ -166,8 +166,8 @@ namespace FunWithCastles.Settings.Tests
                                           .Add(mem1)
                                           .Add(mem2)
                                           .Build<IAppSettings>();
-            mem1["Name"] = "Douglas";
-            mem2["Name"] = "Adams";
+            mem1.Data["Name"] = "Douglas";
+            mem2.Data["Name"] = "Adams";
 
             // Act
             var name = settings.Name;
@@ -189,7 +189,7 @@ namespace FunWithCastles.Settings.Tests
 
             var settings = builder.Build<IAppSettings>();
 
-            mem2["Name"] = "Adams";
+            mem2.Data["Name"] = "Adams";
 
             // Act
             var name = settings.Name;
@@ -209,15 +209,15 @@ namespace FunWithCastles.Settings.Tests
                                           .AddReadOnly(mem1)
                                           .Add(mem2)
                                           .Build<IAppSettings>();
-            mem1["Name"] = "Unset";
-            mem2["Name"] = "Unset";
+            mem1.Data["Name"] = "Unset";
+            mem2.Data["Name"] = "Unset";
 
             // Act
             settings.Name = "Adams";
 
             // Assert
-            Assert.AreEqual("Unset", mem1["Name"]);
-            Assert.AreEqual("Adams", mem2["Name"]);
+            Assert.AreEqual("Unset", mem1.Data["Name"]);
+            Assert.AreEqual("Adams", mem2.Data["Name"]);
         }
 
         [Test]
@@ -237,8 +237,9 @@ namespace FunWithCastles.Settings.Tests
             settings.Name = "Douglas";
 
             // Assert
-            Assert.AreEqual("Douglas", mem1["Name"]);
-            Assert.IsFalse(mem2.CanRead("Name"));
+            object neverSet;
+            Assert.AreEqual("Douglas", mem1.Data["Name"]);
+            Assert.IsFalse(mem2.TryRead("Name", out neverSet));
         }
 
         [Test]
@@ -257,8 +258,9 @@ namespace FunWithCastles.Settings.Tests
             settings.Name = "Douglas";
 
             // Assert
-            Assert.AreEqual("Douglas", mem1["Name"]);
-            Assert.IsFalse(mem2.CanRead("Name"));
+            object neverSet;
+            Assert.AreEqual("Douglas", mem1.Data["Name"]);
+            Assert.IsFalse(mem2.TryRead("Name", out neverSet));
         }
     }
 }

@@ -11,33 +11,32 @@ namespace FunWithCastles.Settings.Adapters
             _root = root;
         }
 
-        public object this[string name]
+        public bool TryRead(string name, out object value)
         {
-            get
-            {
-                using (var key = Registry.CurrentUser.OpenSubKey(_root))
-                {
-                    return key.GetValue(name);
-                }
-            }
-            set
-            {
-                using (var key = Registry.CurrentUser.OpenSubKey(_root))
-                {
-                    key.SetValue(name, value);
-                }
-            }
-        }
-
-        public bool CanRead(string name)
-        {
-            var value = this[name];
+            value = Read(name);
             return value == null;
         }
 
-        public bool CanWrite(string name)
+        public bool TryWrite(string name, object value)
         {
+            Write(name, value);
             return true;
+        }
+
+        private object Read(string name)
+        {
+            using (var key = Registry.CurrentUser.OpenSubKey(_root))
+            {
+                return key.GetValue(name);
+            }
+        }
+
+        private void Write(string name, object value)
+        {
+            using (var key = Registry.CurrentUser.OpenSubKey(_root))
+            {
+                key.SetValue(name, value);
+            }
         }
     }
 }

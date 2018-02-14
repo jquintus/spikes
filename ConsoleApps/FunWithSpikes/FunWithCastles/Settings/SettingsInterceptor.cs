@@ -42,9 +42,9 @@ namespace FunWithCastles.Settings
         private bool Get(IInvocation invocation, string name)
         {
             name = Clean(name, "get_");
-            if (_adapter.CanRead(name))
+            object adapterValue;
+            if (_adapter.TryRead(name, out adapterValue))
             {
-                var adapterValue = _adapter[name];
                 var convertedValue = _converter.ConvertTo(invocation.Method.ReturnType, adapterValue);
                 invocation.ReturnValue = convertedValue;
                 return true;
@@ -56,13 +56,8 @@ namespace FunWithCastles.Settings
         private bool Set(IInvocation invocation, string name)
         {
             name = Clean(name, "set_");
-            if (_adapter.CanWrite(name))
-            {
-                _adapter[name] = invocation.Arguments[0];
-                return true;
-            }
-
-            return false;
+            var value = invocation.Arguments[0];
+            return _adapter.TryWrite(name, value);
         }
     }
 }

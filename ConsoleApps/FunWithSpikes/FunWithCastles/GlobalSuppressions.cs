@@ -15,4 +15,5 @@
     Justification = "I find the if more clear", 
     Scope = "member", 
     Target = "~M:FunWithCastles.Settings.Loaders.ObjectLoader`1.#ctor(`0)")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0016:Use 'throw' expression", Justification = "<Pending>", Scope = "member", Target = "~M:FunWithCastles.Settings.Adapters.ReadOnlyAdapter.#ctor(FunWithCastles.Settings.ISettingsAdapter)")]
 
