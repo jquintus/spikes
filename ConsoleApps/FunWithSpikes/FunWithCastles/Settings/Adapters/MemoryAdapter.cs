@@ -1,33 +1,24 @@
-﻿using FunWithCastles.Settings.Loaders;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace FunWithCastles.Settings.Adapters
 {
     public class MemoryAdapter : ISettingsAdapter
     {
-        private readonly IDictionary<string, object> _data;
-
         public MemoryAdapter(IDictionary<string, object> data = null)
         {
-            _data = data ?? new Dictionary<string, object>();
+            Data = data ?? new Dictionary<string, object>();
         }
 
-        public IDictionary<string, object> Data => _data;
+        public IDictionary<string, object> Data { get; }
 
-        public object this[string name]
+        public bool TryRead(string name, out object value)
         {
-            get { return _data[name]; }
-            set { _data[name] = value; }
+            return Data.TryGetValue(name, out value);
         }
 
-        public bool CanRead(string name)
+        public bool TryWrite(string name, object value)
         {
-            return _data.ContainsKey(name);
-        }
-
-        public bool CanWrite(string name)
-        {
+            Data[name] = value;
             return true;
         }
     }

@@ -2,10 +2,8 @@
 {
     public interface ISettingsAdapter
     {
-        object this[string name] { get; set; }
+        bool TryRead(string name, out object value);
 
-        bool CanRead(string name);
-
-        bool CanWrite(string name);
+        bool TryWrite(string name, object value);
     }
 }
