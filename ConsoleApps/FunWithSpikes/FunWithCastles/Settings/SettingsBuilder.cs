@@ -34,7 +34,7 @@ namespace FunWithCastles.Settings
             return Add(readOnlyAdapter, converter);
         }
 
-        public TSettings Build<TSettings>() where TSettings : class
+        public TSettings Create<TSettings>(string root = null) where TSettings : class
         {
             var interceptors = _interceptors.ToArray();
 

@@ -5,9 +5,9 @@ namespace FunWithCastles.Settings.Loaders
 {
     public class ExpressionLoaderSettingsBuilder<TMapper> : ISettingsBuilder
     {
+        public readonly ExpressionLoader<TMapper> _expressionLoader;
         private readonly ISettingsBuilder _builder;
         private readonly ISettingConverter _converter;
-        public readonly ExpressionLoader<TMapper> _expressionLoader;
 
         public ExpressionLoaderSettingsBuilder(ISettingsBuilder builder, ISettingConverter converter)
         {
@@ -28,10 +28,10 @@ namespace FunWithCastles.Settings.Loaders
             return _builder.AddReadOnly(adapter, converter);
         }
 
-        public TSettings Build<TSettings>() where TSettings : class
+        public TSettings Create<TSettings>(string root = null) where TSettings : class
         {
             _builder.Load(_expressionLoader, _converter);
-            return _builder.Build<TSettings>();
+            return _builder.Create<TSettings>();
         }
 
         public ISettingsBuilder Load(ISettingsLoader loader, ISettingConverter converter)

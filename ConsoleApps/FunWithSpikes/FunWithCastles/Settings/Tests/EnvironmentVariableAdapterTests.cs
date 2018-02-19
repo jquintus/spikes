@@ -15,7 +15,7 @@ namespace FunWithCastles.Settings.Tests
             {
                 var settings = SettingsBuilder.Create()
                                               .AddEnvironmentVariableAdapter()
-                                              .Build<IAppSettings>();
+                                              .Create<IAppSettings>();
 
                 // Act
                 int maxItems = settings.MaxItems;

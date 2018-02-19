@@ -21,7 +21,7 @@ namespace FunWithCastles.Settings.Tests
 
             var settings = SettingsBuilder.Create()
                                           .LoadFromObject(defaultValues)
-                                          .Build<ITestSettings>();
+                                          .Create<ITestSettings>();
             // Act
             var name = settings.Name;
             var answer = settings.TheAnswer;
@@ -38,7 +38,7 @@ namespace FunWithCastles.Settings.Tests
             var settings = SettingsBuilder.Create()
                                           .StartMapping<IAppSettings>()
                                           .Map(s => s.Name, "Adams")
-                                          .Build<IAppSettings>();
+                                          .Create<IAppSettings>();
             // Act
             var name = settings.Name;
 
@@ -47,14 +47,14 @@ namespace FunWithCastles.Settings.Tests
         }
 
         [Test]
-        public void Build_OneAdapter_CreatesSettingsObject()
+        public void Create_OneAdapter_CreatesSettingsObject()
         {
             // Assemble
             var builder = SettingsBuilder.Create()
                                          .AddMemoryAdapter();
 
             // Act
-            var settings = builder.Build<IAppSettings>();
+            var settings = builder.Create<IAppSettings>();
 
             // Assert
             settings.Name = "Douglas";
@@ -68,7 +68,7 @@ namespace FunWithCastles.Settings.Tests
             var args = new[] { "--TotalTime", "7:1:20:33.4" };
             var settings = SettingsBuilder.Create()
                                           .LoadFromCommandLine(args)
-                                          .Build<ITestSettings>();
+                                          .Create<ITestSettings>();
             var expected = new TimeSpan(
                 days: 7,
                 hours: 1,
@@ -90,7 +90,7 @@ namespace FunWithCastles.Settings.Tests
             var args = new[] { "--TheAnswer", "42" };
             var settings = SettingsBuilder.Create()
                                           .LoadFromCommandLine(args)
-                                          .Build<ITestSettings>();
+                                          .Create<ITestSettings>();
             // Act
             var answer = settings.TheAnswer;
 
@@ -105,7 +105,7 @@ namespace FunWithCastles.Settings.Tests
             var args = new[] { "--Date", "2012-3-4" };
             var settings = SettingsBuilder.Create()
                                           .LoadFromCommandLine(args)
-                                          .Build<ITestSettings>();
+                                          .Create<ITestSettings>();
             // Act
             var date = settings.Date;
 
@@ -125,7 +125,7 @@ namespace FunWithCastles.Settings.Tests
                 var settings = SettingsBuilder.Create()
                                               .AddMemoryAdapter(memData)
                                               .AddEnvironmentVariableAdapter("Test.")
-                                              .Build<IAppSettings>();
+                                              .Create<IAppSettings>();
                 // Act
                 var name = settings.Name;
 
@@ -146,7 +146,7 @@ namespace FunWithCastles.Settings.Tests
                 var settings = SettingsBuilder.Create()
                                               .AddMemoryAdapter(memData)
                                               .AddEnvironmentVariableAdapter("Test.")
-                                              .Build<IAppSettings>();
+                                              .Create<IAppSettings>();
                 // Act
                 var name = settings.Name;
 
@@ -165,7 +165,7 @@ namespace FunWithCastles.Settings.Tests
             var settings = SettingsBuilder.Create()
                                           .Add(mem1)
                                           .Add(mem2)
-                                          .Build<IAppSettings>();
+                                          .Create<IAppSettings>();
             mem1.Data["Name"] = "Douglas";
             mem2.Data["Name"] = "Adams";
 
@@ -187,7 +187,7 @@ namespace FunWithCastles.Settings.Tests
                                          .Add(mem1)
                                          .Add(mem2);
 
-            var settings = builder.Build<IAppSettings>();
+            var settings = builder.Create<IAppSettings>();
 
             mem2.Data["Name"] = "Adams";
 
@@ -208,7 +208,7 @@ namespace FunWithCastles.Settings.Tests
             var settings = SettingsBuilder.Create()
                                           .AddReadOnly(mem1)
                                           .Add(mem2)
-                                          .Build<IAppSettings>();
+                                          .Create<IAppSettings>();
             mem1.Data["Name"] = "Unset";
             mem2.Data["Name"] = "Unset";
 
@@ -231,7 +231,7 @@ namespace FunWithCastles.Settings.Tests
                                          .Add(mem1)
                                          .Add(mem2);
 
-            var settings = builder.Build<IAppSettings>();
+            var settings = builder.Create<IAppSettings>();
 
             // Act
             settings.Name = "Douglas";
@@ -252,7 +252,7 @@ namespace FunWithCastles.Settings.Tests
             var builder = SettingsBuilder.Create()
                                          .Add(mem1)
                                          .Add(mem2);
-            var settings = builder.Build<IAppSettings>();
+            var settings = builder.Create<IAppSettings>();
 
             // Act
             settings.Name = "Douglas";
