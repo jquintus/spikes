@@ -34,7 +34,7 @@ namespace FunWithCastles.Settings
             return Add(readOnlyAdapter, converter);
         }
 
-        public TSettings Create<TSettings>(string root = null) where TSettings : class
+        public TSettings CreateSettings<TSettings>(string root = null) where TSettings : class
         {
             var interceptor = new SettingsInterceptor(_readerWriters);
             var proxy = _generator.CreateInterfaceProxyWithoutTarget<TSettings>(interceptor);

@@ -6,7 +6,7 @@
 
         ISettingsBuilder AddReadOnly(ISettingsAdapter adapter, ISettingConverter converter = null);
 
-        TSettings Create<TSettings>(string root = null) where TSettings : class;
+        TSettings CreateSettings<TSettings>(string root = null) where TSettings : class;
 
         ISettingsBuilder Load(ISettingsLoader loader, ISettingConverter converter = null);
     }

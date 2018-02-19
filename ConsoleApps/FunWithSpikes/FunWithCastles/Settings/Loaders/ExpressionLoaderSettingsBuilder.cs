@@ -28,10 +28,10 @@ namespace FunWithCastles.Settings.Loaders
             return _builder.AddReadOnly(adapter, converter);
         }
 
-        public TSettings Create<TSettings>(string root = null) where TSettings : class
+        public TSettings CreateSettings<TSettings>(string root = null) where TSettings : class
         {
             _builder.Load(_expressionLoader, _converter);
-            return _builder.Create<TSettings>();
+            return _builder.CreateSettings<TSettings>();
         }
 
         public ISettingsBuilder Load(ISettingsLoader loader, ISettingConverter converter)

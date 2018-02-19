@@ -53,6 +53,7 @@ namespace FunWithCastles.Settings
                 case PropertyType.Get:
                     Read(invocation, name);
                     break;
+
                 case PropertyType.Set:
                     Write(invocation, name);
                     break;
