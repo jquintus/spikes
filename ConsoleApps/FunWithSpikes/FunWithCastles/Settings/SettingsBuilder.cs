@@ -7,12 +7,12 @@ namespace FunWithCastles.Settings
     public class SettingsBuilder : ISettingsBuilder
     {
         private readonly ProxyGenerator _generator;
-        private readonly List<IInterceptor> _interceptors;
+        private readonly List<SettingsReaderWriter> _readerWriters;
 
         private SettingsBuilder()
         {
             _generator = new ProxyGenerator();
-            _interceptors = new List<IInterceptor>();
+            _readerWriters = new List<SettingsReaderWriter>();
         }
 
         public static ISettingsBuilder Create()
@@ -23,8 +23,8 @@ namespace FunWithCastles.Settings
         public ISettingsBuilder Add(ISettingsAdapter adapter, ISettingConverter converter)
         {
             converter = converter ?? new DefaultSettingConverter();
-            var interceptor = new SettingsInterceptor(adapter, converter);
-            _interceptors.Add(interceptor);
+            var readerWriter = new SettingsReaderWriter(adapter, converter);
+            _readerWriters.Add(readerWriter);
             return this;
         }
 
@@ -36,9 +36,8 @@ namespace FunWithCastles.Settings
 
         public TSettings Create<TSettings>(string root = null) where TSettings : class
         {
-            var interceptors = _interceptors.ToArray();
-
-            var proxy = _generator.CreateInterfaceProxyWithoutTarget<TSettings>(interceptors);
+            var interceptor = new SettingsInterceptor(_readerWriters);
+            var proxy = _generator.CreateInterfaceProxyWithoutTarget<TSettings>(interceptor);
             return proxy;
         }
 

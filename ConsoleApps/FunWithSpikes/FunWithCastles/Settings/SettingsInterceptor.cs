@@ -1,35 +1,23 @@
 ﻿using Castle.DynamicProxy;
+using System.Collections.Generic;
 
 namespace FunWithCastles.Settings
 {
     public class SettingsInterceptor : IInterceptor
     {
-        private readonly ISettingsAdapter _adapter;
-        private readonly ISettingConverter _converter;
+        private readonly IEnumerable<SettingsReaderWriter> _readerWriters;
 
-        public SettingsInterceptor(ISettingsAdapter adapter, ISettingConverter converter)
+        public SettingsInterceptor(IEnumerable<SettingsReaderWriter> readerWriters)
         {
-            _adapter = adapter;
-            _converter = converter;
+            _readerWriters = readerWriters;
         }
+
+        private enum PropertyType { Get, Set, NotAProperty }
 
         public void Intercept(IInvocation invocation)
         {
-            var name = invocation.Method.Name;
-            bool handled = false;
-            if (name.StartsWith("get_"))
-            {
-                handled = Get(invocation, name);
-            }
-            else if (name.StartsWith("set_"))
-            {
-                handled = Set(invocation, name);
-            }
-
-            if (!handled)
-            {
-                invocation.Proceed();
-            }
+            var (name, propType) = GetPropertInfo(invocation);
+            Intercept(invocation, name, propType);
         }
 
         private static string Clean(string input, string prefix)
@@ -39,25 +27,63 @@ namespace FunWithCastles.Settings
                 : input;
         }
 
-        private bool Get(IInvocation invocation, string name)
+        private (string name, PropertyType type) GetPropertInfo(IInvocation invocation)
         {
-            name = Clean(name, "get_");
-            object adapterValue;
-            if (_adapter.TryRead(name, out adapterValue))
-            {
-                var convertedValue = _converter.ConvertTo(invocation.Method.ReturnType, adapterValue);
-                invocation.ReturnValue = convertedValue;
-                return true;
-            }
+            var propType = PropertyType.NotAProperty;
+            string cleaned = null;
 
-            return false;
+            var name = invocation.Method.Name;
+            if (name.StartsWith("get_"))
+            {
+                propType = PropertyType.Get;
+                cleaned = Clean(name, "get_");
+            }
+            else if (name.StartsWith("set_"))
+            {
+                propType = PropertyType.Set;
+                cleaned = Clean(name, "set_");
+            }
+            return (cleaned, propType);
         }
 
-        private bool Set(IInvocation invocation, string name)
+        private void Intercept(IInvocation invocation, string name, PropertyType propType)
         {
-            name = Clean(name, "set_");
-            var value = invocation.Arguments[0];
-            return _adapter.TryWrite(name, value);
+            switch (propType)
+            {
+                case PropertyType.Get:
+                    Read(invocation, name);
+                    break;
+                case PropertyType.Set:
+                    Write(invocation, name);
+                    break;
+            }
+        }
+
+        private void Read(IInvocation invocation, string name)
+        {
+            object value;
+            var returnType = invocation.Method.ReturnType;
+            foreach (var reader in _readerWriters)
+            {
+                if (reader.Read(returnType, name, out value))
+                {
+                    invocation.ReturnValue = value;
+                    return;
+                }
+            }
+        }
+
+        private void Write(IInvocation invocation, string name)
+        {
+            object value = invocation.Arguments[0];
+            var returnType = invocation.Method.ReturnType;
+            foreach (var writer in _readerWriters)
+            {
+                if (writer.Write(returnType, name, value))
+                {
+                    return;
+                }
+            }
         }
     }
 }
