@@ -145,6 +145,7 @@
     <Compile Include="Provider\MoreIndirectDependencyOnFoo1.cs" />
     <Compile Include="Provider\ProviderTests.cs" />
     <Compile Include="Provider\NamedFooProvider.cs" />
+    <Compile Include="Scope\ScopeTests.cs" />
     <Compile Include="WhenInjected\BingChildService.cs" />
     <Compile Include="WhenInjected\BingService.cs" />
     <Compile Include="WhenInjected\BingUtility.cs" />
