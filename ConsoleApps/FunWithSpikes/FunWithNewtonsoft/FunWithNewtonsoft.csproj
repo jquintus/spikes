@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Data.cs" />
     <Compile Include="ListTests.cs" />
+    <Compile Include="NullTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
